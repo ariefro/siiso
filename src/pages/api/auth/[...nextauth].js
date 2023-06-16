@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
-import spotifyApi, { loginUrl } from "../../../lib/spotify";
+import { loginUrl, spotifyApi } from "../../../lib/spotify";
 
 async function refreshAccessToken(token) {
   try {
@@ -54,7 +54,7 @@ const authOptions = {
         };
       } else if (Date.now() / 1000 < token.access_token_expires) {
         console.log("existing access token is valid");
-        // If the access token has not expired yet, return it
+
         return token;
       } else {
         console.log("access token has expired, refreshing...");
