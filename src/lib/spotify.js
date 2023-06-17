@@ -7,6 +7,7 @@ const scopes = [
   "playlist-read-collaborative",
   "streaming",
   "user-library-read",
+  "user-library-modify",
   "user-read-playback-position",
   "user-top-read",
   "user-read-recently-played",
@@ -22,14 +23,42 @@ const params = {
 
 const queryParamString = new URLSearchParams(params).toString();
 
-const loginUrl = "https://accounts.spotify.com/authorize?" + queryParamString;
+export const loginUrl =
+  "https://accounts.spotify.com/authorize?" + queryParamString;
 
-const spotifyApi = new SpotifyWebApi({
+export const spotifyApi = new SpotifyWebApi({
   clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
   clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
   redirectUri: process.env.REDIRECT_URI,
 });
 
-export default spotifyApi;
+export const fetchUser = async () => {
+  return await spotifyApi.getMe();
+};
 
-export { loginUrl };
+export const fetchPlaylists = async () => {
+  return await spotifyApi.getUserPlaylists();
+};
+
+export const fetchTopArtists = async () => {
+  return await spotifyApi.getMyTopArtists({
+    limit: 10,
+    time_range: "long_term",
+  });
+};
+
+export const fetchTopTracks = async () => {
+  return await spotifyApi.getMyTopTracks({
+    limit: 10,
+    time_range: "long_term",
+  });
+};
+
+export const fetchUserData = async () => {
+  const user = await fetchUser();
+  const playlists = await fetchPlaylists();
+  const topArtists = await fetchTopArtists();
+  const topTracks = await fetchTopTracks();
+
+  return { user, playlists, topArtists, topTracks };
+};
