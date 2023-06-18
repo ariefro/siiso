@@ -1,38 +1,55 @@
 "use client";
 
-import { AiFillHome } from "react-icons/ai"
-import { BiSearch, BiLibrary } from "react-icons/bi"
 import { useState } from "react";
+import Link from "next/link";
+import { MicrophoneIcon, PlaylistIcon, RecentIcon, TrackIcon, UserIcon } from "./icons";
 
 function Sidebar() {
-  const [isButtonFocused, setIsButtonFocused] = useState('home');
+  const [isButtonFocused, setIsButtonFocused] = useState('profile');
 
   const handleButtonClick = (button) => {
     setIsButtonFocused(button)
   }
 
   return (
-    <div className="text-gray-400 text-sm font-bold lg:text-base border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide w-1/3 lg:max-w-md hidden md:inline-flex">
-      <div className="w-full">
-        <div className="space-y-4 p-5 m-3 rounded-xl bg-gray-800 bg-opacity-70 flex flex-col h-28 justify-center">
-          <button onClick={() => handleButtonClick('home')} className={`flex items-center space-x-2 outline-none ${isButtonFocused == 'home' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
-            <AiFillHome className="h-7 w-7" />
-            <p className="">Home</p>
+    <div className="text-gray-400 text-xs bg-black border-r border-gray-900 h-screen w-28 lg:max-w-md hidden md:inline-flex">
+      <div className="m-auto w-full">
+        <Link href="/" className={`nav ${isButtonFocused == 'profile' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
+          <button onClick={() => handleButtonClick('profile')} className={`button-nav ${isButtonFocused == 'profile' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
+            <UserIcon />
+            <p>Profile</p>
           </button>
-          <button onClick={() => handleButtonClick('search')} className={`flex items-center space-x-2 outline-none ${isButtonFocused == 'search' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
-            <BiSearch className="h-7 w-7" />
-            <p className="">Search</p>
+          {isButtonFocused === 'profile' && <div className="green-line"></div>}
+        </Link>
+        <Link href="/" className={`nav ${isButtonFocused == 'top-artists' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
+          <button onClick={() => handleButtonClick('top-artists')} className={`button-nav ${isButtonFocused == 'top-artists' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
+            <MicrophoneIcon />
+            <p>Top Artists</p>
           </button>
-        </div>
-
-        <div className="space-y-4 p-5 m-3 rounded-xl bg-gray-800 bg-opacity-70 flex flex-col h-screen">
-          <button onClick={() => handleButtonClick('library')} className={`flex items-center space-x-2 outline-none ${isButtonFocused == 'library' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
-            <BiLibrary className="h-7 w-7" />
-            <p className="">Your Library</p>
+          {isButtonFocused === 'top-artists' && <div className="green-line"></div>}
+        </Link>
+        <Link href="/" className={`nav ${isButtonFocused == 'top-tracks' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
+          <button onClick={() => handleButtonClick('top-tracks')} className={`button-nav ${isButtonFocused == 'top-tracks' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
+            <TrackIcon />
+            <p>Top Tracks</p>
           </button>
-        </div>
+          {isButtonFocused === 'top-tracks' && <div className="green-line"></div>}
+        </Link>
+        <Link href="/" className={`nav ${isButtonFocused == 'recent' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
+          <button onClick={() => handleButtonClick('recent')} className={`button-nav ${isButtonFocused == 'recent' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
+            <RecentIcon />
+            <p>Recent</p>
+          </button>
+          {isButtonFocused === 'recent' && <div className="green-line"></div>}
+        </Link>
+        <Link href="/" className={`nav ${isButtonFocused == 'playlists' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
+          <button onClick={() => handleButtonClick('playlists')} className={`button-nav ${isButtonFocused == 'playlists' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
+            <PlaylistIcon />
+            <p>Playlists</p>
+          </button>
+          {isButtonFocused === 'playlists' && <div className="green-line"></div>}
+        </Link>
       </div>
-      
     </div>
   );
 }
