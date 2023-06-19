@@ -12,7 +12,7 @@ export default function MainNavbar() {
   }
 
   return (
-    <nav className="text-gray-400 text-xs bg-black border-r border-gray-900 h-screen w-28 lg:max-w-md hidden md:inline-flex">
+    <nav className="text-gray-400 text-xs sticky top-0 z-50 bg-black border-r border-gray-900 h-screen w-28 lg:max-w-md hidden md:inline-flex">
       <div className="m-auto w-full">
         <Link href="/" className={`main-nav ${isButtonFocused == 'profile' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
           <button onClick={() => handleButtonClick('profile')} className={`button-nav ${isButtonFocused == 'profile' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
@@ -21,7 +21,7 @@ export default function MainNavbar() {
           </button>
           {isButtonFocused === 'profile' && <div className="green-line"></div>}
         </Link>
-        <Link href="/" className={`main-nav ${isButtonFocused == 'top-artists' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
+        <Link href="/artists" className={`main-nav ${isButtonFocused == 'top-artists' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
           <button onClick={() => handleButtonClick('top-artists')} className={`button-nav ${isButtonFocused == 'top-artists' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
             <MicrophoneIcon />
             <p>Top Artists</p>

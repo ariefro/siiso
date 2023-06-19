@@ -40,25 +40,25 @@ export const fetchPlaylists = async () => {
   return await spotifyApi.getUserPlaylists();
 };
 
-export const fetchTopArtists = async () => {
+export const fetchTopArtists = async (limit, timeRange) => {
   return await spotifyApi.getMyTopArtists({
-    limit: 10,
-    time_range: "long_term",
+    limit: limit,
+    time_range: timeRange,
   });
 };
 
-export const fetchTopTracks = async () => {
+export const fetchTopTracks = async (limit, timeRange) => {
   return await spotifyApi.getMyTopTracks({
-    limit: 10,
-    time_range: "long_term",
+    limit: limit,
+    time_range: timeRange,
   });
 };
 
 export const fetchUserData = async () => {
   const user = await fetchUser();
   const playlists = await fetchPlaylists();
-  const topArtists = await fetchTopArtists();
-  const topTracks = await fetchTopTracks();
+  const topArtists = await fetchTopArtists(10, "long_term");
+  const topTracks = await fetchTopTracks(10, "long_term");
 
   return { user, playlists, topArtists, topTracks };
 };

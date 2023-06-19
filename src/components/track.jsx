@@ -2,7 +2,6 @@ import { milisToMinutesAndSeconds } from "@/utils";
 import Image from "next/image";
 
 export default function Track({ track }) {
-  console.log("====", track)
   return (
     <div className="mb-6 flex items-center space-x-5">
         {track?.album?.images?.[0].url && (<Image src={track?.album?.images?.[0].url} width={50} height={50} alt="photo album" className=""></Image>)}
