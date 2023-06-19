@@ -1,11 +1,14 @@
 import Image from "next/image"
+import Link from "next/link"
 
 function TopArtists({ data }) {
   return (
     <div className="md:w-1/2 md:mr-16 mb-20">
       <div className="flex items-center mb-10 justify-between">
         <h3 className="font-extrabold text-xl text-white md:mr-3">Top Artists</h3>
-        <button onClick={() => signOut()} className="button">SEE MORE</button>
+        <Link href="/artists">
+          <button className="button">SEE MORE</button>
+        </Link>
       </div>
 
       {data?.body?.items?.map((artist) => (

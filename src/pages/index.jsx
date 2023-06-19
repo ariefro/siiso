@@ -1,14 +1,14 @@
+import { SessionProvider, getSession } from 'next-auth/react'
 import "../styles/output.css"
 import User from '@/components/user'
-import Sidebar from '@/components/sidebar'
-import { SessionProvider, getSession } from 'next-auth/react'
+import MainNavbar from '@/components/main-navbar'
 
 export default function Home({ session }) {
   return (
     <SessionProvider session={ session }>
       <div className='h-screen overflow-hidden bg-zinc-800'>
         <div className='flex'>
-          <Sidebar />
+          <MainNavbar />
           <User />
         </div>
       </div>

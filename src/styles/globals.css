@@ -26,7 +26,11 @@
     @apply absolute w-[0.35rem] rounded-r-sm  h-[4.5rem] bg-green-500
   }
 
-  .nav {
+  .main-nav {
     @apply outline-none mx-auto h-[4.5rem] flex flex-col justify-center
+  }
+
+  .nav {
+    @apply text-sm text-gray-400 outline-none tracking-wider hover:text-white focus:underline focus:underline-offset-4 focus:text-white decoration-2
   }
 }
