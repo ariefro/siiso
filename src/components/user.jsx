@@ -58,8 +58,8 @@ function User() {
             </Link>
           </div>
           {topArtists?.body?.items?.map((artist) => (
-            <div key={artist?.id} className="mb-6 flex items-center space-x-5">
-              {artist?.images?.[0].url && (<Image src={artist?.images?.[0].url} width={50} height={50} alt="photo album" className="rounded-full"></Image>)}
+            <div key={artist?.id} className="mb-6 flex items-center space-x-4">
+              {artist?.images?.[0].url && (<Image src={artist?.images?.[0].url} width={50} height={50} alt="photo album" className="rounded-full w-[50px] h-[50px]"></Image>)}
               <p className="text-sm md:text-base text-white">{artist?.name}</p>
             </div>
           ))}

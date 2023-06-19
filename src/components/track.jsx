@@ -7,7 +7,7 @@ export default function Track({ track }) {
         {track?.album?.images?.[0].url && (<Image src={track?.album?.images?.[0].url} width={50} height={50} alt="photo album" className=""></Image>)}
         <div className="w-full">
           <div className="flex items-end justify-between">
-            <p className="text-sm md:text-base md:w-24 lg:w-full text-white truncate">{track?.name}</p>
+            <p className="text-sm md:text-base md:w-9/12 lg:w-full text-white truncate">{track?.name}</p>
             <p className="text-xs md:text-sm text-gray-400">{milisToMinutesAndSeconds(track?.duration_ms)}</p>
           </div>
           <div className="flex items-end justify-between">
