@@ -11,7 +11,7 @@
 
 @layer components {
   .button {
-    @apply border-2 text-white border-white tracking-wide rounded-full px-6 py-2 hover:bg-white hover:text-black text-[0.7rem] font-bold whitespace-nowrap
+    @apply border-2 text-white border-white uppercase tracking-wide rounded-full px-6 py-2 hover:bg-white hover:text-black text-[0.7rem] font-bold whitespace-nowrap
   }
 
   .active-nav {
@@ -31,6 +31,10 @@
   }
 
   .nav {
-    @apply text-sm text-gray-400 outline-none tracking-wider hover:text-white focus:underline focus:underline-offset-4 focus:text-white decoration-2
+    @apply text-sm text-gray-400 outline-none tracking-wider
+  }
+
+  .active-button {
+    @apply underline underline-offset-4 text-white decoration-2
   }
 }

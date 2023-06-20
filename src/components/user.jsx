@@ -7,9 +7,9 @@ import Error from "./error"
 import Loading from "./loading"
 import useSpotify from "@/hook/useSpotify"
 import { fetchUserData } from "@/lib/spotify"
-import Link from "next/link"
 import Image from "next/image"
 import Track from "./track"
+import ListHeading from "./list-heading"
 
 function User() {
   const { data: session } = useSession()
@@ -51,12 +51,7 @@ function User() {
       <div className="md:flex">
 
         <div className="md:w-1/2 md:mr-16 mb-20">
-          <div className="flex items-center mb-10 justify-between">
-            <h3 className="font-extrabold text-xl text-white md:mr-3">Top Artists</h3>
-            <Link href="/artists">
-              <button className="button">SEE MORE</button>
-            </Link>
-          </div>
+          <ListHeading title={"top artists"} href={"/artists"}/>
           {topArtists?.body?.items?.map((artist) => (
             <div key={artist?.id} className="mb-6 flex items-center space-x-4">
               {artist?.images?.[0].url && (<Image src={artist?.images?.[0].url} width={50} height={50} alt="photo album" className="rounded-full w-[50px] h-[50px]"></Image>)}
@@ -66,10 +61,7 @@ function User() {
         </div>
 
         <div className="md:w-1/2">
-          <div className="flex items-center justify-between mb-10">
-            <h3 className="font-extrabold text-xl text-white md:mr-3">Top Tracks</h3>
-            <button className="button">SEE MORE</button>
-          </div>
+          <ListHeading title={"top tracks"} href={"/tracks"}/>
           {topTracks?.body?.items?.map((track) => (
             <Track track={track} key={track.id}/>
           ))}

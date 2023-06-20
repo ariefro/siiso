@@ -1,4 +1,3 @@
-import "../styles/output.css"
 import { useEffect, useState } from "react";
 import { fetchTopArtists } from "@/lib/spotify";
 import useSpotify from "@/hook/useSpotify";
@@ -12,7 +11,7 @@ export default function TopArtists() {
 
   const fetchData = async () => {
     try {
-      const topArtists = await fetchTopArtists(10, "long_term")
+      const topArtists = await fetchTopArtists(50, "long_term")
       setTopArtists(topArtists)
     } catch (error) {
       console.log(error)
