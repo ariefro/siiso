@@ -11,8 +11,7 @@ export default function Track({ track }) {
           <p className="text-xs w-11/12 md:text-sm text-gray-400 truncate">{track?.artists?.[0].name} - {track?.album?.name}</p>
         </div>
         <div className="flex justify-between">
-          <p></p>
-          <p className="text-xs md:text-sm text-gray-400">{milisToMinutesAndSeconds(track?.duration_ms)}</p>
+          <p className="text-xs md:text-sm w-full text-gray-400 text-right">{milisToMinutesAndSeconds(track?.duration_ms)}</p>
         </div>
       </div>
     </div>

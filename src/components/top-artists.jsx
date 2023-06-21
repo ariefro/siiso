@@ -3,16 +3,19 @@ import { fetchTopArtists } from "@/lib/spotify";
 import useSpotify from "@/hook/useSpotify";
 import Image from "next/image";
 import Error from "./error";
+import Loading from "./loading";
 
 export default function TopArtists() {
   const spotifyApi = useSpotify()
   const [topArtists, setTopArtists] = useState(null)
   const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const fetchData = async () => {
     try {
       const topArtists = await fetchTopArtists(50, "long_term")
       setTopArtists(topArtists)
+      setLoading(false)
     } catch (error) {
       console.log(error)
       setError(true)
@@ -25,6 +28,7 @@ export default function TopArtists() {
 
   return (
     <div className="w-10/12 md:w-11/12 mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+      {!error && loading && <Loading />}
       {error && <Error />}
       {topArtists?.body?.items?.map((artist) => (
         <button key={artist.id} className="text-sm text-white flex flex-col items-center text-center space-y-3">

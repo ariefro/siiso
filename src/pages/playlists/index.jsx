@@ -1,17 +1,16 @@
 import Navbar from "@/components/navbar";
 import "../../styles/output.css"
 import MainNavbar from "@/components/main-navbar";
-import TopTracks from "@/components/top-tracks";
+import Playlists from "@/components/playlists";
 import { SessionProvider, getSession } from "next-auth/react";
 
-export default function TopTracksPage({ session }) {
+export default function PlaylistsPage({ session }) {
   return (
     <SessionProvider session={session}>
         <div className="flex bg-zinc-800">
             <MainNavbar />
             <div className="w-full h-screen overflow-y-scroll scrollbar-hide">
-                <Navbar title={"Top Tracks"}/>
-                <TopTracks className="mt-12"/>
+                <Playlists />
             </div>
         </div>
     </SessionProvider>

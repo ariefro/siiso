@@ -41,11 +41,7 @@ function User() {
 
   return (
     <div className="w-full h-screen overflow-y-scroll scrollbar-hide px-10">
-      {!error && loading && 
-        <div className="h-screen flex justify-center items-center">
-          <Loading />
-        </div>
-      }
+      {!error && loading && <Loading />}
       {error && <Error />}
       <Header session={session} user={user} playlists={playlists}/>
       <div className="md:flex">

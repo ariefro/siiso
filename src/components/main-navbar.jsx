@@ -36,7 +36,7 @@ export default function MainNavbar() {
           </button>
           {pathname == '/recent' && <div className="green-line"></div>}
         </Link>
-        <Link href="/" className={`main-nav ${pathname == '/playlists' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
+        <Link href="/playlists" className={`main-nav ${pathname == '/playlists' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
           <button className={`button-nav ${pathname == '/playlists' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
             <PlaylistIcon />
             <p>Playlists</p>
