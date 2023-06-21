@@ -5,7 +5,7 @@ function Loading() {
         <div className="h-12 w-12 rounded-full bg-zinc-800"></div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Loading
+export default Loading;
