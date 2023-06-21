@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import Track from "./track";
-import { fetchTopTracks } from "@/lib/spotify";
-import Error from "./error";
-import useSpotify from "@/hook/useSpotify";
-import Loading from "./loading";
+import { useEffect, useState } from 'react';
+import Track from './track';
+import { fetchTopTracks } from '@/lib/spotify';
+import Error from './error';
+import useSpotify from '@/hook/useSpotify';
+import Loading from './loading';
 
 function TopTracks({ className }) {
   const spotifyApi = useSpotify();
@@ -13,7 +13,7 @@ function TopTracks({ className }) {
 
   const fetchData = async () => {
     try {
-      const topTracks = await fetchTopTracks(30, "long_term");
+      const topTracks = await fetchTopTracks(30, 'long_term');
       setTopTracks(topTracks);
       setLoading(false);
     } catch (error) {
@@ -27,7 +27,7 @@ function TopTracks({ className }) {
   }, [spotifyApi]);
 
   return (
-    <div className="pt-16 px-10">
+    <div className='pt-16 px-10'>
       {!error && loading && <Loading />}
       {error && <Error />}
       {topTracks?.body?.items?.map((track) => (

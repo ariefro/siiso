@@ -4,37 +4,39 @@
 
 @layer base {
   html {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+      sans-serif;
     letter-spacing: 0.025rem;
   }
 }
 
 @layer components {
   .button {
-    @apply border-2 text-white border-white uppercase tracking-wide rounded-full px-6 py-2 hover:bg-white hover:text-black text-[0.7rem] font-bold whitespace-nowrap
+    @apply border-2 text-white border-white uppercase tracking-wide rounded-full px-6 py-2 hover:bg-white hover:text-black text-[0.7rem] font-bold whitespace-nowrap;
   }
 
   .active-nav {
-    @apply bg-zinc-800 transition-all duration-300 ease-out fill-white
+    @apply bg-zinc-800 transition-all duration-300 ease-out fill-white;
   }
 
   .button-nav {
-    @apply flex flex-col items-center space-y-1
+    @apply flex flex-col items-center space-y-1;
   }
 
   .green-line {
-    @apply absolute w-[0.35rem] rounded-r-sm  h-[4.5rem] bg-green-500
+    @apply absolute w-[0.35rem] rounded-r-sm  h-[4.5rem] bg-green-500;
   }
 
   .main-nav {
-    @apply outline-none mx-auto h-[4.5rem] flex flex-col justify-center
+    @apply outline-none mx-auto h-[4.5rem] flex flex-col justify-center;
   }
 
   .nav {
-    @apply text-sm text-gray-400 outline-none tracking-wider
+    @apply text-sm text-gray-400 outline-none tracking-wider;
   }
 
   .active-button {
-    @apply underline underline-offset-4 text-white decoration-2
+    @apply underline underline-offset-4 text-white decoration-2;
   }
 }
