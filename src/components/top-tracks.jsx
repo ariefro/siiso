@@ -13,7 +13,7 @@ function TopTracks({ className }) {
 
   const fetchData = async () => {
     try {
-      const topTracks = await fetchTopTracks(50, "long_term")
+      const topTracks = await fetchTopTracks(30, "long_term")
       setTopTracks(topTracks)
       setLoading(false)
     } catch (error) {
@@ -27,7 +27,7 @@ function TopTracks({ className }) {
   }, [spotifyApi])
 
   return (
-    <div className={`${className} px-10 md:px-12 lg:px-14`}>
+    <div className="pt-16 px-10">
       {!error && loading && <Loading />}
       {error && <Error />}
       {topTracks?.body?.items?.map((track) => (

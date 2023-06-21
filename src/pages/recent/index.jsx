@@ -1,16 +1,15 @@
-import Navbar from "@/components/navbar";
+import RecentlyPlayed from "@/components/recently-played";
 import "../../styles/output.css"
 import MainNavbar from "@/components/main-navbar";
-import Playlists from "@/components/playlists";
 import { SessionProvider, getSession } from "next-auth/react";
 
-export default function PlaylistsPage({ session }) {
+export default function RecentPage({ session }) {
   return (
     <SessionProvider session={session}>
         <div className="flex">
             <MainNavbar />
-            <div className="w-full bg-zinc-800 h-screen overflow-y-scroll scrollbar-hide">
-                <Playlists />
+            <div className="bg-zinc-800 w-full h-screen overflow-y-scroll scrollbar-hide">
+                <RecentlyPlayed />
             </div>
         </div>
     </SessionProvider>
@@ -18,11 +17,11 @@ export default function PlaylistsPage({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  const session = await getSession(context);
+    const session = await getSession(context)
 
-  return {
-    props: {
-      session,
-    },
-  };
+    return {
+        props: {
+            session,
+        }
+    }
 }

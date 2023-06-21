@@ -11,7 +11,7 @@ export default function TopTracksPage({ session }) {
             <MainNavbar />
             <div className="w-full h-screen overflow-y-scroll scrollbar-hide">
                 <Navbar title={"Top Tracks"}/>
-                <TopTracks className="mt-12"/>
+                <TopTracks/>
             </div>
         </div>
     </SessionProvider>

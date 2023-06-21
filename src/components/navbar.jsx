@@ -8,11 +8,11 @@ export default function Navbar({ title }) {
     }
 
   return (
-    <nav className="block md:justify-between pt-20 px-9 md:flex w-full">
-        <div className='flex justify-center mb-10'>
+    <nav className="block md:justify-between pt-16 px-10 md:flex w-full">
+        <div className='flex justify-center mb-4 md:mb-0'>
             <h2 className="text-xl font-bold text-white">{title}</h2>
         </div>
-        <ul className="flex justify-evenly md:mx-0 md:space-x-7">
+        <ul className="flex justify-evenly md:space-x-7">
             <li>
                 <button onClick={() => handleButtonClick('all-time')} className={`nav ${active == 'all-time' ? 'active-button' : 'nav'}`} >All Time</button>
             </li>

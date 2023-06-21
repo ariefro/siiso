@@ -54,6 +54,10 @@ export const fetchTopTracks = async (limit, timeRange) => {
   });
 };
 
+export const fetchRecentlyPlayedTracks = async () => {
+  return await spotifyApi.getMyRecentlyPlayedTracks();
+};
+
 export const fetchUserData = async () => {
   const user = await fetchUser();
   const playlists = await fetchPlaylists();

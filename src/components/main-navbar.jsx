@@ -29,7 +29,7 @@ export default function MainNavbar() {
           </button>
           {pathname == '/tracks' && <div className="green-line"></div>}
         </Link>
-        <Link href="/" className={`main-nav ${pathname == '/recent' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
+        <Link href="/recent" className={`main-nav ${pathname == '/recent' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'}`}>
           <button className={`button-nav ${pathname == '/recent' ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}>
             <RecentIcon />
             <p>Recent</p>
