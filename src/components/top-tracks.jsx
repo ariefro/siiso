@@ -5,7 +5,7 @@ import Error from './error';
 import useSpotify from '@/hook/useSpotify';
 import Loading from './loading';
 
-function TopTracks({ className }) {
+function TopTracks() {
   const spotifyApi = useSpotify();
   const [topTracks, setTopTracks] = useState(null);
   const [loading, setLoading] = useState(true);

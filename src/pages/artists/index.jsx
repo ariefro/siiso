@@ -7,9 +7,9 @@ import TopArtists from '@/components/top-artists';
 export default function TopArtistsPage({ session }) {
   return (
     <SessionProvider session={session}>
-      <div className='bg-zinc-800 flex'>
+      <div className='bg-zinc-900 flex'>
         <MainNavbar />
-        <div className='w-full space-y-14 h-screen overflow-y-scroll scrollbar-hide'>
+        <div className='w-full max-w-7xl mx-auto space-y-14 h-screen overflow-y-scroll no-scrollbar'>
           <Navbar title={'Top Artists'} />
           <TopArtists />
         </div>

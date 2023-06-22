@@ -40,7 +40,7 @@ export default function TopArtists() {
                 width={224}
                 height={224}
                 alt='photo album'
-                className='rounded-full w-32 h-32 md:w-48 md:h-48 2xl:w-56 2xl:h-56 hover:opacity-50 hover:ease-out duration-500'
+                className='rounded-full w-32 h-32 md:w-48 md:h-48 hover:opacity-50 hover:ease-out duration-500'
               ></Image>
             )}
           </Link>

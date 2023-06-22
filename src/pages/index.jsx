@@ -6,9 +6,9 @@ import MainNavbar from '@/components/main-navbar';
 export default function Home({ session }) {
   return (
     <SessionProvider session={session}>
-      <div className='h-screen overflow-hidden bg-zinc-800'>
-        <div className='flex'>
-          <MainNavbar />
+      <div className='h-screen flex overflow-hidden bg-zinc-900'>
+        <MainNavbar />
+        <div className='max-w-7xl w-full mx-auto'>
           <User />
         </div>
       </div>

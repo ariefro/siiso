@@ -12,12 +12,23 @@
 }
 
 @layer components {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
   .button {
     @apply border-2 text-white border-white uppercase tracking-wide rounded-full px-6 py-2 hover:bg-white hover:text-black text-[0.7rem] font-bold whitespace-nowrap;
   }
 
   .active-nav {
-    @apply bg-zinc-800 transition-all duration-300 ease-out fill-white;
+    @apply bg-zinc-900 transition-all duration-300 ease-out fill-white;
   }
 
   .button-nav {
@@ -40,3 +51,4 @@
     @apply underline underline-offset-4 text-white decoration-2;
   }
 }
+
