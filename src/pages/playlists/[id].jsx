@@ -1,15 +1,15 @@
-import '../../styles/output.css';
 import MainNavbar from '@/components/main-navbar';
-import Playlists from '@/components/playlists';
+import '../../styles/output.css';
+import PlaylistDetail from '@/components/playlist-detail';
 import { SessionProvider, getSession } from 'next-auth/react';
 
-export default function PlaylistsPage({ session }) {
+export default function PlaylistDetails({ session }) {
   return (
     <SessionProvider session={session}>
-      <div className='flex bg-zinc-900'>
+      <div className='flex bg-zinc-900 '>
         <MainNavbar />
-        <div className='w-full max-w-7xl mx-auto h-screen overflow-y-scroll no-scrollbar'>
-          <Playlists />
+        <div className='h-screen w-full max-w-7xl mx-auto overflow-y-scroll no-scrollbar'>
+          <PlaylistDetail />
         </div>
       </div>
     </SessionProvider>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Playlist({ playlist }) {
   return (
     <div className='space-y-5 flex flex-col items-center'>
-      <Link href='/'>
+      <Link href={'/playlists/' + playlist.id}>
         {playlist?.images?.[0].url && (
           <Image
             src={playlist?.images?.[0].url}
@@ -16,7 +16,7 @@ export default function Playlist({ playlist }) {
         )}
       </Link>
       <div className='space-y-1'>
-        <Link href='/'>
+        <Link href={'/playlists/' + playlist.id}>
           <span className='text-center text-white text-xs sm:text-sm hover:underline'>
             {playlist.name}
           </span>

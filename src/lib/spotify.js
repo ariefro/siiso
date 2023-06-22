@@ -32,30 +32,34 @@ export const spotifyApi = new SpotifyWebApi({
   redirectUri: process.env.REDIRECT_URI,
 });
 
-export const fetchUser = async () => {
-  return await spotifyApi.getMe();
+export const fetchUser = () => {
+  return spotifyApi.getMe();
 };
 
-export const fetchPlaylists = async () => {
-  return await spotifyApi.getUserPlaylists();
+export const fetchPlaylists = () => {
+  return spotifyApi.getUserPlaylists();
 };
 
-export const fetchTopArtists = async (limit, timeRange) => {
-  return await spotifyApi.getMyTopArtists({
+export const fetchTopArtists = (limit, timeRange) => {
+  return spotifyApi.getMyTopArtists({
     limit: limit,
     time_range: timeRange,
   });
 };
 
-export const fetchTopTracks = async (limit, timeRange) => {
-  return await spotifyApi.getMyTopTracks({
+export const fetchTopTracks = (limit, timeRange) => {
+  return spotifyApi.getMyTopTracks({
     limit: limit,
     time_range: timeRange,
   });
 };
 
-export const fetchRecentlyPlayedTracks = async () => {
-  return await spotifyApi.getMyRecentlyPlayedTracks();
+export const fetchRecentlyPlayedTracks = () => {
+  return spotifyApi.getMyRecentlyPlayedTracks();
+};
+
+export const fetchPlaylistDetail = (playlistId) => {
+  return spotifyApi.getPlaylist(playlistId);
 };
 
 export const fetchUserData = async () => {
