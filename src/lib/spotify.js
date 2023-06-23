@@ -36,7 +36,7 @@ export const fetchUser = () => {
   return spotifyApi.getMe();
 };
 
-export const fetchPlaylists = () => {
+export const fetchUserPlaylists = () => {
   return spotifyApi.getUserPlaylists();
 };
 
@@ -58,13 +58,17 @@ export const fetchRecentlyPlayedTracks = () => {
   return spotifyApi.getMyRecentlyPlayedTracks();
 };
 
-export const fetchPlaylistDetail = (playlistId) => {
-  return spotifyApi.getPlaylist(playlistId);
+export const fetchPlaylistDetails = (id) => {
+  return spotifyApi.getPlaylist(id);
+};
+
+export const fetchPlaylistTracks = (id, limit, offset) => {
+  return spotifyApi.getPlaylistTracks(id, { limit, offset });
 };
 
 export const fetchUserData = async () => {
   const user = await fetchUser();
-  const playlists = await fetchPlaylists();
+  const playlists = await fetchUserPlaylists();
   const topArtists = await fetchTopArtists(10, 'long_term');
   const topTracks = await fetchTopTracks(10, 'long_term');
 

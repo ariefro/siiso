@@ -1,8 +1,6 @@
-import Navbar from '@/components/navbar';
-import '../../styles/output.css';
-import MainNavbar from '@/components/main-navbar';
-import TopTracks from '@/components/top-tracks';
 import { SessionProvider, getSession } from 'next-auth/react';
+import '../../styles/output.css';
+import { MainNavbar, TopTracks, Navbar } from '@/components';
 
 export default function TopTracksPage({ session }) {
   return (

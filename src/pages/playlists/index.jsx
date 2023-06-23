@@ -1,7 +1,6 @@
-import '../../styles/output.css';
-import MainNavbar from '@/components/main-navbar';
-import Playlists from '@/components/playlists';
 import { SessionProvider, getSession } from 'next-auth/react';
+import '../../styles/output.css';
+import { MainNavbar, Playlists } from '@/components';
 
 export default function PlaylistsPage({ session }) {
   return (

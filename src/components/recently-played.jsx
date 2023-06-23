@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Track from './track';
 import { fetchRecentlyPlayedTracks } from '@/lib/spotify';
-import Loading from './loading';
 import useSpotify from '@/hook/useSpotify';
+import { Loading, Track } from '@/components';
 
 export default function RecentlyPlayed() {
   const spotifyApi = useSpotify();
-  const [tracks, setTracks] = useState(null);
+  const [tracks, setTracks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -31,9 +30,11 @@ export default function RecentlyPlayed() {
       <h1 className='capitalize text-white text-xl font-bold pb-16'>
         recently played tracks
       </h1>
-      {tracks?.body?.items?.map((item) => (
-        <Track track={item.track} key={item.track.id} />
-      ))}
+      <ul>
+        {tracks?.body?.items?.map((item) => (
+          <Track track={item.track} key={item.track.id} />
+        ))}
+      </ul>
     </div>
   );
 }

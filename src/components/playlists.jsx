@@ -1,9 +1,7 @@
-import { fetchPlaylists } from '@/lib/spotify';
+import { fetchUserPlaylists } from '@/lib/spotify';
 import { useEffect, useState } from 'react';
-import Error from './error';
 import useSpotify from '@/hook/useSpotify';
-import Loading from './loading';
-import Playlist from './playlist';
+import { Error, Loading, Playlist } from '@/components';
 
 export default function Playlists() {
   const spotifyApi = useSpotify();
@@ -13,7 +11,7 @@ export default function Playlists() {
 
   const fetchData = async () => {
     try {
-      const playlists = await fetchPlaylists();
+      const playlists = await fetchUserPlaylists();
       setPlaylists(playlists);
       setLoading(false);
     } catch (error) {
@@ -32,11 +30,11 @@ export default function Playlists() {
       {error && <Error />}
       <h1 className='text-xl font-bold text-white mb-16'>Your Playlists</h1>
       <div className='flex justify-center'>
-        <div className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10'>
+        <ul className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10'>
           {playlists?.body?.items.map((playlist) => (
             <Playlist playlist={playlist} key={playlist.id} />
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );

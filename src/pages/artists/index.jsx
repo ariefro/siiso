@@ -1,8 +1,6 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import '../../styles/output.css';
-import MainNavbar from '@/components/main-navbar';
-import Navbar from '@/components/navbar';
-import TopArtists from '@/components/top-artists';
+import { MainNavbar, Navbar, TopArtists } from '@/components';
 
 export default function TopArtistsPage({ session }) {
   return (

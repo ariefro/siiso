@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Track({ track }) {
   return (
-    <div className='mb-6 items-center space-x-5 flex'>
+    <li className='mb-6 items-center space-x-5 flex'>
       {track?.album?.images?.[0].url && (
         <Image
           src={track?.album?.images?.[0].url}
@@ -27,6 +27,6 @@ export default function Track({ track }) {
           </p>
         </div>
       </div>
-    </div>
+    </li>
   );
 }

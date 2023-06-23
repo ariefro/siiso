@@ -1,7 +1,6 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import '../styles/output.css';
-import User from '@/components/user';
-import MainNavbar from '@/components/main-navbar';
+import { User, MainNavbar } from '@/components';
 
 export default function Home({ session }) {
   return (

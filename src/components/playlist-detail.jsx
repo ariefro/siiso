@@ -1,25 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import Loading from './loading';
-import Error from './error';
-import { fetchPlaylistDetail } from '@/lib/spotify';
+import { useEffect, useState } from 'react';
+import { fetchPlaylistTracks } from '@/lib/spotify';
 import useSpotify from '@/hook/useSpotify';
 import { useRouter } from 'next/router';
-import Track from './track';
-import Image from 'next/image';
+import {
+  Error,
+  HeaderPlaylistDetail,
+  Loading,
+  Pagination,
+  Track,
+} from '@/components';
 
-export default function PlaylistDetail(props) {
+export default function PlaylistDetail() {
   const router = useRouter();
-  const id = router.query.id;
+  const { id } = router.query;
   const spotifyApi = useSpotify();
-  const [playlistData, setPlaylistData] = useState(null);
+  const [tracks, setTracks] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  console.log('=====', playlistData);
 
-  const getPlaytlistData = async (id) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const limit = 50;
+  const offset = (currentPage - 1) * limit;
+
+  const getPlaytlistData = async (id, limit, offset) => {
     try {
-      const data = await fetchPlaylistDetail(id);
-      setPlaylistData(data.body);
+      setLoading(true);
+      const tracks = await fetchPlaylistTracks(id, limit, offset);
+      setTracks(tracks.body);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -28,36 +35,30 @@ export default function PlaylistDetail(props) {
   };
 
   useEffect(() => {
-    getPlaytlistData(id);
-  }, [spotifyApi, id]);
+    getPlaytlistData(id, limit, offset);
+  }, [spotifyApi, id, offset]);
+
+  const paginateFront = () => setCurrentPage(currentPage + 1);
+  const paginateBack = () => setCurrentPage(currentPage - 1);
 
   return (
     <div className='w-full px-10 md:flex'>
       {!error && loading && <Loading />}
       {error && <Error />}
-      <div className='my-16 space-y-3 flex flex-col items-center md:w-72 md:mr-12'>
-        {playlistData?.images?.[0].url && (
-          <Image
-            src={playlistData?.images?.[0].url}
-            alt='photo album'
-            height={360}
-            width={360}
-            className='hidden md:inline-block bg-red-700'
-          ></Image>
-        )}
-        <h2 className='font-bold text-3xl text-white'>{playlistData?.name}</h2>
-        <p className='text-xs text-gray-400'>
-          By {playlistData?.owner.display_name}
-        </p>
-        <p className='text-xs text-gray-400 text-center'>
-          {playlistData?.description}
-        </p>
-      </div>
-      <div className='md:mt-16 grow'>
-        {playlistData?.tracks.items.map((item) => (
+      <HeaderPlaylistDetail />
+      <ul className='md:mt-16 grow'>
+        {tracks?.items?.map((item) => (
           <Track track={item.track} key={item.track.id} />
         ))}
-      </div>
+        <Pagination
+          paginateBack={paginateBack}
+          paginateFront={paginateFront}
+          currentPage={currentPage}
+          currentItem={offset}
+          totalItem={tracks.total}
+          limitItemPerPage={limit}
+        />
+      </ul>
     </div>
   );
 }

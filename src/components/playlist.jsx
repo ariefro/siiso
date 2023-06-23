@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Playlist({ playlist }) {
   return (
-    <div className='space-y-5 flex flex-col items-center'>
+    <li className='space-y-5 flex flex-col items-center'>
       <Link href={'/playlists/' + playlist.id}>
         {playlist?.images?.[0].url && (
           <Image
@@ -25,6 +25,6 @@ export default function Playlist({ playlist }) {
           {playlist.tracks.total} TRACK
         </p>
       </div>
-    </div>
+    </li>
   );
 }

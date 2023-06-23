@@ -1,8 +1,8 @@
-import Loading from '@/components/loading';
 import '../../styles/output.css';
 import { getProviders, signIn } from 'next-auth/react';
 import Image from 'next/image';
 import { useState } from 'react';
+import { Loading } from '@/components';
 
 function Login({ providers }) {
   const [loading, setLoading] = useState(false);

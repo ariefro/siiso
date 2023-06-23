@@ -1,7 +1,6 @@
-import RecentlyPlayed from '@/components/recently-played';
-import '../../styles/output.css';
-import MainNavbar from '@/components/main-navbar';
 import { SessionProvider, getSession } from 'next-auth/react';
+import '../../styles/output.css';
+import { MainNavbar, RecentlyPlayed } from '@/components';
 
 export default function RecentPage({ session }) {
   return (
