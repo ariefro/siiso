@@ -1,3 +1,4 @@
+import BottomNavbar from './bottom-navbar';
 import Error from './error';
 import HeaderPlaylistDetail from './header-playlist-detail';
 import Header from './header';
@@ -16,6 +17,7 @@ import Track from './track';
 import User from './user';
 
 export {
+  BottomNavbar,
   Error,
   HeaderPlaylistDetail,
   Header,
