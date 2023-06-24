@@ -24,7 +24,7 @@
   }
 
   .button {
-    @apply border-2 text-white border-white uppercase tracking-wide rounded-full px-6 py-2 hover:bg-white hover:text-black text-[0.7rem] font-bold whitespace-nowrap;
+    @apply border-2 text-white border-white uppercase tracking-wide rounded-full px-6 py-2 hover:bg-white hover:text-black text-[0.7rem] transition-all duration-300 ease-out font-bold whitespace-nowrap;
   }
 
   .active-nav {
@@ -35,12 +35,16 @@
     @apply flex flex-col items-center space-y-1;
   }
 
+  .button-bottom-nav {
+    @apply w-full flex space-y-2 flex-col items-center justify-center h-20;
+  }
+
   .green-line {
-    @apply absolute w-[0.35rem] rounded-r-sm  h-[4.5rem] bg-green-500;
+    @apply absolute w-[0.35rem] h-20 bg-green-400;
   }
 
   .main-nav {
-    @apply outline-none mx-auto h-[4.5rem] flex flex-col justify-center;
+    @apply outline-none mx-auto h-20 flex flex-col justify-center;
   }
 
   .nav {

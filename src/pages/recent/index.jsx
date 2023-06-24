@@ -1,14 +1,15 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import '../../styles/output.css';
-import { MainNavbar, RecentlyPlayed } from '@/components';
+import { BottomNavbar, MainNavbar, RecentlyPlayed } from '@/components';
 
 export default function RecentPage({ session }) {
   return (
     <SessionProvider session={session}>
       <div className='flex bg-zinc-900'>
         <MainNavbar />
-        <div className='w-full max-w-7xl mx-auto h-screen overflow-y-scroll no-scrollbar'>
+        <div className='w-full flex flex-col max-w-7xl mx-auto h-screen'>
           <RecentlyPlayed />
+          <BottomNavbar />
         </div>
       </div>
     </SessionProvider>

@@ -1,15 +1,18 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import '../../styles/output.css';
-import { MainNavbar, Navbar, TopArtists } from '@/components';
+import { BottomNavbar, MainNavbar, Navbar, TopArtists } from '@/components';
 
 export default function TopArtistsPage({ session }) {
   return (
     <SessionProvider session={session}>
-      <div className='bg-zinc-900 flex'>
+      <div className='bg-zinc-900 flex h-screen'>
         <MainNavbar />
-        <div className='w-full max-w-7xl mx-auto space-y-14 h-screen overflow-y-scroll no-scrollbar'>
-          <Navbar title={'Top Artists'} />
-          <TopArtists />
+        <div className='w-full max-w-7xl mx-auto flex flex-col'>
+          <div className='overflow-y-scroll no-scrollbar space-y-10'>
+            <Navbar title={'Top Artists'} />
+            <TopArtists />
+          </div>
+          <BottomNavbar />
         </div>
       </div>
     </SessionProvider>

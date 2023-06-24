@@ -8,11 +8,13 @@ import {
   UserIcon,
 } from './icons';
 
-export default function MainNavbar() {
+export default function MainNavbar({ className }) {
   const pathname = usePathname();
 
   return (
-    <nav className='text-gray-400 text-xs sticky top-0 z-40 bg-black border-r border-gray-900 h-screen w-28 lg:max-w-md hidden md:inline-flex'>
+    <nav
+      className={`${className} text-gray-400 text-xs bg-black border-r border-gray-900 w-28 lg:max-w-md hidden md:inline-flex `}
+    >
       <div className='m-auto w-full'>
         <Link
           href='/'

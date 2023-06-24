@@ -42,23 +42,25 @@ export default function PlaylistDetail() {
   const paginateBack = () => setCurrentPage(currentPage - 1);
 
   return (
-    <div className='w-full px-10 md:flex'>
+    <div className='h-full overflow-y-scroll no-scrollbar'>
       {!error && loading && <Loading />}
       {error && <Error />}
-      <HeaderPlaylistDetail />
-      <ul className='md:mt-16 grow'>
-        {tracks?.items?.map((item) => (
-          <Track track={item.track} key={item.track.id} />
-        ))}
-        <Pagination
-          paginateBack={paginateBack}
-          paginateFront={paginateFront}
-          currentPage={currentPage}
-          currentItem={offset}
-          totalItem={tracks.total}
-          limitItemPerPage={limit}
-        />
-      </ul>
+      <div className='md:flex px-10'>
+        <HeaderPlaylistDetail />
+        <ul className='md:mt-16 grow'>
+          {tracks?.items?.map((item) => (
+            <Track track={item.track} key={item.track.id} />
+          ))}
+          <Pagination
+            paginateBack={paginateBack}
+            paginateFront={paginateFront}
+            currentPage={currentPage}
+            currentItem={offset}
+            totalItem={tracks.total}
+            limitItemPerPage={limit}
+          />
+        </ul>
+      </div>
     </div>
   );
 }

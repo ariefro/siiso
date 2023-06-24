@@ -25,7 +25,7 @@ function TopTracks() {
   }, [spotifyApi]);
 
   return (
-    <div className='pt-16 px-10'>
+    <div className='px-10'>
       {!error && loading && <Loading />}
       {error && <Error />}
       <ul>

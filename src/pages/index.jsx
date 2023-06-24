@@ -1,14 +1,15 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import '../styles/output.css';
-import { User, MainNavbar } from '@/components';
+import { User, MainNavbar, BottomNavbar } from '@/components';
 
 export default function Home({ session }) {
   return (
     <SessionProvider session={session}>
-      <div className='h-screen flex overflow-hidden bg-zinc-900'>
+      <div className='h-screen flex bg-zinc-900'>
         <MainNavbar />
-        <div className='max-w-7xl w-full mx-auto'>
+        <div className='max-w-7xl flex flex-col w-full mx-auto'>
           <User />
+          <BottomNavbar />
         </div>
       </div>
     </SessionProvider>
