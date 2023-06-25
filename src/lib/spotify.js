@@ -66,6 +66,42 @@ export const fetchPlaylistTracks = (id, limit, offset) => {
   return spotifyApi.getPlaylistTracks(id, { limit, offset });
 };
 
+export const fetchCurrentPlayingTrack = () => {
+  return spotifyApi.getMyCurrentPlayingTrack();
+};
+
+export const fetchCurrentPlaybackState = () => {
+  return spotifyApi.getMyCurrentPlaybackState();
+};
+
+export const play = () => {
+  return spotifyApi.play();
+};
+
+export const pause = () => {
+  return spotifyApi.pause();
+};
+
+export const skipToPrevious = () => {
+  return spotifyApi.skipToPrevious();
+};
+
+export const skipToNext = () => {
+  return spotifyApi.skipToNext();
+};
+
+export const adjustVolume = (volume) => {
+  return spotifyApi.setVolume(volume);
+};
+
+export const setShuffle = () => {
+  return spotifyApi.setShuffle();
+};
+
+export const setRepeat = () => {
+  return spotifyApi.setRepeat();
+};
+
 export const fetchUserData = async () => {
   const user = await fetchUser();
   const playlists = await fetchUserPlaylists();
