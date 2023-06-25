@@ -25,7 +25,7 @@ export default function RecentlyPlayed() {
   }, [spotifyApi]);
 
   return (
-    <div className='pt-16 pb-6 px-10 overflow-y-scroll no-scrollbar'>
+    <div className='pt-16 pb-6 md:pb-28 px-10 overflow-y-scroll no-scrollbar'>
       {!error && loading && <Loading />}
       <h1 className='capitalize text-white text-xl font-bold pb-16'>
         recently played tracks

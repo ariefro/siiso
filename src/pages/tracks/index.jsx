@@ -1,14 +1,21 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import '../../styles/output.css';
-import { MainNavbar, TopTracks, Navbar, BottomNavbar } from '@/components';
+import {
+  MainNavbar,
+  TopTracks,
+  Navbar,
+  BottomNavbar,
+  Player,
+} from '@/components';
 
 export default function TopTracksPage({ session }) {
   return (
     <SessionProvider session={session}>
       <div className='flex bg-zinc-900 h-screen'>
         <MainNavbar />
+        <Player className={'fixed bottom-0'} />
         <div className='w-full flex flex-col max-w-7xl mx-auto'>
-          <div className='overflow-y-scroll no-scrollbar space-y-10 pb-6'>
+          <div className='overflow-y-scroll no-scrollbar space-y-10 pb-6 md:pb-28'>
             <Navbar title={'Top Tracks'} />
             <TopTracks />
           </div>
