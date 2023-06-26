@@ -21,12 +21,17 @@ import {
 import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { debounce } from 'lodash';
+import { useRecoilState } from 'recoil';
+import { currentTrackState, isPlayingState } from '@/atoms/track-atom';
 
 export default function Player({ className }) {
   const spotifyApi = useSpotify();
-  const [currentTrack, setCurrentTrack] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(100);
+  const [currentTrack, setCurrentTrack] = useRecoilState(currentTrackState);
+  const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+  const [volume, setVolume] = useState(80);
+  const [shufflePlayback, setShufflePlayback] = useState(false);
+  const [repeatMode, setRepeatMode] = useState('off');
+  const [changeTrack, setChangeTrack] = useState(false);
 
   const fetchData = async () => {
     const currentTrack = await fetchCurrentPlayingTrack();
@@ -35,12 +40,12 @@ export default function Player({ className }) {
   };
 
   useEffect(() => {
-    fetchData();
-  }, [spotifyApi, isPlaying]);
+    const delay = setTimeout(() => {
+      fetchData();
+    }, 500);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+    return () => clearTimeout(delay);
+  }, [changeTrack, spotifyApi]);
 
   const handlePlayPause = () => {
     if (isPlaying === true) {
@@ -50,6 +55,29 @@ export default function Player({ className }) {
       play();
       setIsPlaying(true);
     }
+  };
+
+  const handleSkipNext = (state) => {
+    skipToNext();
+    setIsPlaying(true);
+    setChangeTrack(!state);
+  };
+
+  const handleSkipToPrevious = async (state) => {
+    skipToPrevious();
+    setIsPlaying(true);
+    setChangeTrack(!state);
+  };
+
+  const handleSetShuffle = (state) => {
+    setShuffle(!state);
+    setShufflePlayback(!state);
+  };
+
+  const handleSetRepeatMode = () => {
+    const newRepeatMode = repeatMode === 'off' ? 'track' : 'off';
+    setRepeat(newRepeatMode);
+    setRepeatMode(newRepeatMode);
   };
 
   const debouncedAdjustVolume = useCallback(
@@ -67,7 +95,7 @@ export default function Player({ className }) {
 
   return (
     <div
-      className={`${className} hidden md:flex text-xs h-24 w-full bg-black justify-between items-center`}
+      className={`${className} hidden md:flex text-xs py-6 w-full bg-gradient-to-t from-zinc-700 to-zinc-900 justify-between items-center`}
     >
       <div className='text-white flex ml-8 w-1/4 space-x-4'>
         {currentTrack?.album.images?.[0].url && (
@@ -86,26 +114,46 @@ export default function Player({ className }) {
           </p>
         </div>
       </div>
-      <div className='flex items-center space-x-6 grow justify-center text-zinc-300'>
-        <button onClick={() => setShuffle()} className='hover:text-white'>
+      <div className='flex items-center space-x-6 grow justify-center text-zinc-300 '>
+        <button
+          onClick={() => handleSetShuffle(shufflePlayback)}
+          className={shufflePlayback ? 'text-green-400' : 'hover:text-white'}
+        >
           <ShuffleIcon />
         </button>
-        <button onClick={() => skipToPrevious()}>
+        <button
+          onClick={() => handleSkipToPrevious(changeTrack)}
+          className='hover:text-white'
+        >
           <BackwardStepIcon />
         </button>
         {isPlaying ? (
-          <button onClick={() => handlePlayPause()}>
+          <button
+            onClick={() => handlePlayPause()}
+            className='hover:text-white'
+          >
             <PauseIcon />
           </button>
         ) : (
-          <button onClick={() => handlePlayPause()}>
+          <button
+            onClick={() => handlePlayPause()}
+            className='hover:text-white'
+          >
             <PlayIcon />
           </button>
         )}
-        <button onClick={() => skipToNext()}>
+        <button
+          onClick={() => handleSkipNext(changeTrack)}
+          className='hover:text-white'
+        >
           <ForwardStepIcon />
         </button>
-        <button onClick={() => setRepeat()}>
+        <button
+          onClick={() => handleSetRepeatMode()}
+          className={
+            repeatMode == 'track' ? 'text-green-400' : 'hover:text-white'
+          }
+        >
           <RepeatIcon />
         </button>
       </div>
@@ -116,7 +164,6 @@ export default function Player({ className }) {
           min={0}
           max={100}
           onChange={(e) => setVolume(Number(e.target.value))}
-          className=''
         />
       </div>
     </div>

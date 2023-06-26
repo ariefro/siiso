@@ -94,12 +94,12 @@ export const adjustVolume = (volume) => {
   return spotifyApi.setVolume(volume);
 };
 
-export const setShuffle = () => {
-  return spotifyApi.setShuffle();
+export const setShuffle = (state) => {
+  return spotifyApi.setShuffle(state);
 };
 
-export const setRepeat = () => {
-  return spotifyApi.setRepeat();
+export const setRepeat = (state) => {
+  return spotifyApi.setRepeat(state);
 };
 
 export const fetchUserData = async () => {

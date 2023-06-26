@@ -7,21 +7,24 @@ import {
   BottomNavbar,
   Player,
 } from '@/components';
+import { RecoilRoot } from 'recoil';
 
 export default function TopTracksPage({ session }) {
   return (
     <SessionProvider session={session}>
-      <div className='flex bg-zinc-900 h-screen'>
-        <MainNavbar />
-        <div className='w-full flex flex-col max-w-7xl mx-auto'>
-          <div className='overflow-y-scroll no-scrollbar space-y-10 pb-28 md:pb-8'>
-            <Navbar title={'Top Tracks'} />
-            <TopTracks />
+      <RecoilRoot>
+        <div className='flex bg-zinc-900 h-screen'>
+          <MainNavbar />
+          <div className='w-full flex flex-col max-w-7xl mx-auto'>
+            <div className='overflow-y-scroll no-scrollbar space-y-10 pb-28 md:pb-8'>
+              <Navbar title={'Top Tracks'} />
+              <TopTracks />
+            </div>
+            <Player />
+            <BottomNavbar />
           </div>
-          <Player />
-          <BottomNavbar />
         </div>
-      </div>
+      </RecoilRoot>
     </SessionProvider>
   );
 }

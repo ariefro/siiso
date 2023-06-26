@@ -1,18 +1,21 @@
 import '../../styles/output.css';
 import { SessionProvider, getSession } from 'next-auth/react';
 import { BottomNavbar, MainNavbar, Player, PlaylistDetail } from '@/components';
+import { RecoilRoot } from 'recoil';
 
 export default function PlaylistDetails({ session }) {
   return (
     <SessionProvider session={session}>
-      <div className='flex min-h-screen bg-zinc-900'>
-        <MainNavbar className={'fixed h-screen'} />
-        <Player className={'fixed bottom-0'} />
-        <div className='max-w-7xl flex flex-col w-full md:ml-28 2xl:mx-auto pb-28 md:pb-32'>
-          <PlaylistDetail />
-          <BottomNavbar className={'fixed bottom-0'} />
+      <RecoilRoot>
+        <div className='flex min-h-screen bg-zinc-900'>
+          <MainNavbar className={'fixed h-screen'} />
+          <Player className={'fixed bottom-0'} />
+          <div className='max-w-7xl flex flex-col w-full md:ml-28 2xl:mx-auto pb-28 md:pb-32'>
+            <PlaylistDetail />
+            <BottomNavbar className={'fixed bottom-0'} />
+          </div>
         </div>
-      </div>
+      </RecoilRoot>
     </SessionProvider>
   );
 }
