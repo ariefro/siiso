@@ -765,6 +765,10 @@ html {
   height: 8rem;
 }
 
+.h-52 {
+  height: 13rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -815,6 +819,10 @@ html {
 
 .w-32 {
   width: 8rem;
+}
+
+.w-52 {
+  width: 13rem;
 }
 
 .w-\[50px\] {
@@ -885,6 +893,12 @@ html {
   gap: 1rem;
 }
 
+.space-x-12 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(3rem * var(--tw-space-x-reverse));
+  margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .space-x-16 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(4rem * var(--tw-space-x-reverse));
@@ -943,6 +957,12 @@ html {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
+}
+
+.space-y-9 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.25rem * var(--tw-space-y-reverse));
 }
 
 .overflow-hidden {
@@ -1092,6 +1112,10 @@ html {
   padding-bottom: 8rem;
 }
 
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
 .pr-8 {
   padding-right: 2rem;
 }
@@ -1130,6 +1154,10 @@ html {
   font-size: 0.6rem;
 }
 
+.text-\[0\.72rem\] {
+  font-size: 0.72rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -1164,6 +1192,10 @@ html {
 
 .font-light {
   font-weight: 300;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .capitalize {
@@ -1295,6 +1327,14 @@ html {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.group:hover .group-hover\:underline {
+  text-decoration-line: underline;
+}
+
+.group:hover .group-hover\:opacity-50 {
+  opacity: 0.5;
+}
+
 @media (min-width: 640px) {
   .sm\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1363,6 +1403,10 @@ html {
     height: 12rem;
   }
 
+  .md\:h-72 {
+    height: 18rem;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -1409,6 +1453,11 @@ html {
     padding-left: 7rem;
   }
 
+  .md\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -1417,6 +1466,16 @@ html {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 }
 

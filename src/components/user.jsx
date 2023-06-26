@@ -7,6 +7,7 @@ import useSpotify from '@/hook/useSpotify';
 import { fetchUserData } from '@/lib/spotify';
 import Image from 'next/image';
 import { Error, Header, ListHeading, Loading, Track } from '@/components';
+import Link from 'next/link';
 
 function User() {
   const { data: session } = useSession();
@@ -46,19 +47,27 @@ function User() {
           <ListHeading title={'top artists'} href={'/artists'} />
           <ul>
             {topArtists?.body.items.map((artist) => (
-              <li key={artist?.id} className='mb-6 flex items-center space-x-4'>
-                {artist?.images?.[0].url && (
-                  <Image
-                    src={artist?.images?.[0].url}
-                    width={50}
-                    height={50}
-                    alt='photo album'
-                    className='rounded-full w-[50px] h-[50px]'
-                  ></Image>
-                )}
-                <p className='text-sm md:text-base text-white'>
-                  {artist?.name}
-                </p>
+              <li
+                key={artist?.id}
+                className='p-3 group hover:bg-zinc-800 hover:cursor-pointer hover:opacity-100 rounded-sm'
+              >
+                <Link
+                  href={'/artists/' + artist.id}
+                  className='flex items-center space-x-4'
+                >
+                  {artist?.images?.[0].url && (
+                    <Image
+                      src={artist?.images?.[0].url}
+                      width={50}
+                      height={50}
+                      alt='photo album'
+                      className='rounded-full w-[50px] h-[50px] group-hover:opacity-50 hover:ease-out duration-500'
+                    ></Image>
+                  )}
+                  <p className='text-sm md:text-base text-white group-hover:underline underline-offset-4'>
+                    {artist?.name}
+                  </p>
+                </Link>
               </li>
             ))}
           </ul>

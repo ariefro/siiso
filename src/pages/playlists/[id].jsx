@@ -1,6 +1,6 @@
 import '../../styles/output.css';
 import { SessionProvider, getSession } from 'next-auth/react';
-import { BottomNavbar, MainNavbar, Player, PlaylistDetail } from '@/components';
+import { BottomNavbar, MainNavbar, Player, DetailPlaylist } from '@/components';
 import { RecoilRoot } from 'recoil';
 
 export default function PlaylistDetails({ session }) {
@@ -11,7 +11,7 @@ export default function PlaylistDetails({ session }) {
           <MainNavbar className={'fixed h-screen'} />
           <Player className={'fixed bottom-0'} />
           <div className='max-w-7xl flex flex-col w-full md:ml-28 2xl:mx-auto pb-28 md:pb-32'>
-            <PlaylistDetail />
+            <DetailPlaylist />
             <BottomNavbar className={'fixed bottom-0'} />
           </div>
         </div>

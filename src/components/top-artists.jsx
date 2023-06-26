@@ -32,8 +32,11 @@ export default function TopArtists() {
       {error && <Error />}
       <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pb-32 px-10'>
         {topArtists?.body?.items?.map((artist) => (
-          <li key={artist.id} className='flex flex-col items-center space-y-4'>
-            <Link href='/'>
+          <li
+            key={artist.id}
+            className='flex flex-col items-center space-y-4 pb-6'
+          >
+            <Link href={'/artists/' + artist.id}>
               {artist?.images?.[0].url && (
                 <Image
                   src={artist?.images?.[0].url}
@@ -44,7 +47,7 @@ export default function TopArtists() {
                 ></Image>
               )}
             </Link>
-            <Link href='/'>
+            <Link href={'/artists/' + artist.id}>
               <span className='text-white text-sm hover:underline underline-offset-4 decoration-1'>
                 {artist?.name}
               </span>

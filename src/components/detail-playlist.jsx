@@ -4,13 +4,13 @@ import useSpotify from '@/hook/useSpotify';
 import { useRouter } from 'next/router';
 import {
   Error,
-  HeaderPlaylistDetail,
+  HeaderDetailPlaylist,
   Loading,
   Pagination,
   Track,
 } from '@/components';
 
-export default function PlaylistDetail() {
+export default function DetailPlaylist() {
   const router = useRouter();
   const { id } = router.query;
   const spotifyApi = useSpotify();
@@ -46,7 +46,7 @@ export default function PlaylistDetail() {
       {!error && loading && <Loading />}
       {error && <Error />}
       <div className='md:flex px-10'>
-        <HeaderPlaylistDetail />
+        <HeaderDetailPlaylist />
         <ul className='md:mt-16 grow'>
           {tracks?.items?.map((item) => (
             <Track track={item.track} key={item.track.id} />

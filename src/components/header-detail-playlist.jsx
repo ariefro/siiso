@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-export default function HeaderPlaylistDetail() {
+export default function HeaderDetailPlaylist() {
   const router = useRouter();
   const { id } = router.query;
   const spotifyApi = useSpotify();

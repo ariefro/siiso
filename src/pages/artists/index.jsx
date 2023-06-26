@@ -7,21 +7,24 @@ import {
   Player,
   TopArtists,
 } from '@/components';
+import { RecoilRoot } from 'recoil';
 
 export default function TopArtistsPage({ session }) {
   return (
     <SessionProvider session={session}>
-      <div className='bg-zinc-900 flex h-screen'>
-        <MainNavbar />
-        <Player className={'fixed bottom-0'} />
-        <div className='w-full max-w-7xl mx-auto flex flex-col'>
-          <div className='overflow-y-scroll no-scrollbar space-y-10'>
-            <Navbar title={'Top Artists'} />
-            <TopArtists />
+      <RecoilRoot>
+        <div className='bg-zinc-900 flex h-screen'>
+          <MainNavbar />
+          <Player className={'fixed bottom-0'} />
+          <div className='w-full max-w-7xl mx-auto flex flex-col'>
+            <div className='overflow-y-scroll no-scrollbar space-y-10'>
+              <Navbar title={'Top Artists'} />
+              <TopArtists />
+            </div>
+            <BottomNavbar />
           </div>
-          <BottomNavbar />
         </div>
-      </div>
+      </RecoilRoot>
     </SessionProvider>
   );
 }
