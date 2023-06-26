@@ -10,7 +10,7 @@ export default function Pagination({
   limitItemPerPage,
 }) {
   return (
-    <div className='mt-10 mb-28 md:mb-36 flex justify-center'>
+    <div className='mt-10 flex justify-center'>
       <nav className='text-white text-sm space-x-16'>
         <Link href='#'>
           <button

@@ -12,7 +12,9 @@ export default function BottomNavbar({ className }) {
   const pathname = usePathname();
 
   return (
-    <nav className={`${className} bg-black w-full h-20 text-xs md:hidden`}>
+    <nav
+      className={`${className} fixed bottom-0 bg-black w-full h-20 text-xs md:hidden`}
+    >
       <div className='mx-auto flex'>
         <Link
           href='/'

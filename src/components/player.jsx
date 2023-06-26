@@ -30,8 +30,8 @@ export default function Player({ className }) {
 
   const fetchData = async () => {
     const currentTrack = await fetchCurrentPlayingTrack();
-    setCurrentTrack(currentTrack?.body.item);
-    setIsPlaying(currentTrack?.body.is_playing);
+    setCurrentTrack(currentTrack?.body?.item);
+    setIsPlaying(currentTrack?.body?.is_playing);
   };
 
   useEffect(() => {

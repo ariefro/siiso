@@ -30,7 +30,7 @@ export default function TopArtists() {
     <div>
       {!error && loading && <Loading />}
       {error && <Error />}
-      <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pb-12 px-10'>
+      <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pb-32 px-10'>
         {topArtists?.body?.items?.map((artist) => (
           <li key={artist.id} className='flex flex-col items-center space-y-4'>
             <Link href='/'>

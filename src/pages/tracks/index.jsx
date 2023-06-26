@@ -13,12 +13,12 @@ export default function TopTracksPage({ session }) {
     <SessionProvider session={session}>
       <div className='flex bg-zinc-900 h-screen'>
         <MainNavbar />
-        <Player className={'fixed bottom-0'} />
         <div className='w-full flex flex-col max-w-7xl mx-auto'>
-          <div className='overflow-y-scroll no-scrollbar space-y-10 pb-6 md:pb-28'>
+          <div className='overflow-y-scroll no-scrollbar space-y-10 pb-28 md:pb-8'>
             <Navbar title={'Top Tracks'} />
             <TopTracks />
           </div>
+          <Player />
           <BottomNavbar />
         </div>
       </div>
