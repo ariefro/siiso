@@ -23,15 +23,19 @@ import Image from 'next/image';
 import { debounce } from 'lodash';
 import { useRecoilState } from 'recoil';
 import { currentTrackState, isPlayingState } from '@/atoms/track-atom';
+import { useRecoilValue } from 'recoil';
+import { deviceState } from '@/atoms/device-atom';
 
 export default function Player({ className }) {
   const spotifyApi = useSpotify();
   const [currentTrack, setCurrentTrack] = useRecoilState(currentTrackState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-  const [volume, setVolume] = useState(80);
+  const [volume, setVolume] = useState(100);
   const [shufflePlayback, setShufflePlayback] = useState(false);
   const [repeatMode, setRepeatMode] = useState('off');
   const [changeTrack, setChangeTrack] = useState(false);
+  const device = useRecoilValue(deviceState);
+  const [hover, setHover] = useState(false);
 
   const fetchData = async () => {
     const currentTrack = await fetchCurrentPlayingTrack();
@@ -93,11 +97,31 @@ export default function Player({ className }) {
     }
   }, [volume, debouncedAdjustVolume]);
 
+  const onHover = () => {
+    setHover(true);
+  };
+
+  const onLeave = () => {
+    setHover(false);
+  };
+
   return (
     <div
-      className={`${className} hidden md:flex text-xs py-6 w-full bg-gradient-to-t from-zinc-700 to-zinc-900 justify-between items-center`}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+      className={`${className} flex text-xs py-6 w-full bg-gradient-to-t from-zinc-700 to-zinc-900 justify-between items-center`}
     >
-      <div className='text-white flex ml-8 w-1/4 space-x-4'>
+      {device?.body?.devices.length == 0 && hover ? (
+        <div className='bg-zinc-300 w-full fixed h-20 flex justify-center items-center bg-opacity-70'>
+          <p className='opacity-100 font-bold text-sm'>
+            No active device found. To enable this, please open your Spotify
+            account.
+          </p>
+        </div>
+      ) : (
+        ''
+      )}
+      <div className='text-white flex ml-10 w-1/4 space-x-4'>
         {currentTrack?.album.images?.[0].url && (
           <Image
             src={currentTrack?.album.images?.[0].url}
@@ -157,13 +181,14 @@ export default function Player({ className }) {
           <RepeatIcon />
         </button>
       </div>
-      <div className='text-white pr-8 w-1/4 flex justify-center'>
+      <div className='text-white w-1/4 flex justify-end mr-10'>
         <input
           type='range'
           value={volume}
           min={0}
           max={100}
           onChange={(e) => setVolume(Number(e.target.value))}
+          className='w-20 md:w-32'
         />
       </div>
     </div>
