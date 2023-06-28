@@ -9,7 +9,6 @@ import {
 } from './icons';
 import {
   adjustVolume,
-  fetchCurrentPlaybackState,
   fetchCurrentPlayingTrack,
   pause,
   play,
@@ -26,20 +25,19 @@ import { currentTrackState, isPlayingState } from '@/atoms/track-atom';
 import { useRecoilValue } from 'recoil';
 import { deviceState } from '@/atoms/device-atom';
 
-export default function Player({ className }) {
+export default function Player() {
   const spotifyApi = useSpotify();
-  const [currentTrack, setCurrentTrack] = useRecoilState(currentTrackState);
+  const currentTrack = useRecoilValue(currentTrackState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-  const [volume, setVolume] = useState(100);
+  const [volume, setVolume] = useState(80);
   const [shufflePlayback, setShufflePlayback] = useState(false);
   const [repeatMode, setRepeatMode] = useState('off');
   const [changeTrack, setChangeTrack] = useState(false);
-  const device = useRecoilValue(deviceState);
   const [hover, setHover] = useState(false);
+  const device = useRecoilValue(deviceState);
 
   const fetchData = async () => {
     const currentTrack = await fetchCurrentPlayingTrack();
-    setCurrentTrack(currentTrack?.body?.item);
     setIsPlaying(currentTrack?.body?.is_playing);
   };
 
@@ -84,6 +82,9 @@ export default function Player({ className }) {
     setRepeatMode(newRepeatMode);
   };
 
+  const isDeviceAvailable =
+    device?.body?.devices.length != 0 && device?.body?.devices?.[0].is_active;
+
   const debouncedAdjustVolume = useCallback(
     debounce((volume) => {
       adjustVolume(volume);
@@ -92,10 +93,10 @@ export default function Player({ className }) {
   );
 
   useEffect(() => {
-    if (volume > 0 && volume < 100) {
+    if (isDeviceAvailable && volume > 0 && volume < 100) {
       debouncedAdjustVolume(volume);
     }
-  }, [volume, debouncedAdjustVolume]);
+  }, [volume, debouncedAdjustVolume, isDeviceAvailable]);
 
   const onHover = () => {
     setHover(true);
@@ -109,19 +110,20 @@ export default function Player({ className }) {
     <div
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
-      className={`${className} flex text-xs py-6 w-full bg-gradient-to-t from-zinc-700 to-zinc-900 justify-between items-center`}
+      className='fixed bottom-0 flex text-xs py-6 w-full bg-gradient-to-t from-zinc-700 to-zinc-900 justify-between items-center'
     >
-      {device?.body?.devices.length == 0 && hover ? (
-        <div className='bg-zinc-300 w-full fixed h-20 flex justify-center items-center bg-opacity-70'>
-          <p className='opacity-100 font-bold text-sm'>
-            No active device found. To enable this, please open your Spotify
-            account.
+      {!isDeviceAvailable && hover ? (
+        <div className='bg-zinc-700 w-full fixed h-20 flex justify-center items-center bg-opacity-60'>
+          <p className='opacity-100 text-white font-bold text-xs md:text-sm text-center'>
+            There was no active device found.
+            <br />
+            Try launching your Spotify web player.
           </p>
         </div>
       ) : (
-        ''
+        <div></div>
       )}
-      <div className='text-white flex ml-10 w-1/4 space-x-4'>
+      <div className='text-white flex ml-8 md:ml-12 w-1/4 space-x-4 md:space-x-6'>
         {currentTrack?.album.images?.[0].url && (
           <Image
             src={currentTrack?.album.images?.[0].url}
@@ -138,7 +140,7 @@ export default function Player({ className }) {
           </p>
         </div>
       </div>
-      <div className='flex items-center space-x-6 grow justify-center text-zinc-300 '>
+      <div className='flex items-center space-x-6 md:space-x-12 grow justify-center text-zinc-300 '>
         <button
           onClick={() => handleSetShuffle(shufflePlayback)}
           className={shufflePlayback ? 'text-green-400' : 'hover:text-white'}
@@ -181,7 +183,7 @@ export default function Player({ className }) {
           <RepeatIcon />
         </button>
       </div>
-      <div className='text-white w-1/4 flex justify-end mr-10'>
+      <div className='text-white w-1/4 flex justify-end mr-8 md:mr-12'>
         <input
           type='range'
           value={volume}

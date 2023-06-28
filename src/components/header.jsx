@@ -18,7 +18,7 @@ function Header({ session, user, playlists }) {
       <div className='flex justify-evenly w-1/2 mb-10'>
         <div className='flex flex-col items-center space-y-1'>
           <p className='text-green-400 font-bold'>
-            {user?.body.followers.total}
+            {user?.body?.followers.total}
           </p>
           <p className='text-gray-200 text-sm tracking-widest font-extralight'>
             FOLLOWERS

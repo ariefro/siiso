@@ -106,11 +106,14 @@ export const setRepeat = (state) => {
   return spotifyApi.setRepeat(state);
 };
 
+export const fetchAvailableDevices = () => {
+  return spotifyApi.getMyDevices();
+};
+
 export const fetchUserData = async () => {
-  const user = await fetchUser();
   const playlists = await fetchUserPlaylists();
   const topArtists = await fetchTopArtists(10, 'long_term');
   const topTracks = await fetchTopTracks(10, 'long_term');
 
-  return { user, playlists, topArtists, topTracks };
+  return { playlists, topArtists, topTracks };
 };

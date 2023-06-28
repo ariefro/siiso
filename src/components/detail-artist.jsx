@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 export default function DetailArtist() {
   const router = useRouter();
   const { id } = router.query;
-  const spotifyApi = useSpotify();
   const [artist, setArtist] = useState(null);
 
   const numberFormatter = Intl.NumberFormat('en-US');
@@ -21,17 +20,21 @@ export default function DetailArtist() {
 
   useEffect(() => {
     fetchData();
-  }, [spotifyApi]);
+  }, []);
 
   return (
     <div className='space-y-9 text-white flex flex-col h-screen justify-center items-center'>
-      <Image
-        src={artist?.images?.[0].url}
-        width={288}
-        height={288}
-        alt='photo artist'
-        className='rounded-full w-52 h-52 md:w-72 md:h-72'
-      ></Image>
+      {artist?.images?.[0].url && (
+        <Image
+          src={artist?.images?.[0].url}
+          priority
+          width={288}
+          height={288}
+          alt='photo artist'
+          className='rounded-full w-52 h-52 md:w-72 md:h-72'
+        ></Image>
+      )}
+
       <h1 className='text-4xl md:text-6xl font-bold'>{artist?.name}</h1>
       <div className='flex space-x-12 px-10'>
         <div className='text-center space-y-1'>
@@ -43,11 +46,11 @@ export default function DetailArtist() {
           </p>
         </div>
         <div className='text-center space-y-1'>
-          <p className='capitalize font-bold text-lg md:text-xl text-green-400'>
+          <div className='capitalize font-bold text-lg md:text-xl text-green-400'>
             {artist?.genres.map((genre) => (
               <p key={genre}>{genre}</p>
             ))}
-          </p>
+          </div>
           <p className='uppercase font-light text-[0.72rem] md:text-xs'>
             genres
           </p>

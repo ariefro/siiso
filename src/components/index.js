@@ -1,3 +1,4 @@
+import BottomMenu from './bottom-menu';
 import BottomNavbar from './bottom-navbar';
 import Error from './error';
 import HeaderDetailPlaylist from './header-detail-playlist';
@@ -18,6 +19,7 @@ import Track from './track';
 import User from './user';
 
 export {
+  BottomMenu,
   BottomNavbar,
   Error,
   HeaderDetailPlaylist,

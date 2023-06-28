@@ -2,17 +2,18 @@
 
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-
 import useSpotify from '@/hook/useSpotify';
 import { fetchUserData } from '@/lib/spotify';
 import Image from 'next/image';
 import { Error, Header, ListHeading, Loading, Track } from '@/components';
 import Link from 'next/link';
+import { userState } from '@/atoms/user-atom';
+import { useRecoilValue } from 'recoil';
 
 function User() {
   const { data: session } = useSession();
   const spotifyApi = useSpotify();
-  const [user, setUser] = useState(null);
+  const user = useRecoilValue(userState);
   const [playlists, setPlaylists] = useState(null);
   const [topArtists, setTopArtists] = useState(null);
   const [topTracks, setTopTracks] = useState(null);
@@ -21,8 +22,7 @@ function User() {
 
   const getUserData = async () => {
     try {
-      const { user, playlists, topArtists, topTracks } = await fetchUserData();
-      setUser(user);
+      const { playlists, topArtists, topTracks } = await fetchUserData();
       setPlaylists(playlists);
       setTopArtists(topArtists);
       setTopTracks(topTracks);
@@ -46,7 +46,7 @@ function User() {
         <div className='md:w-1/2 md:mr-16 mb-20'>
           <ListHeading title={'top artists'} href={'/artists'} />
           <ul>
-            {topArtists?.body.items.map((artist) => (
+            {topArtists?.body?.items.map((artist) => (
               <li
                 key={artist?.id}
                 className='p-3 group hover:bg-zinc-800 hover:cursor-pointer hover:opacity-100 rounded-sm'

@@ -1,20 +1,22 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import '../../styles/output.css';
-import { BottomNavbar, MainNavbar, Player, RecentlyPlayed } from '@/components';
+import { BottomMenu, MainNavbar, RecentlyPlayed } from '@/components';
 import { RecoilRoot } from 'recoil';
+import UserProvider from '@/components/user-context';
 
 export default function RecentPage({ session }) {
   return (
     <SessionProvider session={session}>
       <RecoilRoot>
-        <div className='flex bg-zinc-900'>
-          <MainNavbar />
-          <Player className={'fixed bottom-0'} />
-          <div className='w-full flex flex-col max-w-7xl mx-auto h-screen'>
-            <RecentlyPlayed />
-            <BottomNavbar />
+        <UserProvider>
+          <div className='flex bg-zinc-900'>
+            <MainNavbar />
+            <div className='w-full flex flex-col max-w-7xl mx-auto h-screen'>
+              <RecentlyPlayed />
+            </div>
           </div>
-        </div>
+          <BottomMenu />
+        </UserProvider>
       </RecoilRoot>
     </SessionProvider>
   );

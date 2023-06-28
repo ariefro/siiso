@@ -1,20 +1,22 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import '../../styles/output.css';
-import { BottomNavbar, MainNavbar, Player, Playlists } from '@/components';
+import { BottomMenu, MainNavbar, Playlists } from '@/components';
 import { RecoilRoot } from 'recoil';
+import UserProvider from '@/components/user-context';
 
 export default function PlaylistsPage({ session }) {
   return (
     <SessionProvider session={session}>
       <RecoilRoot>
-        <div className='flex bg-zinc-900 h-screen overflow-hidden'>
-          <MainNavbar />
-          <Player className={'fixed bottom-0'} />
-          <div className='w-full flex flex-col max-w-7xl mx-auto'>
-            <Playlists />
-            <BottomNavbar />
+        <UserProvider>
+          <div className='flex bg-zinc-900 h-screen overflow-hidden'>
+            <MainNavbar />
+            <div className='w-full flex flex-col max-w-7xl mx-auto'>
+              <Playlists />
+            </div>
           </div>
-        </div>
+          <BottomMenu />
+        </UserProvider>
       </RecoilRoot>
     </SessionProvider>
   );
