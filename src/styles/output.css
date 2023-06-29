@@ -675,18 +675,6 @@ html {
   top: 0px;
 }
 
-.bottom-10 {
-  bottom: 2.5rem;
-}
-
-.bottom-96 {
-  bottom: 24rem;
-}
-
-.bottom-32 {
-  bottom: 8rem;
-}
-
 .z-50 {
   z-index: 50;
 }
@@ -743,18 +731,6 @@ html {
 
 .mt-10 {
   margin-top: 2.5rem;
-}
-
-.mb-56 {
-  margin-bottom: 14rem;
-}
-
-.mb-28 {
-  margin-bottom: 7rem;
-}
-
-.mb-12 {
-  margin-bottom: 3rem;
 }
 
 .block {
@@ -1078,16 +1054,6 @@ html {
 .bg-zinc-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(24 24 27 / var(--tw-bg-opacity));
-}
-
-.bg-pink-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(236 72 153 / var(--tw-bg-opacity));
-}
-
-.bg-pink-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(244 114 182 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-60 {

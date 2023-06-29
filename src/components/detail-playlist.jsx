@@ -42,7 +42,7 @@ export default function DetailPlaylist() {
   const paginateBack = () => setCurrentPage(currentPage - 1);
 
   return (
-    <div className='h-full overflow-y-scroll no-scrollbar'>
+    <div className='h-full mb-6'>
       {!error && loading && <Loading />}
       {error && <Error />}
       <div className='md:flex px-10'>

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { RightIcon, LeftIcon } from './icons';
 
 export default function Pagination({
@@ -9,27 +8,40 @@ export default function Pagination({
   totalItem,
   limitItemPerPage,
 }) {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  const next = async () => {
+    await paginateFront();
+    scrollToTop();
+  };
+
+  const back = async () => {
+    await paginateBack();
+    scrollToTop();
+  };
+
   return (
     <div className='mt-10 flex justify-center'>
       <nav className='text-white text-sm space-x-16'>
-        <Link href='#'>
-          <button
-            onClick={() => paginateBack()}
-            disabled={currentPage == 1}
-            className='text-gray-400 hover:text-white disabled:text-gray-500'
-          >
-            <LeftIcon />
-          </button>
-        </Link>
-        <Link href='#'>
-          <button
-            onClick={() => paginateFront()}
-            disabled={totalItem - currentItem <= limitItemPerPage}
-            className='text-gray-400 hover:text-white disabled:text-gray-500'
-          >
-            <RightIcon />
-          </button>
-        </Link>
+        <button
+          onClick={back}
+          disabled={currentPage == 1}
+          className='text-gray-400 hover:text-white disabled:text-gray-500'
+        >
+          <LeftIcon />
+        </button>
+        <button
+          onClick={next}
+          disabled={totalItem - currentItem <= limitItemPerPage}
+          className='text-gray-400 hover:text-white disabled:text-gray-500'
+        >
+          <RightIcon />
+        </button>
       </nav>
     </div>
   );
