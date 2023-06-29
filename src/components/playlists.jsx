@@ -12,7 +12,7 @@ export default function Playlists() {
   const fetchData = async () => {
     try {
       const playlists = await fetchUserPlaylists();
-      setPlaylists(playlists);
+      setPlaylists(playlists?.body.items);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -31,7 +31,7 @@ export default function Playlists() {
       <h1 className='text-xl font-bold text-white mb-16'>Your Playlists</h1>
       <div className='flex justify-center'>
         <ul className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10'>
-          {playlists?.body?.items.map((playlist) => (
+          {playlists.map((playlist) => (
             <Playlist playlist={playlist} key={playlist.id} />
           ))}
         </ul>

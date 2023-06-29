@@ -21,23 +21,31 @@ import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { debounce } from 'lodash';
 import { useRecoilState } from 'recoil';
-import { currentTrackState, isPlayingState } from '@/atoms/track-atom';
+import {
+  currentTrackState,
+  isPlayingState,
+  repeatState,
+  shuffleState,
+  volumeState,
+} from '@/atoms/track-atom';
 import { useRecoilValue } from 'recoil';
 import { deviceState } from '@/atoms/device-atom';
+import Link from 'next/link';
 
 export default function Player() {
   const spotifyApi = useSpotify();
-  const currentTrack = useRecoilValue(currentTrackState);
+  const [currentTrack, setCurrentTrack] = useRecoilState(currentTrackState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-  const [volume, setVolume] = useState(80);
-  const [shufflePlayback, setShufflePlayback] = useState(false);
-  const [repeatMode, setRepeatMode] = useState('off');
+  const [volume, setVolume] = useRecoilState(volumeState);
+  const [shufflePlayback, setShufflePlayback] = useRecoilState(shuffleState);
+  const [repeatMode, setRepeatMode] = useRecoilState(repeatState);
   const [changeTrack, setChangeTrack] = useState(false);
   const [hover, setHover] = useState(false);
   const device = useRecoilValue(deviceState);
 
   const fetchData = async () => {
     const currentTrack = await fetchCurrentPlayingTrack();
+    setCurrentTrack(currentTrack?.body?.item);
     setIsPlaying(currentTrack?.body?.is_playing);
   };
 
@@ -82,8 +90,7 @@ export default function Player() {
     setRepeatMode(newRepeatMode);
   };
 
-  const isDeviceAvailable =
-    device?.body?.devices.length != 0 && device?.body?.devices?.[0].is_active;
+  const isDeviceAvailable = device?.length != 0 && device?.[0].is_active;
 
   const debouncedAdjustVolume = useCallback(
     debounce((volume) => {
@@ -117,7 +124,13 @@ export default function Player() {
           <p className='opacity-100 text-white font-bold text-xs md:text-sm text-center'>
             There was no active device found.
             <br />
-            Try launching your Spotify web player.
+            Try launching your{' '}
+            <span className='capitalize text-green-400'>
+              <Link href='https://open.spotify.com/' target='_blank'>
+                spotify web player
+              </Link>
+            </span>
+            .
           </p>
         </div>
       ) : (

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export default function DetailArtist() {
+  const spotifyApi = useSpotify();
   const router = useRouter();
   const { id } = router.query;
   const [artist, setArtist] = useState(null);
@@ -14,13 +15,12 @@ export default function DetailArtist() {
 
   const fetchData = async () => {
     const res = await fetchDataArtist(id);
-    console.log(res);
     setArtist(res?.body);
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [spotifyApi]);
 
   return (
     <div className='space-y-9 text-white flex flex-col h-screen justify-center items-center'>

@@ -1,23 +1,24 @@
 import { deviceState } from '@/atoms/device-atom';
 import { userState } from '@/atoms/user-atom';
 import useSpotify from '@/hook/useSpotify';
-import { fetchAvailableDevices, fetchUser } from '@/lib/spotify';
+import { fetchAvailableDevices, fetchUser, spotifyApi } from '@/lib/spotify';
 import { createContext, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 export const UserContext = createContext();
 
 export default function UserProvider({ children }) {
+  const spotifyApi = useSpotify();
   const [user, setUser] = useRecoilState(userState);
   const [device, setDevice] = useRecoilState(deviceState);
   const [error, setError] = useState(false);
 
-  const getUserData = async () => {
+  const fetchData = async () => {
     try {
       const user = await fetchUser();
       const device = await fetchAvailableDevices();
-      setUser(user);
-      setDevice(device);
+      setUser(user?.body);
+      setDevice(device?.body.devices);
     } catch (error) {
       console.log('Something went wrong: ', error);
       setError(true);
@@ -25,13 +26,11 @@ export default function UserProvider({ children }) {
   };
 
   useEffect(() => {
-    getUserData();
-  }, []);
+    fetchData();
+  }, [spotifyApi]);
 
   return (
-    <UserContext.Provider
-      value={{ user, setUser, device, setDevice, error, setError }}
-    >
+    <UserContext.Provider value={{ user, device, error }}>
       {children}
     </UserContext.Provider>
   );

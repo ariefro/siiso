@@ -6,8 +6,6 @@ export default function BottomMenu() {
   const user = useRecoilValue(userState);
 
   return (
-    <div>
-      {user?.body?.product === 'premium' ? <Player /> : <BottomNavbar />}
-    </div>
+    <div>{user?.product === 'premium' ? <Player /> : <BottomNavbar />}</div>
   );
 }

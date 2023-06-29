@@ -14,7 +14,7 @@ export default function TopArtists() {
   const fetchData = async () => {
     try {
       const topArtists = await fetchTopArtists(50, 'long_term');
-      setTopArtists(topArtists);
+      setTopArtists(topArtists?.body.items);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -31,7 +31,7 @@ export default function TopArtists() {
       {!error && loading && <Loading />}
       {error && <Error />}
       <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pb-32 px-10'>
-        {topArtists?.body?.items?.map((artist) => (
+        {topArtists.map((artist) => (
           <li
             key={artist.id}
             className='flex flex-col items-center space-y-4 pb-6'
