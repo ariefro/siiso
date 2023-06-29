@@ -1,6 +1,7 @@
 import '../../styles/output.css';
 import { BottomMenu, MainNavbar } from '@/components';
 import DetailArtist from '@/components/detail-artist';
+import TrackProvider from '@/components/track-context';
 import UserProvider from '@/components/user-context';
 import { SessionProvider, getSession } from 'next-auth/react';
 import { RecoilRoot } from 'recoil';
@@ -10,13 +11,15 @@ export default function DetailArtistPage({ session }) {
     <SessionProvider session={session}>
       <RecoilRoot>
         <UserProvider>
-          <div className='bg-zinc-900 flex h-screen w-full'>
-            <MainNavbar />
-            <div className='w-full max-w-7xl 2xl:mx-auto'>
-              <DetailArtist />
+          <TrackProvider>
+            <div className='bg-zinc-900 flex h-screen w-full'>
+              <MainNavbar />
+              <div className='w-full max-w-7xl 2xl:mx-auto'>
+                <DetailArtist />
+              </div>
             </div>
-          </div>
-          <BottomMenu />
+            <BottomMenu />
+          </TrackProvider>
         </UserProvider>
       </RecoilRoot>
     </SessionProvider>

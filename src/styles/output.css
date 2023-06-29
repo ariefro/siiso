@@ -675,6 +675,18 @@ html {
   top: 0px;
 }
 
+.bottom-10 {
+  bottom: 2.5rem;
+}
+
+.bottom-96 {
+  bottom: 24rem;
+}
+
+.bottom-32 {
+  bottom: 8rem;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -731,6 +743,18 @@ html {
 
 .mt-10 {
   margin-top: 2.5rem;
+}
+
+.mb-56 {
+  margin-bottom: 14rem;
+}
+
+.mb-28 {
+  margin-bottom: 7rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
 }
 
 .block {
@@ -1046,11 +1070,6 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-zinc-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(82 82 91 / var(--tw-bg-opacity));
-}
-
 .bg-zinc-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(63 63 70 / var(--tw-bg-opacity));
@@ -1059,6 +1078,16 @@ html {
 .bg-zinc-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(24 24 27 / var(--tw-bg-opacity));
+}
+
+.bg-pink-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 72 153 / var(--tw-bg-opacity));
+}
+
+.bg-pink-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 114 182 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-60 {
@@ -1483,6 +1512,10 @@ html {
     margin-left: calc(1.75rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
+  .md\:pb-14 {
+    padding-bottom: 3.5rem;
+  }
+
   .md\:pb-28 {
     padding-bottom: 7rem;
   }
@@ -1491,8 +1524,8 @@ html {
     padding-bottom: 8rem;
   }
 
-  .md\:pb-8 {
-    padding-bottom: 2rem;
+  .md\:pb-36 {
+    padding-bottom: 9rem;
   }
 
   .md\:pl-28 {
