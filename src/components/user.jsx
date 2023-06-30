@@ -42,8 +42,8 @@ function User() {
       {!error && loading && <Loading />}
       {error && <Error />}
       <Header session={session} user={user} playlists={playlists} />
-      <div className='md:flex'>
-        <div className='md:w-1/2 md:mr-16 mb-20'>
+      <div className='lg:flex'>
+        <div className='lg:w-1/2 lg:mr-16 mb-20'>
           <ListHeading title={'top artists'} href={'/artists'} />
           <ul>
             {topArtists?.map((artist) => (
@@ -73,7 +73,7 @@ function User() {
           </ul>
         </div>
 
-        <div className='md:w-1/2'>
+        <div className='lg:w-1/2'>
           <ListHeading title={'top tracks'} href={'/tracks'} />
           <ul>
             {topTracks?.map((track) => (

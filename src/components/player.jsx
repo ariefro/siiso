@@ -67,21 +67,21 @@ export default function Player() {
     }
   };
 
-  const handleSkipNext = (state) => {
+  const handleSkipNext = () => {
     skipToNext();
     setIsPlaying(true);
-    setChangeTrack(!state);
+    setChangeTrack(!changeTrack);
   };
 
-  const handleSkipToPrevious = async (state) => {
+  const handleSkipToPrevious = async () => {
     skipToPrevious();
     setIsPlaying(true);
-    setChangeTrack(!state);
+    setChangeTrack(!changeTrack);
   };
 
-  const handleSetShuffle = (state) => {
-    setShuffle(!state);
-    setShufflePlayback(!state);
+  const handleSetShuffle = () => {
+    setShuffle(!shufflePlayback);
+    setShufflePlayback(!shufflePlayback);
   };
 
   const handleSetRepeatMode = () => {
@@ -117,7 +117,7 @@ export default function Player() {
     <div
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
-      className='fixed bottom-0 flex text-xs py-6 w-full bg-gradient-to-t from-zinc-700 to-zinc-900 justify-between items-center'
+      className='fixed z-50 bottom-0 flex text-xs py-6 w-full bg-gradient-to-t from-zinc-700 to-zinc-900 justify-between items-center'
     >
       {!isDeviceAvailable && hover ? (
         <div className='bg-zinc-700 w-full fixed h-20 flex justify-center items-center bg-opacity-60'>
@@ -155,13 +155,13 @@ export default function Player() {
       </div>
       <div className='flex items-center space-x-6 md:space-x-12 grow justify-center text-zinc-300 '>
         <button
-          onClick={() => handleSetShuffle(shufflePlayback)}
+          onClick={() => handleSetShuffle()}
           className={shufflePlayback ? 'text-green-400' : 'hover:text-white'}
         >
           <ShuffleIcon />
         </button>
         <button
-          onClick={() => handleSkipToPrevious(changeTrack)}
+          onClick={() => handleSkipToPrevious()}
           className='hover:text-white'
         >
           <BackwardStepIcon />
@@ -181,10 +181,7 @@ export default function Player() {
             <PlayIcon />
           </button>
         )}
-        <button
-          onClick={() => handleSkipNext(changeTrack)}
-          className='hover:text-white'
-        >
+        <button onClick={() => handleSkipNext()} className='hover:text-white'>
           <ForwardStepIcon />
         </button>
         <button

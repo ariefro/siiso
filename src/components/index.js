@@ -7,6 +7,7 @@ import ListHeading from './list-heading';
 import Loading from './loading';
 import MainNavbar from './main-navbar';
 import Navbar from './navbar';
+import NavLink from './nav-link';
 import Pagination from './pagination';
 import Player from './player';
 import DetailPlaylist from './detail-playlist';
@@ -28,6 +29,7 @@ export {
   Loading,
   MainNavbar,
   Navbar,
+  NavLink,
   Pagination,
   Player,
   DetailPlaylist,

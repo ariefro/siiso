@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { NavLink } from '.';
 import {
   MicrophoneIcon,
   PlaylistIcon,
@@ -9,112 +9,21 @@ import {
 } from './icons';
 
 export default function MainNavbar({ className }) {
-  const pathname = usePathname();
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
+
+  const toogleNavItems = () => {
+    setIsNavExpanded(!isNavExpanded);
+  };
 
   return (
-    <nav
-      className={`${className} text-gray-400 text-xs bg-black border-r border-gray-900 w-28 lg:max-w-md hidden md:inline-flex `}
-    >
-      <div className='m-auto w-full'>
-        <Link
-          href='/'
-          className={`main-nav ${
-            pathname == '/' ? 'active-nav' : 'text-gray-400 hover:text-gray-200'
-          }`}
-        >
-          <button
-            className={`button-nav ${
-              pathname == '/'
-                ? 'text-white'
-                : 'text-gray-400 hover:text-gray-200'
-            }`}
-          >
-            <UserIcon />
-            <p>Profile</p>
-          </button>
-          {pathname == '/' && <div className='green-line'></div>}
-        </Link>
-        <Link
-          href='/artists'
-          className={`main-nav ${
-            pathname == '/artists'
-              ? 'active-nav'
-              : 'text-gray-400 hover:text-gray-200'
-          }`}
-        >
-          <button
-            className={`button-nav ${
-              pathname == '/artists'
-                ? 'text-white'
-                : 'text-gray-400 hover:text-gray-200'
-            }`}
-          >
-            <MicrophoneIcon />
-            <p>Top Artists</p>
-          </button>
-          {pathname == '/artists' && <div className='green-line'></div>}
-        </Link>
-        <Link
-          href='/tracks'
-          className={`main-nav ${
-            pathname == '/tracks'
-              ? 'active-nav'
-              : 'text-gray-400 hover:text-gray-200'
-          }`}
-        >
-          <button
-            className={`button-nav ${
-              pathname == '/tracks'
-                ? 'text-white'
-                : 'text-gray-400 hover:text-gray-200'
-            }`}
-          >
-            <TrackIcon />
-            <p>Top Tracks</p>
-          </button>
-          {pathname == '/tracks' && <div className='green-line'></div>}
-        </Link>
-        <Link
-          href='/recent'
-          className={`main-nav ${
-            pathname == '/recent'
-              ? 'active-nav'
-              : 'text-gray-400 hover:text-gray-200'
-          }`}
-        >
-          <button
-            className={`button-nav ${
-              pathname == '/recent'
-                ? 'text-white'
-                : 'text-gray-400 hover:text-gray-200'
-            }`}
-          >
-            <RecentIcon />
-            <p>Recent</p>
-          </button>
-          {pathname == '/recent' && <div className='green-line'></div>}
-        </Link>
-        <Link
-          href='/playlists'
-          className={`main-nav ${
-            pathname == '/playlists'
-              ? 'active-nav'
-              : 'text-gray-400 hover:text-gray-200'
-          }`}
-        >
-          <button
-            className={`button-nav ${
-              pathname == '/playlists'
-                ? 'text-white'
-                : 'text-gray-400 hover:text-gray-200'
-            }`}
-          >
-            <PlaylistIcon />
-            <p>Playlists</p>
-          </button>
-          {pathname == '/playlists' && <div className='green-line'></div>}
-        </Link>
-      </div>
+    <nav className={`${className}`}>
+      <ul className='m-auto flex flex-col h-screen justify-center w-24 md:w-36 lg:max-w-md text-gray-400 bg-black border-r border-gray-900'>
+        <NavLink href='/' title='Profile' Icon={UserIcon} />
+        <NavLink href='/artists' title='Top Artists' Icon={MicrophoneIcon} />
+        <NavLink href='/tracks' title='Top Tracks' Icon={TrackIcon} />
+        <NavLink href='/recent' title='Recent' Icon={RecentIcon} />
+        <NavLink href='/playlists' title='Playlists' Icon={PlaylistIcon} />
+      </ul>
     </nav>
   );
 }
