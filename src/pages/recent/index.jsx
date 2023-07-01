@@ -1,9 +1,13 @@
 import { SessionProvider, getSession } from 'next-auth/react';
-import '../../styles/output.css';
-import { BottomMenu, MainNavbar, RecentlyPlayed } from '@/components';
 import { RecoilRoot } from 'recoil';
-import UserProvider from '@/components/user-context';
-import TrackProvider from '@/components/track-context';
+import '../../styles/output.css';
+import {
+  MainNavbar,
+  Player,
+  RecentlyPlayed,
+  TrackProvider,
+  UserProvider,
+} from '@/components';
 
 export default function RecentPage({ session }) {
   return (
@@ -16,8 +20,8 @@ export default function RecentPage({ session }) {
               <div className='w-full flex flex-col max-w-7xl mx-auto h-screen'>
                 <RecentlyPlayed />
               </div>
+              <Player />
             </div>
-            <BottomMenu />
           </TrackProvider>
         </UserProvider>
       </RecoilRoot>

@@ -1,9 +1,14 @@
 import { SessionProvider, getSession } from 'next-auth/react';
-import '../../styles/output.css';
-import { MainNavbar, TopTracks, Navbar, BottomMenu } from '@/components';
 import { RecoilRoot } from 'recoil';
-import UserProvider from '@/components/user-context';
-import TrackProvider from '@/components/track-context';
+import '../../styles/output.css';
+import {
+  MainNavbar,
+  TopTracks,
+  Navbar,
+  Player,
+  UserProvider,
+  TrackProvider,
+} from '@/components';
 
 export default function TopTracksPage({ session }) {
   return (
@@ -19,9 +24,9 @@ export default function TopTracksPage({ session }) {
                   <TopTracks />
                 </div>
               </div>
+              <Player />
             </div>
           </TrackProvider>
-          <BottomMenu />
         </UserProvider>
       </RecoilRoot>
     </SessionProvider>

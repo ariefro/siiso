@@ -1,9 +1,13 @@
 import { SessionProvider, getSession } from 'next-auth/react';
-import '../styles/output.css';
-import { User, MainNavbar, BottomMenu } from '@/components';
 import { RecoilRoot } from 'recoil';
-import UserProvider from '@/components/user-context';
-import TrackProvider from '@/components/track-context';
+import '../styles/output.css';
+import {
+  User,
+  MainNavbar,
+  Player,
+  UserProvider,
+  TrackProvider,
+} from '@/components';
 
 export default function Home({ session }) {
   return (
@@ -16,9 +20,9 @@ export default function Home({ session }) {
               <div className='max-w-7xl flex flex-col w-full mx-auto'>
                 <User />
               </div>
+              <Player />
             </div>
           </TrackProvider>
-          <BottomMenu />
         </UserProvider>
       </RecoilRoot>
     </SessionProvider>

@@ -1,9 +1,13 @@
-import '../../styles/output.css';
 import { SessionProvider, getSession } from 'next-auth/react';
-import { MainNavbar, DetailPlaylist, BottomMenu } from '@/components';
 import { RecoilRoot } from 'recoil';
-import UserProvider from '@/components/user-context';
-import TrackProvider from '@/components/track-context';
+import '../../styles/output.css';
+import {
+  MainNavbar,
+  DetailPlaylist,
+  UserProvider,
+  TrackProvider,
+  Player,
+} from '@/components';
 
 export default function PlaylistDetails({ session }) {
   return (
@@ -16,8 +20,8 @@ export default function PlaylistDetails({ session }) {
               <div className='max-w-7xl flex flex-col w-full ml-24 md:ml-40 2xl:mx-auto pb-28 md:pb-32'>
                 <DetailPlaylist />
               </div>
+              <Player />
             </div>
-            <BottomMenu />
           </TrackProvider>
         </UserProvider>
       </RecoilRoot>

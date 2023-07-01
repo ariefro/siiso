@@ -1,9 +1,14 @@
 import { SessionProvider, getSession } from 'next-auth/react';
-import '../../styles/output.css';
-import { BottomMenu, MainNavbar, Navbar, TopArtists } from '@/components';
 import { RecoilRoot } from 'recoil';
-import UserProvider from '@/components/user-context';
-import TrackProvider from '@/components/track-context';
+import '../../styles/output.css';
+import {
+  MainNavbar,
+  Navbar,
+  Player,
+  TopArtists,
+  TrackProvider,
+  UserProvider,
+} from '@/components';
 
 export default function TopArtistsPage({ session }) {
   return (
@@ -19,8 +24,8 @@ export default function TopArtistsPage({ session }) {
                   <TopArtists />
                 </div>
               </div>
+              <Player />
             </div>
-            <BottomMenu />
           </TrackProvider>
         </UserProvider>
       </RecoilRoot>
