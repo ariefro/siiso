@@ -110,6 +110,14 @@ export const fetchAvailableDevices = () => {
   return spotifyApi.getMyDevices();
 };
 
+export const fetchTrackDetail = (id) => {
+  return spotifyApi.getTrack(id);
+};
+
+export const fetchAudioFeaturesForTrack = (id) => {
+  return spotifyApi.getAudioFeaturesForTrack(id);
+};
+
 export const fetchUserData = async () => {
   const playlists = await fetchUserPlaylists();
   const topArtists = await fetchTopArtists(10, 'long_term');

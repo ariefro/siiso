@@ -31,9 +31,11 @@ import {
 import { useRecoilValue } from 'recoil';
 import { deviceState } from '@/atoms/device-atom';
 import Link from 'next/link';
+import { userState } from '@/atoms/user-atom';
 
 export default function Player() {
   const spotifyApi = useSpotify();
+  const user = useRecoilValue(userState);
   const [currentTrack, setCurrentTrack] = useRecoilState(currentTrackState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
   const [volume, setVolume] = useRecoilState(volumeState);
@@ -119,7 +121,7 @@ export default function Player() {
       onMouseLeave={onLeave}
       className='fixed z-50 bottom-0 flex text-xs py-6 w-full bg-gradient-to-t from-zinc-700 to-zinc-900 justify-between items-center'
     >
-      {!isDeviceAvailable && hover ? (
+      {user?.product === 'premium' && !isDeviceAvailable && hover && (
         <div className='bg-zinc-700 w-full fixed h-20 flex justify-center items-center bg-opacity-60'>
           <p className='opacity-100 text-white font-bold text-xs md:text-sm text-center'>
             There was no active device found.
@@ -133,76 +135,83 @@ export default function Player() {
             .
           </p>
         </div>
-      ) : (
-        <div></div>
       )}
-      <div className='text-white flex ml-8 md:ml-12 w-1/4 space-x-4 md:space-x-6'>
-        {currentTrack?.album.images?.[0].url && (
-          <Image
-            src={currentTrack?.album.images?.[0].url}
-            width={60}
-            height={60}
-            alt='photo album'
-            className='hidden md:inline'
-          ></Image>
-        )}
-        <div className='flex flex-col justify-center space-y-1'>
-          <p className=''>{currentTrack?.name}</p>
-          <p className='text-[0.68rem] text-gray-400'>
-            {currentTrack?.artists?.[0].name}
-          </p>
-        </div>
-      </div>
-      <div className='flex items-center space-x-6 md:space-x-12 grow justify-center text-zinc-300 '>
-        <button
-          onClick={() => handleSetShuffle()}
-          className={shufflePlayback ? 'text-green-400' : 'hover:text-white'}
-        >
-          <ShuffleIcon />
-        </button>
-        <button
-          onClick={() => handleSkipToPrevious()}
-          className='hover:text-white'
-        >
-          <BackwardStepIcon />
-        </button>
-        {isPlaying ? (
-          <button
-            onClick={() => handlePlayPause()}
-            className='hover:text-white'
-          >
-            <PauseIcon />
-          </button>
-        ) : (
-          <button
-            onClick={() => handlePlayPause()}
-            className='hover:text-white'
-          >
-            <PlayIcon />
-          </button>
-        )}
-        <button onClick={() => handleSkipNext()} className='hover:text-white'>
-          <ForwardStepIcon />
-        </button>
-        <button
-          onClick={() => handleSetRepeatMode()}
-          className={
-            repeatMode == 'track' ? 'text-green-400' : 'hover:text-white'
-          }
-        >
-          <RepeatIcon />
-        </button>
-      </div>
-      <div className='text-white w-1/4 flex justify-end mr-8 md:mr-12'>
-        <input
-          type='range'
-          value={volume}
-          min={0}
-          max={100}
-          onChange={(e) => setVolume(Number(e.target.value))}
-          className='w-20 md:w-32'
-        />
-      </div>
+      {user?.product === 'premium' && (
+        <>
+          <div className='text-white flex ml-8 md:ml-12 w-1/4 space-x-4 md:space-x-6'>
+            {currentTrack?.album.images?.[0].url && (
+              <Image
+                src={currentTrack?.album.images?.[0].url}
+                width={60}
+                height={60}
+                alt='photo album'
+                className='hidden md:inline'
+              ></Image>
+            )}
+            <div className='flex flex-col justify-center space-y-1'>
+              <p className=''>{currentTrack?.name}</p>
+              <p className='text-[0.68rem] text-gray-400'>
+                {currentTrack?.artists?.[0].name}
+              </p>
+            </div>
+          </div>
+          <div className='flex items-center space-x-6 md:space-x-12 grow justify-center text-zinc-300 '>
+            <button
+              onClick={() => handleSetShuffle()}
+              className={
+                shufflePlayback ? 'text-green-400' : 'hover:text-white'
+              }
+            >
+              <ShuffleIcon />
+            </button>
+            <button
+              onClick={() => handleSkipToPrevious()}
+              className='hover:text-white'
+            >
+              <BackwardStepIcon />
+            </button>
+            {isPlaying ? (
+              <button
+                onClick={() => handlePlayPause()}
+                className='hover:text-white'
+              >
+                <PauseIcon />
+              </button>
+            ) : (
+              <button
+                onClick={() => handlePlayPause()}
+                className='hover:text-white'
+              >
+                <PlayIcon />
+              </button>
+            )}
+            <button
+              onClick={() => handleSkipNext()}
+              className='hover:text-white'
+            >
+              <ForwardStepIcon />
+            </button>
+            <button
+              onClick={() => handleSetRepeatMode()}
+              className={
+                repeatMode == 'track' ? 'text-green-400' : 'hover:text-white'
+              }
+            >
+              <RepeatIcon />
+            </button>
+          </div>
+          <div className='text-white w-1/4 flex justify-end mr-8 md:mr-12'>
+            <input
+              type='range'
+              value={volume}
+              min={0}
+              max={100}
+              onChange={(e) => setVolume(Number(e.target.value))}
+              className='w-20 md:w-32'
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
