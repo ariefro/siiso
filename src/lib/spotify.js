@@ -78,8 +78,8 @@ export const fetchCurrentPlaybackState = () => {
   return spotifyApi.getMyCurrentPlaybackState();
 };
 
-export const play = () => {
-  return spotifyApi.play();
+export const play = (uris) => {
+  return spotifyApi.play({ uris });
 };
 
 export const pause = () => {
@@ -114,8 +114,12 @@ export const fetchTrackDetail = (id) => {
   return spotifyApi.getTrack(id);
 };
 
-export const fetchAudioFeaturesForTrack = (id) => {
+export const fetchTrackAudioFeatures = (id) => {
   return spotifyApi.getAudioFeaturesForTrack(id);
+};
+
+export const fetchTrackAudioAnalysis = (id) => {
+  return spotifyApi.getAudioAnalysisForTrack(id);
 };
 
 export const fetchUserData = async () => {
@@ -124,4 +128,12 @@ export const fetchUserData = async () => {
   const topTracks = await fetchTopTracks(10, 'long_term');
 
   return { playlists, topArtists, topTracks };
+};
+
+export const fetchTrackData = async (id) => {
+  const track = await fetchTrackDetail(id);
+  const audioAnalysis = await fetchTrackAudioAnalysis(id);
+  const audioFeatures = await fetchTrackAudioFeatures(id);
+
+  return { track, audioAnalysis, audioFeatures };
 };

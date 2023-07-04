@@ -10,7 +10,7 @@ export default function DetailTrackPage({ session }) {
         <UserProvider>
           <div className='h-screen bg-zinc-900 flex'>
             <MainNavbar />
-            <div className='max-w-7xl w-full m-10 md:m-20'>
+            <div className='max-w-7xl 2xl:mx-auto w-full m-10 md:m-20'>
               <DetailTrack />
             </div>
             <Player />
