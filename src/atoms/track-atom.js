@@ -10,6 +10,11 @@ export const isPlayingState = atom({
   default: false,
 });
 
+export const rangeTimeTrackState = atom({
+  key: 'rangeTimeTrackState',
+  default: 'long_term',
+});
+
 export const volumeState = atom({
   key: 'volumeState',
   default: 80,

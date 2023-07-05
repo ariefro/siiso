@@ -2,16 +2,19 @@ import { useEffect, useState } from 'react';
 import { fetchTopTracks } from '@/lib/spotify';
 import useSpotify from '@/hook/useSpotify';
 import { Error, Loading, Track } from '@/components';
+import { useRecoilValue } from 'recoil';
+import { rangeTimeTrackState } from '@/atoms/track-atom';
 
 function TopTracks() {
   const spotifyApi = useSpotify();
   const [topTracks, setTopTracks] = useState([]);
+  const range = useRecoilValue(rangeTimeTrackState);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const fetchData = async () => {
+  const fetchData = async (range) => {
     try {
-      const topTracks = await fetchTopTracks(50, 'long_term');
+      const topTracks = await fetchTopTracks({ range });
       setTopTracks(topTracks);
       setLoading(false);
     } catch (error) {
@@ -21,8 +24,8 @@ function TopTracks() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, [spotifyApi]);
+    fetchData(range);
+  }, [spotifyApi, range]);
 
   return (
     <div className='px-10'>

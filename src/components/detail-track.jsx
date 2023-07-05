@@ -49,8 +49,6 @@ export default function DetailTrack() {
 
   const isDeviceAvailable = device?.length != 0 && device?.[0].is_active;
 
-  console.log('===', audioAnalysis);
-
   return (
     <div>
       {error && <Error />}

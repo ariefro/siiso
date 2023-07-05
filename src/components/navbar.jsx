@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { rangeTimeTrackState } from '@/atoms/track-atom';
+import { useRecoilState } from 'recoil';
 
 export default function Navbar({ title }) {
-  const [active, setActive] = useState('all-time');
+  const [range, setRange] = useRecoilState(rangeTimeTrackState);
 
-  const handleButtonClick = (button) => {
-    setActive(button);
+  const handleButtonClick = (range) => {
+    setRange(range);
   };
 
   return (
@@ -15,17 +16,17 @@ export default function Navbar({ title }) {
       <ul className='flex justify-evenly md:space-x-7'>
         <li>
           <button
-            onClick={() => handleButtonClick('all-time')}
-            className={`nav ${active == 'all-time' ? 'active-button' : 'nav'}`}
+            onClick={() => handleButtonClick('long_term')}
+            className={`nav ${range == 'long_term' ? 'active-button' : 'nav'}`}
           >
             All Time
           </button>
         </li>
         <li>
           <button
-            onClick={() => handleButtonClick('last-6-months')}
+            onClick={() => handleButtonClick('medium_term')}
             className={`nav ${
-              active == 'last-6-months' ? 'active-button' : 'nav'
+              range == 'medium_term' ? 'active-button' : 'nav'
             }`}
           >
             Last 6 Months
@@ -33,10 +34,8 @@ export default function Navbar({ title }) {
         </li>
         <li>
           <button
-            onClick={() => handleButtonClick('last-4-weeks')}
-            className={`nav ${
-              active == 'last-4-weeks' ? 'active-button' : 'nav'
-            }`}
+            onClick={() => handleButtonClick('short_term')}
+            className={`nav ${range == 'short_term' ? 'active-button' : 'nav'}`}
           >
             Last 4 Weeks
           </button>

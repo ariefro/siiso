@@ -51,10 +51,10 @@ export const fetchDataArtist = (id) => {
   return spotifyApi.getArtist(id);
 };
 
-export const fetchTopTracks = (limit, timeRange) => {
+export const fetchTopTracks = ({ range }) => {
   return spotifyApi.getMyTopTracks({
-    limit: limit,
-    time_range: timeRange,
+    limit: 50,
+    time_range: range,
   });
 };
 
