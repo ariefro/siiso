@@ -40,7 +40,7 @@ export const fetchUserPlaylists = () => {
   return spotifyApi.getUserPlaylists();
 };
 
-export const fetchTopArtists = (limit, timeRange) => {
+export const fetchTopArtists = ({ limit, timeRange }) => {
   return spotifyApi.getMyTopArtists({
     limit: limit,
     time_range: timeRange,
@@ -51,9 +51,9 @@ export const fetchDataArtist = (id) => {
   return spotifyApi.getArtist(id);
 };
 
-export const fetchTopTracks = ({ range }) => {
+export const fetchTopTracks = ({ limit, range }) => {
   return spotifyApi.getMyTopTracks({
-    limit: 50,
+    limit: limit,
     time_range: range,
   });
 };
@@ -124,8 +124,8 @@ export const fetchTrackAudioAnalysis = (id) => {
 
 export const fetchUserData = async () => {
   const playlists = await fetchUserPlaylists();
-  const topArtists = await fetchTopArtists(10, 'long_term');
-  const topTracks = await fetchTopTracks(10, 'long_term');
+  const topArtists = await fetchTopArtists({ limit: 10, range: 'long_term' });
+  const topTracks = await fetchTopTracks({ limit: 10, range: 'long_term' });
 
   return { playlists, topArtists, topTracks };
 };

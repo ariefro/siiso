@@ -15,17 +15,17 @@ function Header({ session, user, playlists }) {
         ></Image>
       )}
       <h2 className='font-bold text-4xl text-white'>{session?.user.name}</h2>
-      <div className='flex justify-evenly w-1/2 mb-10'>
+      <div className='flex justify-evenly w-1/4 mb-10 space-x-16'>
         <div className='flex flex-col items-center space-y-1'>
           <p className='text-green-400 font-bold'>{user?.followers?.total}</p>
-          <p className='text-gray-200 text-sm tracking-widest font-extralight'>
-            FOLLOWERS
+          <p className='text-gray-200 text-sm uppercase font-extralight'>
+            followers
           </p>
         </div>
         <div className='flex flex-col items-center space-y-1'>
           <p className='text-green-400 font-bold'>{playlists?.total}</p>
-          <p className='text-gray-200 text-sm tracking-widest font-extralight'>
-            PLAYLISTS
+          <p className='text-gray-200 text-sm uppercase font-extralight'>
+            playlists
           </p>
         </div>
       </div>

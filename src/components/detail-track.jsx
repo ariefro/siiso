@@ -64,7 +64,7 @@ export default function DetailTrack() {
           ></Image>
         )}
         <div className='space-y-2 md:space-y-3 mt-2 flex flex-col items-center sm:items-start'>
-          <h3 className='text-white text-3xl md:text-4xl font-bold'>
+          <h3 className='text-white text-3xl md:text-4xl text-center font-bold'>
             {track?.name}
           </h3>
           <p className='text-gray-400 text-xl md:text-2xl font-semibold'>

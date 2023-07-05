@@ -4,16 +4,22 @@ import useSpotify from '@/hook/useSpotify';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Error, Loading } from '@/components';
+import { useRecoilValue } from 'recoil';
+import { rangeTimeTrackState } from '@/atoms/track-atom';
 
 export default function TopArtists() {
   const spotifyApi = useSpotify();
+  const range = useRecoilValue(rangeTimeTrackState);
   const [topArtists, setTopArtists] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async () => {
+  const fetchData = async (range) => {
     try {
-      const topArtists = await fetchTopArtists(50, 'long_term');
+      const topArtists = await fetchTopArtists({
+        limit: 50,
+        timeRange: range,
+      });
       setTopArtists(topArtists?.body.items);
       setLoading(false);
     } catch (error) {
@@ -23,8 +29,9 @@ export default function TopArtists() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, [spotifyApi]);
+    setLoading(true);
+    fetchData(range);
+  }, [spotifyApi, range]);
 
   return (
     <div>

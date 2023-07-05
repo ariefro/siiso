@@ -14,7 +14,7 @@ function TopTracks() {
 
   const fetchData = async (range) => {
     try {
-      const topTracks = await fetchTopTracks({ range });
+      const topTracks = await fetchTopTracks({ limit: 50, range });
       setTopTracks(topTracks);
       setLoading(false);
     } catch (error) {
@@ -24,6 +24,7 @@ function TopTracks() {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetchData(range);
   }, [spotifyApi, range]);
 
