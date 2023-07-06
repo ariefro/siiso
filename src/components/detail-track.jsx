@@ -50,10 +50,10 @@ export default function DetailTrack() {
   const isDeviceAvailable = device?.length != 0 && device?.[0].is_active;
 
   return (
-    <div>
+    <div className='overflow-y-scroll no-scrollbar'>
       {error && <Error />}
       {!error && loading && <Loading />}
-      <div className='flex sm:space-x-10 mt-24 flex-col items-center sm:flex-row overflow-y-scroll no-scrollbar'>
+      <div className='flex sm:space-x-10 mt-24 flex-col items-center sm:flex-row '>
         {track?.album.images?.[0].url && (
           <Image
             src={track?.album.images?.[0].url}

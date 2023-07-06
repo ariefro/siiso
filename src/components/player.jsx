@@ -137,19 +137,19 @@ export default function Player() {
         </div>
       )}
       {user?.product === 'premium' && (
-        <>
-          <div className='text-white flex ml-8 md:ml-12 w-1/4 space-x-4 md:space-x-6'>
+        <div className='flex w-full'>
+          <div className='text-white flex ml-8 md:ml-12 sm:w-1/4 space-x-4 md:space-x-6'>
             {currentTrack?.album.images?.[0].url && (
               <Image
                 src={currentTrack?.album.images?.[0].url}
                 width={60}
                 height={60}
                 alt='photo album'
-                className='hidden md:inline'
+                className='md:inline'
               ></Image>
             )}
             <div className='flex flex-col justify-center space-y-1'>
-              <p className=''>{currentTrack?.name}</p>
+              <p>{currentTrack?.name}</p>
               <p className='text-[0.68rem] text-gray-400'>
                 {currentTrack?.artists?.[0].name}
               </p>
@@ -158,9 +158,9 @@ export default function Player() {
           <div className='flex items-center space-x-6 md:space-x-12 grow justify-center text-zinc-300 '>
             <button
               onClick={() => handleSetShuffle()}
-              className={
+              className={`hidden sm:inline ${
                 shufflePlayback ? 'text-green-400' : 'hover:text-white'
-              }
+              }`}
             >
               <ShuffleIcon />
             </button>
@@ -193,14 +193,14 @@ export default function Player() {
             </button>
             <button
               onClick={() => handleSetRepeatMode()}
-              className={
-                repeatMode == 'track' ? 'text-green-400' : 'hover:text-white'
-              }
+              className={`hidden sm:inline ${
+                repeatMode == 'track'
+              } ? 'text-green-400' : 'hover:text-white'`}
             >
               <RepeatIcon />
             </button>
           </div>
-          <div className='text-white w-1/4 flex justify-end mr-8 md:mr-12'>
+          <div className='text-white w-1/4 hidden sm:flex justify-end mr-8 md:mr-12'>
             <input
               type='range'
               value={volume}
@@ -210,7 +210,7 @@ export default function Player() {
               className='w-20 md:w-32'
             />
           </div>
-        </>
+        </div>
       )}
     </div>
   );
