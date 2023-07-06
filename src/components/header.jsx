@@ -11,7 +11,7 @@ function Header({ session, user, playlists }) {
           width={140}
           height={140}
           alt='avatar'
-          className='rounded-full'
+          className='rounded-full mt-16'
         ></Image>
       )}
       <h2 className='font-bold text-4xl text-white'>{session?.user.name}</h2>

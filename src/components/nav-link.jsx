@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function NavLink({ href, title, Icon }) {
+export default function NavLink({ href, title, Icon, className }) {
   const pathname = usePathname();
 
   return (
     <li>
       <Link
         href={href}
-        className={`flex items-center h-20 text-xs md:text-sm relative ${
+        className={`${className} flex items-center h-20 text-xs md:text-sm relative ${
           pathname == href ? 'active-nav' : 'text-gray-400'
         }`}
       >

@@ -1,5 +1,6 @@
 import { BackwardStepIcon } from './backward-step';
 import { ForwardStepIcon } from './forward-step';
+import { HamburgerIcon } from './hamburger';
 import { LeftIcon } from './left';
 import { MicrophoneIcon } from './microphone';
 import { PauseIcon } from './pause';
@@ -11,10 +12,12 @@ import { RightIcon } from './right';
 import { ShuffleIcon } from './shuffle';
 import { TrackIcon } from './track';
 import { UserIcon } from './user';
+import { XmarkIcon } from './xmark';
 
 export {
   BackwardStepIcon,
   ForwardStepIcon,
+  HamburgerIcon,
   LeftIcon,
   MicrophoneIcon,
   PauseIcon,
@@ -26,4 +29,5 @@ export {
   ShuffleIcon,
   TrackIcon,
   UserIcon,
+  XmarkIcon,
 };
