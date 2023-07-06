@@ -17,7 +17,7 @@ export default function PlaylistDetails({ session }) {
           <TrackProvider>
             <div className='flex min-h-screen bg-zinc-900'>
               <MainNavbar className={'fixed w-full'} />
-              <div className='max-w-7xl flex flex-col w-full 2xl:mx-auto pb-28 md:pb-32'>
+              <div className='max-w-7xl flex flex-col w-full 2xl:mx-auto pb-24 md:pb-32'>
                 <DetailPlaylist />
               </div>
               <Player />

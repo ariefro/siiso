@@ -643,10 +643,6 @@ html {
   top: 1.25rem;
 }
 
-.top-20 {
-  top: 5rem;
-}
-
 .z-50 {
   z-index: 50;
 }
@@ -719,6 +715,14 @@ html {
 
 .mt-20 {
   margin-top: 5rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-24 {
+  margin-top: 6rem;
 }
 
 .block {
@@ -1160,8 +1164,16 @@ html {
   padding-top: 7rem;
 }
 
-.pt-12 {
-  padding-top: 3rem;
+.pt-32 {
+  padding-top: 8rem;
+}
+
+.pb-24 {
+  padding-bottom: 6rem;
+}
+
+.pb-20 {
+  padding-bottom: 5rem;
 }
 
 .text-center {
@@ -1388,6 +1400,10 @@ html {
 }
 
 @media (min-width: 640px) {
+  .sm\:mt-2 {
+    margin-top: 0.5rem;
+  }
+
   .sm\:flex {
     display: flex;
   }
