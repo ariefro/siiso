@@ -35,7 +35,7 @@ export default function HeaderDetailPlaylist() {
           className='hidden md:inline-block bg-red-700'
         ></Image>
       )}
-      <h2 className='font-bold text-3xl text-center px-1 text-white'>
+      <h2 className='font-bold text-3xl text-center pt-10 sm:pt-0 text-white'>
         {playlistData?.name}
       </h2>
       <p className='text-xs text-gray-400'>

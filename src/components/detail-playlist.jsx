@@ -45,7 +45,7 @@ export default function DetailPlaylist() {
     <div className='h-full mb-6'>
       {!error && loading && <Loading />}
       {error && <Error />}
-      <div className='md:flex px-10'>
+      <div className='md:flex px-10 md:px-12'>
         <HeaderDetailPlaylist />
         <ul className='md:mt-16 grow'>
           {tracks?.items?.map((item) => (
