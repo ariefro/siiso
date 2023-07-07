@@ -30,7 +30,7 @@ function Header({ session, user, playlists }) {
         </div>
       </div>
       <button onClick={() => signOut()} className='button'>
-        LOGOUT
+        logout
       </button>
     </header>
   );

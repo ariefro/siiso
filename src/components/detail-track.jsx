@@ -70,7 +70,7 @@ export default function DetailTrack() {
           <p className='text-gray-400 text-xl md:text-2xl font-semibold'>
             {track?.artists?.[0].name}
           </p>
-          <div className='flex text-sm text-gray-400 pb-5'>
+          <div className='flex text-sm text-center text-gray-400 pb-5'>
             <p>
               {track?.album.name}
               <span>&nbsp;&#183;&nbsp;</span>

@@ -36,7 +36,7 @@ export default function DetailArtist() {
       )}
 
       <h1 className='text-4xl md:text-6xl font-bold'>{artist?.name}</h1>
-      <div className='flex space-x-12 px-10'>
+      <div className='flex flex-col space-y-5 sm:space-y-0 sm:flex-row sm:space-x-12 px-10'>
         <div className='text-center space-y-1'>
           <p className='font-bold text-lg md:text-xl text-green-400'>
             {formattedNumber}

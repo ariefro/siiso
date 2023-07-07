@@ -136,16 +136,23 @@ export default function Player() {
           </p>
         </div>
       )}
+
       {user?.product === 'premium' && (
         <div className='flex w-full'>
-          <div className='text-white flex ml-8 md:ml-12 sm:w-1/4 space-x-4 md:space-x-6'>
+          <div
+            className={`${
+              currentTrack !== undefined
+                ? 'text-white flex ml-8 md:ml-12 w-1/2 sm:w-1/4 space-x-4 md:space-x-6'
+                : 'hidden'
+            } `}
+          >
             {currentTrack?.album.images?.[0].url && (
               <Image
                 src={currentTrack?.album.images?.[0].url}
                 width={60}
                 height={60}
                 alt='photo album'
-                className='md:inline'
+                className='md:inline w-10 h-10'
               ></Image>
             )}
             <div className='flex flex-col justify-center space-y-1'>
@@ -155,10 +162,11 @@ export default function Player() {
               </p>
             </div>
           </div>
-          <div className='flex items-center space-x-6 md:space-x-12 grow justify-center text-zinc-300 '>
+
+          <div className='flex items-center grow justify-center text-zinc-300 '>
             <button
               onClick={() => handleSetShuffle()}
-              className={`hidden sm:inline ${
+              className={`hidden sm:inline ml-4 sm:ml-8 ${
                 shufflePlayback ? 'text-green-400' : 'hover:text-white'
               }`}
             >
@@ -166,28 +174,28 @@ export default function Player() {
             </button>
             <button
               onClick={() => handleSkipToPrevious()}
-              className='hover:text-white'
+              className='hover:text-white ml-4 sm:ml-8'
             >
               <BackwardStepIcon />
             </button>
             {isPlaying ? (
               <button
                 onClick={() => handlePlayPause()}
-                className='hover:text-white'
+                className='hover:text-white mr-4 ml-4  sm:mr-8 sm:ml-8'
               >
                 <PauseIcon />
               </button>
             ) : (
               <button
                 onClick={() => handlePlayPause()}
-                className='hover:text-white'
+                className='hover:text-white mr-4 ml-4  sm:mr-8 sm:ml-8'
               >
                 <PlayIcon />
               </button>
             )}
             <button
               onClick={() => handleSkipNext()}
-              className='hover:text-white'
+              className='hover:text-white mr-4 sm:mr-8'
             >
               <ForwardStepIcon />
             </button>
@@ -200,7 +208,13 @@ export default function Player() {
               <RepeatIcon />
             </button>
           </div>
-          <div className='text-white w-1/4 hidden sm:flex justify-end mr-8 md:mr-12'>
+          <div
+            className={`${
+              currentTrack !== undefined
+                ? 'text-white w-1/4 hidden sm:flex justify-end mr-8 md:mr-12'
+                : 'hidden'
+            }`}
+          >
             <input
               type='range'
               value={volume}

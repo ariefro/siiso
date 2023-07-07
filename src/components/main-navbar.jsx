@@ -9,6 +9,7 @@ import {
   UserIcon,
   XmarkIcon,
 } from './icons';
+import { signOut } from 'next-auth/react';
 
 export default function MainNavbar({ className }) {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -39,6 +40,12 @@ export default function MainNavbar({ className }) {
             <NavLink href='/recent' title='Recent' Icon={RecentIcon} />
             <NavLink href='/playlists' title='Playlists' Icon={PlaylistIcon} />
           </ul>
+          <button
+            onClick={() => signOut()}
+            className='button absolute bottom-44 left-[calc(50%-48px)]'
+          >
+            logout
+          </button>
           <button
             onClick={() => toogleNavItems()}
             className='text-gray-400 absolute top-5 right-5 sm:hidden hover:cursor-pointer hover:text-white'

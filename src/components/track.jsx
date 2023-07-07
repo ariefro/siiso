@@ -27,7 +27,7 @@ export default function Track({ track }) {
             </p>
           </div>
           <div>
-            <p className='text-xs text-gray-400 text-right'>
+            <p className='text-xs mt-1 text-gray-400 text-right'>
               {milisToMinutesAndSeconds(track?.duration_ms)}
             </p>
           </div>
