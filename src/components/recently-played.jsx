@@ -27,7 +27,7 @@ export default function RecentlyPlayed() {
   return (
     <div className='pt-28 sm:pt-16 pb-28 px-10 overflow-y-scroll no-scrollbar'>
       {!error && loading && <Loading />}
-      <h1 className='capitalize text-white text-xl font-bold pb-16'>
+      <h1 className='capitalize text-white text-xl font-bold pb-11'>
         recently played tracks
       </h1>
       <ul>

@@ -8,10 +8,10 @@ function Header({ session, user, playlists }) {
         <Image
           src={session?.user?.image}
           priority
-          width={140}
-          height={140}
+          width={144}
+          height={144}
           alt='avatar'
-          className='rounded-full mt-16'
+          className='rounded-full w-36 h-36 mt-16'
         ></Image>
       )}
       <h2 className='font-bold text-4xl text-white'>{session?.user.name}</h2>

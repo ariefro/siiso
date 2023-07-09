@@ -38,7 +38,7 @@ function User() {
   }, [spotifyApi]);
 
   return (
-    <div className='w-full overflow-y-scroll no-scrollbar px-10 pb-28 md:pb-14'>
+    <div className='w-full overflow-y-scroll no-scrollbar px-10 pb-28'>
       {!error && loading && <Loading />}
       {error && <Error />}
       <Header session={session} user={user} playlists={playlists} />
