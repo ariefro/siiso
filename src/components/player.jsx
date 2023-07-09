@@ -116,116 +116,98 @@ export default function Player() {
   };
 
   return (
-    <div
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      className='fixed z-50 bottom-0 flex text-xs py-6 w-full bg-gradient-to-t from-zinc-700 to-zinc-900 justify-between items-center'
-    >
-      {user?.product === 'premium' && !isDeviceAvailable && hover && (
-        <div className='bg-zinc-700 w-full fixed h-20 flex justify-center items-center bg-opacity-60'>
-          <p className='opacity-100 text-white font-bold text-xs md:text-sm text-center'>
-            There was no active device found.
-            <br />
-            Try launching your{' '}
-            <span className='capitalize text-green-400'>
-              <Link href='https://open.spotify.com/' target='_blank'>
-                spotify web player
-              </Link>
-            </span>
-            .
-          </p>
-        </div>
-      )}
-
-      {user?.product === 'premium' && (
-        <div className='flex w-full'>
-          <div
-            className={`${
-              currentTrack !== undefined
-                ? 'text-white flex ml-8 md:ml-12 w-1/2 sm:w-1/4 space-x-4 md:space-x-6'
-                : 'hidden'
-            } `}
-          >
-            {currentTrack?.album.images?.[0].url && (
-              <Image
-                src={currentTrack?.album.images?.[0].url}
-                width={60}
-                height={60}
-                alt='photo album'
-                className='md:inline w-10 h-10'
-              ></Image>
-            )}
-            <div className='flex flex-col justify-center space-y-1'>
-              <p>{currentTrack?.name}</p>
-              <p className='text-[0.68rem] text-gray-400'>
-                {currentTrack?.artists?.[0].name}
-              </p>
+    <>
+      {user?.product === 'premium' && isDeviceAvailable && (
+        <div className='fixed z-50 bottom-0 flex text-xs py-6 w-full bg-gradient-to-t from-zinc-700 to-zinc-900 justify-between items-center'>
+          <div className='flex w-full'>
+            <div
+              className={`${
+                currentTrack !== undefined
+                  ? 'text-white flex ml-8 md:ml-12 w-1/2 sm:w-1/4 space-x-4 md:space-x-6'
+                  : 'hidden'
+              } `}
+            >
+              {currentTrack?.album.images?.[0].url && (
+                <Image
+                  src={currentTrack?.album.images?.[0].url}
+                  width={60}
+                  height={60}
+                  alt='photo album'
+                  className='md:inline w-10 h-10'
+                ></Image>
+              )}
+              <div className='flex flex-col justify-center space-y-1'>
+                <p>{currentTrack?.name}</p>
+                <p className='text-[0.68rem] text-gray-400'>
+                  {currentTrack?.artists?.[0].name}
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className='flex items-center grow justify-center text-zinc-300 '>
-            <button
-              onClick={() => handleSetShuffle()}
-              className={`hidden sm:inline ml-4 sm:ml-8 ${
-                shufflePlayback ? 'text-green-400' : 'hover:text-white'
+            <div className='flex items-center grow justify-center text-zinc-300 '>
+              <button
+                onClick={() => handleSetShuffle()}
+                className={`hidden sm:inline ml-4 sm:ml-8 ${
+                  shufflePlayback ? 'text-green-400' : 'hover:text-white'
+                }`}
+              >
+                <ShuffleIcon />
+              </button>
+              <button
+                onClick={() => handleSkipToPrevious()}
+                className='hover:text-white ml-4 sm:ml-8'
+              >
+                <BackwardStepIcon />
+              </button>
+              {isPlaying ? (
+                <button
+                  onClick={() => handlePlayPause()}
+                  className='hover:text-white mr-4 ml-4 sm:mr-8 sm:ml-8'
+                >
+                  <PauseIcon />
+                </button>
+              ) : (
+                <button
+                  onClick={() => handlePlayPause()}
+                  className='hover:text-white mr-4 ml-4 sm:mr-8 sm:ml-8'
+                >
+                  <PlayIcon />
+                </button>
+              )}
+              <button
+                onClick={() => handleSkipNext()}
+                className='hover:text-white mr-4 sm:mr-8'
+              >
+                <ForwardStepIcon />
+              </button>
+              <button
+                onClick={() => handleSetRepeatMode()}
+                className={`hidden sm:inline ${
+                  repeatMode == 'track'
+                } ? 'text-green-400' : 'hover:text-white'`}
+              >
+                <RepeatIcon />
+              </button>
+            </div>
+            <div
+              className={`${
+                currentTrack !== undefined
+                  ? 'text-white w-1/4 hidden sm:flex justify-end mr-8 md:mr-12'
+                  : 'hidden'
               }`}
             >
-              <ShuffleIcon />
-            </button>
-            <button
-              onClick={() => handleSkipToPrevious()}
-              className='hover:text-white ml-4 sm:ml-8'
-            >
-              <BackwardStepIcon />
-            </button>
-            {isPlaying ? (
-              <button
-                onClick={() => handlePlayPause()}
-                className='hover:text-white mr-4 ml-4  sm:mr-8 sm:ml-8'
-              >
-                <PauseIcon />
-              </button>
-            ) : (
-              <button
-                onClick={() => handlePlayPause()}
-                className='hover:text-white mr-4 ml-4  sm:mr-8 sm:ml-8'
-              >
-                <PlayIcon />
-              </button>
-            )}
-            <button
-              onClick={() => handleSkipNext()}
-              className='hover:text-white mr-4 sm:mr-8'
-            >
-              <ForwardStepIcon />
-            </button>
-            <button
-              onClick={() => handleSetRepeatMode()}
-              className={`hidden sm:inline ${
-                repeatMode == 'track'
-              } ? 'text-green-400' : 'hover:text-white'`}
-            >
-              <RepeatIcon />
-            </button>
-          </div>
-          <div
-            className={`${
-              currentTrack !== undefined
-                ? 'text-white w-1/4 hidden sm:flex justify-end mr-8 md:mr-12'
-                : 'hidden'
-            }`}
-          >
-            <input
-              type='range'
-              value={volume}
-              min={0}
-              max={100}
-              onChange={(e) => setVolume(Number(e.target.value))}
-              className='w-20 md:w-32'
-            />
+              <input
+                type='range'
+                value={volume}
+                min={0}
+                max={100}
+                onChange={(e) => setVolume(Number(e.target.value))}
+                className='w-20 md:w-32'
+              />
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
