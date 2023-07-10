@@ -42,7 +42,7 @@ export default function MainNavbar({ className }) {
           </ul>
           <button
             onClick={() => signOut()}
-            className='button fixed bottom-44 left-[calc(50%-48px)]'
+            className='button fixed bottom-36 left-[calc(50%-48px)]'
           >
             logout
           </button>

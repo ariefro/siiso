@@ -30,7 +30,6 @@ import {
 } from '@/atoms/track-atom';
 import { useRecoilValue } from 'recoil';
 import { deviceState } from '@/atoms/device-atom';
-import Link from 'next/link';
 import { userState } from '@/atoms/user-atom';
 
 export default function Player() {

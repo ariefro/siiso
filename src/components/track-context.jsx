@@ -9,7 +9,6 @@ import {
 import {
   adjustVolume,
   fetchCurrentPlaybackState,
-  fetchCurrentPlayingTrack,
   spotifyApi,
 } from '@/lib/spotify';
 import { debounce } from 'lodash';

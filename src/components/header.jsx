@@ -14,7 +14,9 @@ function Header({ session, user, playlists }) {
           className='rounded-full w-36 h-36 mt-16'
         ></Image>
       )}
-      <h2 className='font-bold text-4xl text-white'>{session?.user.name}</h2>
+      <h2 className='font-bold text-center break-all text-4xl text-white'>
+        {session?.user.name}
+      </h2>
       <div className='flex justify-evenly w-1/4 mb-10 space-x-16'>
         <div className='flex flex-col items-center space-y-1'>
           <p className='text-green-400 font-bold'>{user?.followers?.total}</p>

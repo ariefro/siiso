@@ -9,12 +9,15 @@ import { deviceState } from '@/atoms/device-atom';
 import Link from 'next/link';
 import { milisToMinutesAndSeconds } from '@/utils';
 import TrackFeature from './track-feature';
+import { currentTrackState } from '@/atoms/track-atom';
+import { useRecoilState } from 'recoil';
 
 export default function DetailTrack() {
   const spotifyApi = useSpotify();
   const router = useRouter();
   const { id } = router.query;
   const device = useRecoilValue(deviceState);
+  const [currentTrack, setCurrentTrack] = useRecoilState(currentTrackState);
   const [track, setTrack] = useState(null);
   const [audioAnalysis, setAudioAnalysis] = useState(null);
   const [audioFeatures, setAudioFeatures] = useState(null);
@@ -41,6 +44,7 @@ export default function DetailTrack() {
   const playTrack = async () => {
     try {
       await play([track.uri]);
+      setCurrentTrack(track);
     } catch (error) {
       console.log(error);
       setError(true);
