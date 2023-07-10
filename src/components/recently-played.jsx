@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchRecentlyPlayedTracks } from '@/lib/spotify';
 import useSpotify from '@/hook/useSpotify';
-import { Loading, Track } from '@/components';
+import { EmptyData, Loading, Track } from '@/components';
 
 export default function RecentlyPlayed() {
   const spotifyApi = useSpotify();
@@ -12,7 +12,7 @@ export default function RecentlyPlayed() {
   const fetchData = async () => {
     try {
       const recentlyPlayedTracks = await fetchRecentlyPlayedTracks();
-      setTracks(recentlyPlayedTracks);
+      setTracks(recentlyPlayedTracks?.body.items);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -31,9 +31,11 @@ export default function RecentlyPlayed() {
         recently played tracks
       </h1>
       <ul>
-        {tracks?.body?.items?.map((item) => (
-          <Track track={item.track} key={item.track.id} />
-        ))}
+        {tracks.length !== 0 ? (
+          tracks.map((item) => <Track track={item.track} key={item.track.id} />)
+        ) : (
+          <EmptyData />
+        )}
       </ul>
     </div>
   );

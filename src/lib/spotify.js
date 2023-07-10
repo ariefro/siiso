@@ -40,10 +40,10 @@ export const fetchUserPlaylists = () => {
   return spotifyApi.getUserPlaylists();
 };
 
-export const fetchTopArtists = ({ limit, timeRange }) => {
+export const fetchTopArtists = ({ limit, range }) => {
   return spotifyApi.getMyTopArtists({
     limit: limit,
-    time_range: timeRange,
+    time_range: range,
   });
 };
 

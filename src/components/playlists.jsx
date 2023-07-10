@@ -1,7 +1,7 @@
 import { fetchUserPlaylists } from '@/lib/spotify';
 import { useEffect, useState } from 'react';
 import useSpotify from '@/hook/useSpotify';
-import { Error, Loading, Playlist } from '@/components';
+import { EmptyData, Error, Loading, Playlist } from '@/components';
 
 export default function Playlists() {
   const spotifyApi = useSpotify();
@@ -31,9 +31,13 @@ export default function Playlists() {
       <h1 className='text-xl font-bold text-white mb-16'>Your Playlists</h1>
       <div className='flex justify-center'>
         <ul className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10'>
-          {playlists.map((playlist) => (
-            <Playlist playlist={playlist} key={playlist.id} />
-          ))}
+          {playlists?.length !== 0 ? (
+            playlists.map((playlist) => (
+              <Playlist playlist={playlist} key={playlist.id} />
+            ))
+          ) : (
+            <EmptyData />
+          )}
         </ul>
       </div>
     </div>

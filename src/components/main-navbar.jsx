@@ -29,7 +29,7 @@ export default function MainNavbar({ className }) {
       </ul>
       {isNavExpanded ? (
         <div>
-          <ul className='fixed sm:hidden w-full h-screen text-gray-400 pt-20 bg-black border-r border-gray-900'>
+          <ul className='fixed z-50 sm:hidden w-full h-screen text-gray-400 pt-20 bg-black border-r border-gray-900'>
             <NavLink href='/' title='Profile' Icon={UserIcon} />
             <NavLink
               href='/artists'
@@ -42,23 +42,23 @@ export default function MainNavbar({ className }) {
           </ul>
           <button
             onClick={() => signOut()}
-            className='button fixed bottom-36 left-[calc(50%-48px)]'
+            className='button fixed z-50 bottom-36 left-[calc(50%-48px)]'
           >
             logout
           </button>
           <button
             onClick={() => toogleNavItems()}
-            className='text-gray-400 fixed top-5 right-5 sm:hidden hover:cursor-pointer hover:text-white'
+            className='text-gray-400 fixed z-50 top-5 right-5 sm:hidden hover:cursor-pointer hover:text-white'
           >
             <XmarkIcon />
           </button>
         </div>
       ) : (
         <div>
-          <div className='bg-black fixed w-full h-16 shadow-xl shadow-zinc-800'></div>
+          <div className='bg-black fixed z-50 w-full h-16 shadow-xl shadow-zinc-800'></div>
           <button
             onClick={() => toogleNavItems()}
-            className='text-gray-400 fixed top-5 right-5 sm:hidden hover:cursor-pointer hover:text-white'
+            className='text-gray-400 fixed z-50 top-5 right-5 sm:hidden hover:cursor-pointer hover:text-white'
           >
             <HamburgerIcon />
           </button>

@@ -1,6 +1,8 @@
+import Artist from './artist';
 import BottomMenu from './bottom-menu';
 import DetailPlaylist from './detail-playlist';
 import DetailTrack from './detail-track';
+import EmptyData from './empty-data';
 import Error from './error';
 import HeaderDetailPlaylist from './header-detail-playlist';
 import Header from './header';
@@ -22,9 +24,11 @@ import User from './user';
 import UserProvider from './user-context';
 
 export {
+  Artist,
   BottomMenu,
   DetailPlaylist,
   DetailTrack,
+  EmptyData,
   Error,
   HeaderDetailPlaylist,
   Header,

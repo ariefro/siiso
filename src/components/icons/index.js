@@ -1,6 +1,7 @@
 import { BackwardStepIcon } from './backward-step';
 import { ForwardStepIcon } from './forward-step';
 import { HamburgerIcon } from './hamburger';
+import { InfoIcon } from './info';
 import { LeftIcon } from './left';
 import { MicrophoneIcon } from './microphone';
 import { PauseIcon } from './pause';
@@ -18,6 +19,7 @@ export {
   BackwardStepIcon,
   ForwardStepIcon,
   HamburgerIcon,
+  InfoIcon,
   LeftIcon,
   MicrophoneIcon,
   PauseIcon,
