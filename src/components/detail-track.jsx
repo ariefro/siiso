@@ -57,7 +57,7 @@ export default function DetailTrack() {
     <div className='overflow-y-scroll no-scrollbar'>
       {error && <Error />}
       {!error && loading && <Loading />}
-      <div className='flex sm:space-x-10 mt-24 flex-col items-center sm:flex-row '>
+      <div className='flex sm:space-x-10 mt-24 flex-col items-center sm:items-start sm:flex-row'>
         {track?.album.images?.[0].url && (
           <Image
             src={track?.album.images?.[0].url}
@@ -67,7 +67,7 @@ export default function DetailTrack() {
             className='w-52 h-52 md:w-64 md:h-64'
           ></Image>
         )}
-        <div className='space-y-2 md:space-y-3 mt-6 sm:mt-2 flex flex-col items-center sm:items-start'>
+        <div className='space-y-2 md:space-y-3 mt-6 md:mt-8 flex flex-col items-center sm:items-start'>
           <h3 className='text-white text-3xl md:text-4xl text-center font-bold'>
             {track?.name}
           </h3>

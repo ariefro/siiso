@@ -1,28 +1,10 @@
-import useSpotify from '@/hook/useSpotify';
-import { fetchPlaylistDetails } from '@/lib/spotify';
+import { playlistState } from '@/atoms/playlist-atom';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useRecoilValue } from 'recoil';
 
 export default function HeaderDetailPlaylist() {
-  const router = useRouter();
-  const { id } = router.query;
-  const spotifyApi = useSpotify();
-  const [playlistData, setPlaylistData] = useState(null);
-
-  const getPlaytlistData = async (id) => {
-    try {
-      const res = await fetchPlaylistDetails(id);
-      setPlaylistData(res.body);
-    } catch (error) {
-      console.log(error);
-      setError(true);
-    }
-  };
-
-  useEffect(() => {
-    getPlaytlistData(id);
-  }, [spotifyApi, id]);
+  const playlistData = useRecoilValue(playlistState);
 
   return (
     <div className='my-16 space-y-3 flex flex-col items-center md:w-72 md:mr-12'>
@@ -44,9 +26,12 @@ export default function HeaderDetailPlaylist() {
       <p className='text-xs text-gray-400 text-center'>
         {playlistData?.description}
       </p>
-      <p className='text-xs pt-2 text-white text-center'>
+      <p className='text-xs text-white text-center'>
         {playlistData?.tracks.total} Tracks
       </p>
+      <Link href={'/recommendations/' + playlistData?.id} className='pt-5'>
+        <button className='button'>get recommendations</button>
+      </Link>
     </div>
   );
 }

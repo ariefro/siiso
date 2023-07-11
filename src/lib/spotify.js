@@ -5,6 +5,8 @@ const scopes = [
   'user-read-private',
   'playlist-read-private',
   'playlist-read-collaborative',
+  'playlist-modify-public',
+  'playlist-modify-private',
   'streaming',
   'user-library-read',
   'user-library-modify',
@@ -122,6 +124,20 @@ export const fetchTrackAudioAnalysis = (id) => {
   return spotifyApi.getAudioAnalysisForTrack(id);
 };
 
+const getTrackIds = (tracks) => tracks.map(({ track }) => track.id).join(',');
+
+export const createPlaylist = (name) => {
+  return spotifyApi.createPlaylist(name);
+};
+
+export const addTracksToPlaylist = (playlistID, tracks) => {
+  return spotifyApi.addTracksToPlaylist(playlistID, tracks);
+};
+
+export const followPlaylist = (id) => {
+  return spotifyApi.followPlaylist(id);
+};
+
 export const fetchUserData = async () => {
   const playlists = await fetchUserPlaylists();
   const topArtists = await fetchTopArtists({ limit: 10, range: 'long_term' });
@@ -136,4 +152,17 @@ export const fetchTrackData = async (id) => {
   const audioFeatures = await fetchTrackAudioFeatures(id);
 
   return { track, audioAnalysis, audioFeatures };
+};
+
+export const getRecommendationsForTracks = (tracks) => {
+  const seedTracks = getTrackIds(tracks.slice(0, 5));
+  const seedArtists = '';
+  const seedGenres = '';
+
+  return spotifyApi.getRecommendations({
+    limit: 25,
+    seed_tracks: seedTracks,
+    seed_artists: seedArtists,
+    seed_genres: seedGenres,
+  });
 };

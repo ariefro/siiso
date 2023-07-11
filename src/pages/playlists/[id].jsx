@@ -7,6 +7,7 @@ import {
   UserProvider,
   TrackProvider,
   Player,
+  PlaylistProvider,
 } from '@/components';
 
 export default function PlaylistDetails({ session }) {
@@ -15,13 +16,15 @@ export default function PlaylistDetails({ session }) {
       <RecoilRoot>
         <UserProvider>
           <TrackProvider>
-            <div className='flex min-h-screen bg-zinc-900'>
-              <MainNavbar />
-              <div className='max-w-7xl flex flex-col w-full 2xl:mx-auto pb-28'>
-                <DetailPlaylist />
+            <PlaylistProvider>
+              <div className='flex min-h-screen bg-zinc-900'>
+                <MainNavbar />
+                <div className='max-w-7xl flex flex-col w-full 2xl:mx-auto pb-28'>
+                  <DetailPlaylist />
+                </div>
+                <Player />
               </div>
-              <Player />
-            </div>
+            </PlaylistProvider>
           </TrackProvider>
         </UserProvider>
       </RecoilRoot>

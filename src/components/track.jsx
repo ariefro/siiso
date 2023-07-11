@@ -5,7 +5,7 @@ import { InfoIcon } from './icons';
 
 export default function Track({ track }) {
   return (
-    <li>
+    <li className='list-none'>
       <Link
         href={'/tracks/' + track.id}
         className='flex group items-center space-x-5 p-3 rounded-sm hover:cursor-pointer hover:bg-zinc-800 hover:opacity-100'

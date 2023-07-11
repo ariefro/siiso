@@ -16,7 +16,7 @@ export default function Playlist({ playlist }) {
                 className='mx-auto hover:opacity-40 hover:ease-out duration-500'
                 alt='photo album'
               ></Image>
-              <span className='info-icon'>
+              <span className='info-icon text-xl md:text-2xl'>
                 <InfoIcon />
               </span>
             </div>

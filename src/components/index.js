@@ -14,8 +14,10 @@ import NavLink from './nav-link';
 import Pagination from './pagination';
 import Player from './player';
 import Playlist from './playlist';
+import PlaylistProvider from './playlist-context';
 import Playlists from './playlists';
 import RecentlyPlayed from './recently-played';
+import Recommendations from './recommendations';
 import TopArtists from './top-artists';
 import TopTracks from './top-tracks';
 import Track from './track';
@@ -40,8 +42,10 @@ export {
   Pagination,
   Player,
   Playlist,
+  PlaylistProvider,
   Playlists,
   RecentlyPlayed,
+  Recommendations,
   TopArtists,
   TopTracks,
   Track,

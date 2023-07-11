@@ -9,24 +9,26 @@ import {
   Pagination,
   Track,
 } from '@/components';
+import { useRecoilState } from 'recoil';
+import { errorState } from '@/atoms/error-atom';
 
 export default function DetailPlaylist() {
   const router = useRouter();
   const { id } = router.query;
   const spotifyApi = useSpotify();
   const [tracks, setTracks] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useRecoilState(errorState);
   const [loading, setLoading] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 50;
   const offset = (currentPage - 1) * limit;
 
-  const getPlaytlistData = async (id, limit, offset) => {
+  const getPlaytlistTracks = async (id, limit, offset) => {
     try {
       setLoading(true);
       const tracks = await fetchPlaylistTracks(id, limit, offset);
-      setTracks(tracks.body);
+      setTracks(tracks);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -35,7 +37,7 @@ export default function DetailPlaylist() {
   };
 
   useEffect(() => {
-    getPlaytlistData(id, limit, offset);
+    getPlaytlistTracks(id, limit, offset);
   }, [spotifyApi, id, offset]);
 
   const paginateFront = () => setCurrentPage(currentPage + 1);
@@ -48,7 +50,7 @@ export default function DetailPlaylist() {
       <div className='md:flex px-10 md:px-12'>
         <HeaderDetailPlaylist />
         <ul className='md:mt-16 grow'>
-          {tracks?.items?.map((item) => (
+          {tracks?.body?.items.map((item) => (
             <Track track={item.track} key={item.track.id} />
           ))}
           <Pagination
@@ -56,7 +58,7 @@ export default function DetailPlaylist() {
             paginateFront={paginateFront}
             currentPage={currentPage}
             currentItem={offset}
-            totalItem={tracks.total}
+            totalItem={tracks?.body?.total}
             limitItemPerPage={limit}
           />
         </ul>
