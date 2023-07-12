@@ -120,6 +120,11 @@ export const fetchTrackAudioFeatures = (id) => {
   return spotifyApi.getAudioFeaturesForTrack(id);
 };
 
+export const fetchTracksAudioFeatures = (tracks) => {
+  const ids = tracks.map(({ track }) => track.id);
+  return spotifyApi.getAudioFeaturesForTracks(ids);
+};
+
 export const fetchTrackAudioAnalysis = (id) => {
   return spotifyApi.getAudioAnalysisForTrack(id);
 };
@@ -132,10 +137,6 @@ export const createPlaylist = (name) => {
 
 export const addTracksToPlaylist = (playlistID, tracks) => {
   return spotifyApi.addTracksToPlaylist(playlistID, tracks);
-};
-
-export const followPlaylist = (id) => {
-  return spotifyApi.followPlaylist(id);
 };
 
 export const fetchUserData = async () => {

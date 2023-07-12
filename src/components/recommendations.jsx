@@ -12,6 +12,7 @@ import Link from 'next/link';
 
 export default function Recommendations() {
   const router = useRouter();
+  const spotifyApi = useSpotify();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [recommendations, setRecommendations] = useState(null);
@@ -48,14 +49,14 @@ export default function Recommendations() {
     if (playlistData?.tracks.items) {
       getRecommendations(playlistData?.tracks.items);
     }
-  }, [playlistData]);
+  }, [playlistData, spotifyApi]);
 
   return (
     <div className='py-28 sm:pt-16 px-10 w-full max-w-7xl mx-auto overflow-y-scroll no-scrollbar'>
       {error && <Error />}
       {loading && <Loading />}
       <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 justify-between items-center mb-11'>
-        <h1 className='text-white capitalize text-xl font-bold'>
+        <h1 className='text-white capitalize text-xl font-bold text-center'>
           recommended tracks based on{' '}
           <span>
             <Link

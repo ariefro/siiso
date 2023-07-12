@@ -4,6 +4,7 @@ import DetailPlaylist from './detail-playlist';
 import DetailTrack from './detail-track';
 import EmptyData from './empty-data';
 import Error from './error';
+import FeatureChart from './feature-chart';
 import HeaderDetailPlaylist from './header-detail-playlist';
 import Header from './header';
 import ListHeading from './list-heading';
@@ -32,6 +33,7 @@ export {
   DetailTrack,
   EmptyData,
   Error,
+  FeatureChart,
   HeaderDetailPlaylist,
   Header,
   ListHeading,

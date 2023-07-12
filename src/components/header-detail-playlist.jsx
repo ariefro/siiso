@@ -2,9 +2,26 @@ import { playlistState } from '@/atoms/playlist-atom';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRecoilValue } from 'recoil';
+import { FeatureChart } from '.';
+import { useEffect, useState } from 'react';
+import { fetchTracksAudioFeatures } from '@/lib/spotify';
+import useSpotify from '@/hook/useSpotify';
 
 export default function HeaderDetailPlaylist() {
+  const spotifyApi = useSpotify();
   const playlistData = useRecoilValue(playlistState);
+  const [audioFeatures, setAudioFeatures] = useState(null);
+
+  const getTracksAudioFeatures = async (tracks) => {
+    const res = await fetchTracksAudioFeatures(tracks);
+    setAudioFeatures(res?.body.audio_features);
+  };
+
+  useEffect(() => {
+    if (playlistData?.tracks.items) {
+      getTracksAudioFeatures(playlistData?.tracks.items);
+    }
+  }, [spotifyApi, playlistData]);
 
   return (
     <div className='my-16 space-y-3 flex flex-col items-center md:w-72 md:mr-12'>
@@ -29,9 +46,13 @@ export default function HeaderDetailPlaylist() {
       <p className='text-xs text-white text-center'>
         {playlistData?.tracks.total} Tracks
       </p>
-      <Link href={'/recommendations/' + playlistData?.id} className='pt-5'>
+      <Link
+        href={'/recommendations/' + playlistData?.id}
+        className='pt-5 pb-14'
+      >
         <button className='button'>get recommendations</button>
       </Link>
+      <FeatureChart features={audioFeatures} />
     </div>
   );
 }
