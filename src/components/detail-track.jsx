@@ -1,7 +1,7 @@
 import { fetchTrackData, play } from '@/lib/spotify';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Error, Loading } from '.';
+import { Error, FeatureChart, Loading } from '.';
 import useSpotify from '@/hook/useSpotify';
 import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
@@ -54,10 +54,10 @@ export default function DetailTrack() {
   const isDeviceAvailable = device?.length != 0 && device?.[0].is_active;
 
   return (
-    <div className='overflow-y-scroll no-scrollbar'>
+    <div className='overflow-y-scroll no-scrollbar px-10 sm:px-12'>
       {error && <Error />}
       {!error && loading && <Loading />}
-      <div className='flex sm:space-x-10 mt-24 flex-col items-center sm:items-start sm:flex-row'>
+      <div className='flex sm:space-x-10 mt-24 sm:mt-14 md:mt-0 flex-col items-center sm:items-start sm:flex-row'>
         {track?.album.images?.[0].url && (
           <Image
             src={track?.album.images?.[0].url}
@@ -68,7 +68,7 @@ export default function DetailTrack() {
           ></Image>
         )}
         <div className='space-y-2 md:space-y-3 mt-6 md:mt-8 flex flex-col items-center sm:items-start'>
-          <h3 className='text-white text-3xl md:text-4xl text-center font-bold'>
+          <h3 className='text-white text-3xl md:text-4xl text-center sm:text-start font-bold'>
             {track?.name}
           </h3>
           <p className='text-gray-400 text-xl md:text-2xl font-semibold'>
@@ -96,7 +96,7 @@ export default function DetailTrack() {
         </div>
       </div>
 
-      <div className='text-gray-400 flex justify-center mt-20'>
+      <div className='text-gray-400 space-y-10 flex flex-col justify-center items-center mt-16'>
         <div className='w-full grid grid-cols-2 md:grid-cols-4'>
           <TrackFeature
             data={milisToMinutesAndSeconds(audioFeatures?.duration_ms)}
@@ -125,6 +125,7 @@ export default function DetailTrack() {
             label='segments'
           />
         </div>
+        <FeatureChart features={audioFeatures} axis={'x'} />
       </div>
     </div>
   );

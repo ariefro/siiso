@@ -32,6 +32,8 @@ const properties = [
 
 export default function FeatureChart(props) {
   const [data, setData] = useState(null);
+  const { axis } = props;
+
   const average = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
   useEffect(() => {
@@ -95,12 +97,12 @@ export default function FeatureChart(props) {
   }, [props]);
 
   return (
-    <div className='w-full max-w-lg md:h-72 rounded-md flex items-center justify-center'>
+    <div className='w-11/12 h-96 sm:h-80 rounded-md flex items-center justify-center'>
       {data && (
         <Bar
           data={data}
           options={{
-            indexAxis: 'y',
+            indexAxis: axis,
             plugins: {
               title: {
                 display: true,
@@ -123,12 +125,10 @@ export default function FeatureChart(props) {
               stepSize: 0.1,
               font: {
                 size: 10,
-                // weight: 'bold',
               },
             },
             scales: {
               y: {
-                stacked: true,
                 grid: {
                   display: true,
                   color: 'rgba(255,255,255,0.3)',

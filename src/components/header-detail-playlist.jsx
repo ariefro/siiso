@@ -49,7 +49,7 @@ export default function HeaderDetailPlaylist() {
       <Link href={'/recommendations/' + playlistData?.id} className='pt-5 pb-4'>
         <button className='button'>get recommendations</button>
       </Link>
-      <FeatureChart features={audioFeatures} />
+      <FeatureChart features={audioFeatures} axis={'y'} />
     </div>
   );
 }
