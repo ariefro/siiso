@@ -3,15 +3,24 @@ import Image from 'next/image';
 
 function Header({ session, user, playlists }) {
   return (
-    <header className='flex flex-col items-center justify-center h-[32rem] mb-6 space-y-7'>
-      {session?.user.image && (
+    <header className='flex flex-col items-center justify-center h-[32rem] mb-10 space-y-7'>
+      {session?.user.image ? (
         <Image
           src={session?.user?.image}
           priority
-          width={144}
-          height={144}
+          width={256}
+          height={256}
           alt='avatar'
-          className='rounded-full w-36 h-36 mt-16'
+          className='rounded-full w-40 h-40 md:w-48 md:h-48 mt-16'
+        ></Image>
+      ) : (
+        <Image
+          src={'https://i.ibb.co/10WCbL0/7309681.jpg'}
+          priority
+          width={256}
+          height={256}
+          alt='avatar'
+          className='rounded-full w-40 h-40 md:w-48 md:h-48 mt-16'
         ></Image>
       )}
       <h2 className='font-bold text-center break-all text-4xl text-white'>

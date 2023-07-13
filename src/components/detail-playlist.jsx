@@ -24,21 +24,21 @@ export default function DetailPlaylist() {
   const limit = 50;
   const offset = (currentPage - 1) * limit;
 
-  const getPlaytlistTracks = async (id, limit, offset) => {
-    try {
-      setLoading(true);
-      const tracks = await fetchPlaylistTracks(id, limit, offset);
-      setTracks(tracks);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setError(true);
-    }
-  };
-
   useEffect(() => {
+    const getPlaytlistTracks = async (id, limit, offset) => {
+      try {
+        setLoading(true);
+        const tracks = await fetchPlaylistTracks(id, limit, offset);
+        setTracks(tracks);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setError(true);
+      }
+    };
+
     getPlaytlistTracks(id, limit, offset);
-  }, [spotifyApi, id, offset]);
+  }, [spotifyApi, id, offset, setError]);
 
   const paginateFront = () => setCurrentPage(currentPage + 1);
   const paginateBack = () => setCurrentPage(currentPage - 1);

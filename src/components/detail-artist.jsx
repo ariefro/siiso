@@ -13,14 +13,14 @@ export default function DetailArtist() {
   const numberFormatter = Intl.NumberFormat('en-US');
   const formattedNumber = numberFormatter.format(artist?.followers.total);
 
-  const fetchData = async () => {
-    const res = await fetchDataArtist(id);
-    setArtist(res?.body);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetchDataArtist(id);
+      setArtist(res?.body);
+    };
+
     fetchData();
-  }, [spotifyApi]);
+  }, [spotifyApi, id]);
 
   return (
     <div className='space-y-9 text-white flex flex-col h-screen justify-center items-center'>
@@ -47,9 +47,11 @@ export default function DetailArtist() {
         </div>
         <div className='text-center space-y-1'>
           <div className='capitalize font-bold text-lg md:text-xl text-green-400'>
-            {artist?.genres.map((genre) => (
-              <p key={genre}>{genre}</p>
-            ))}
+            {artist?.genres.length !== 0 ? (
+              artist?.genres.map((genre) => <p key={genre}>{genre}</p>)
+            ) : (
+              <p>-</p>
+            )}
           </div>
           <p className='uppercase font-light text-[0.72rem] md:text-xs'>
             genres

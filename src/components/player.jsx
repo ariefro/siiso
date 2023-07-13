@@ -41,22 +41,21 @@ export default function Player() {
   const [shufflePlayback, setShufflePlayback] = useRecoilState(shuffleState);
   const [repeatMode, setRepeatMode] = useRecoilState(repeatState);
   const [changeTrack, setChangeTrack] = useState(false);
-  const [hover, setHover] = useState(false);
   const device = useRecoilValue(deviceState);
 
-  const fetchData = async () => {
-    const currentTrack = await fetchCurrentPlayingTrack();
-    setCurrentTrack(currentTrack?.body?.item);
-    setIsPlaying(currentTrack?.body?.is_playing);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const currentTrack = await fetchCurrentPlayingTrack();
+      setCurrentTrack(currentTrack?.body?.item);
+      setIsPlaying(currentTrack?.body?.is_playing);
+    };
+
     const delay = setTimeout(() => {
       fetchData();
     }, 500);
 
     return () => clearTimeout(delay);
-  }, [changeTrack, spotifyApi]);
+  }, [changeTrack, spotifyApi, setCurrentTrack, setIsPlaying]);
 
   const handlePlayPause = () => {
     if (isPlaying === true) {
@@ -105,14 +104,6 @@ export default function Player() {
       debouncedAdjustVolume(volume);
     }
   }, [volume, debouncedAdjustVolume, isDeviceAvailable]);
-
-  const onHover = () => {
-    setHover(true);
-  };
-
-  const onLeave = () => {
-    setHover(false);
-  };
 
   return (
     <>
