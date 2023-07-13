@@ -8,7 +8,7 @@ export default function NavLink({ href, title, Icon, className }) {
     <li>
       <Link
         href={href}
-        className={`${className} flex items-center h-20 text-xs md:text-sm relative ${
+        className={`${className} flex items-center h-20 text-xs relative ${
           pathname == href ? 'active-nav' : 'text-gray-400'
         }`}
       >

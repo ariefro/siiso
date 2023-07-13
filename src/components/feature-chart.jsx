@@ -1,9 +1,24 @@
-import Chart from 'chart.js/auto';
-import { CategoryScale } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+// import { CategoryScale } from 'chart.js';
 import { useEffect, useState } from 'react';
-import { Radar } from 'react-chartjs-2';
+import { Bar, Radar } from 'react-chartjs-2';
 
-Chart.register(CategoryScale);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const properties = [
   'acousticness',
@@ -46,8 +61,24 @@ export default function FeatureChart(props) {
           {
             data: data.map((item) => item),
             fill: true,
-            backgroundColor: 'rgba(255, 159, 64, 0.3)',
-            borderColor: 'rgba(255, 159, 64, 1)',
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.3)',
+              'rgba(255, 159, 64, 0.3)',
+              'rgba(255, 206, 86, 0.3)',
+              'rgba(75, 192, 192, 0.3)',
+              'rgba(54, 162, 235, 0.3)',
+              'rgba(104, 132, 245, 0.3)',
+              'rgba(153, 102, 255, 0.3)',
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(255, 159, 64, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(104, 132, 245, 1)',
+              'rgba(153, 102, 255, 1)',
+            ],
             borderWidth: 1,
             pointBackgroundColor: 'rgb(255, 99, 132)',
             pointBorderColor: '#fff',
@@ -55,36 +86,6 @@ export default function FeatureChart(props) {
             pointHoverBorderColor: 'rgb(255, 99, 132)',
           },
         ],
-        options: {
-          plugins: {
-            title: {
-              display: true,
-              text: 'Audio Features',
-              font: {
-                size: 18,
-                weight: 'bold',
-              },
-            },
-            legend: {
-              display: false,
-            },
-          },
-          scale: {
-            ticks: {
-              beginAtZero: true,
-              max: 1,
-              stepSize: 0.1,
-              font: {
-                size: 8,
-                weight: 'bold',
-              },
-            },
-            gridLines: {
-              color: 'rgba(255, 255, 255, 1)',
-              circular: true,
-            },
-          },
-        },
       };
 
       setData(config);
@@ -94,8 +95,55 @@ export default function FeatureChart(props) {
   }, [props]);
 
   return (
-    <div className='md:w-full w-3/4 bg-white rounded-md flex items-center justify-center pt-4'>
-      {data && <Radar data={data} options={data.options} />}
+    <div className='w-full max-w-lg md:h-72 rounded-md flex items-center justify-center'>
+      {data && (
+        <Bar
+          data={data}
+          options={{
+            indexAxis: 'y',
+            plugins: {
+              title: {
+                display: true,
+                text: 'Audio Features',
+                padding: 24,
+                color: '#fff',
+                font: {
+                  size: 18,
+                  weight: 'bold',
+                },
+              },
+              legend: {
+                display: false,
+              },
+            },
+            maintainAspectRatio: false,
+            ticks: {
+              beginAtZero: true,
+              max: 1,
+              stepSize: 0.1,
+              font: {
+                size: 10,
+                // weight: 'bold',
+              },
+            },
+            scales: {
+              y: {
+                stacked: true,
+                grid: {
+                  display: true,
+                  color: 'rgba(255,255,255,0.3)',
+                },
+              },
+              x: {
+                grid: {
+                  display: true,
+                  color: 'rgba(255,255,255,0.3)',
+                },
+              },
+            },
+          }}
+        />
+      )}
     </div>
   );
 }
