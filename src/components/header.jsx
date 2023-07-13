@@ -15,7 +15,7 @@ function Header({ session, user, playlists }) {
         ></Image>
       ) : (
         <Image
-          src={'https://i.ibb.co/10WCbL0/7309681.jpg'}
+          src={'https://i.ibb.co/wR66Bnd/1203476.jpg'}
           priority
           width={256}
           height={256}
