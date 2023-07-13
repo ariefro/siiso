@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Error, Loading, Track } from '.';
 import Link from 'next/link';
+import useSpotify from '@/hook/useSpotify';
 
 export default function Recommendations() {
   const router = useRouter();
