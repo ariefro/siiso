@@ -1105,10 +1105,6 @@ html {
   background-color: rgb(24 24 27 / var(--tw-bg-opacity));
 }
 
-.bg-gradient-to-t {
-  background-image: linear-gradient(to top, var(--tw-gradient-stops));
-}
-
 .bg-gradient-to-tr {
   background-image: linear-gradient(to top right, var(--tw-gradient-stops));
 }
@@ -1119,18 +1115,8 @@ html {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-zinc-700 {
-  --tw-gradient-from: #3f3f46 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(63 63 70 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
 .to-zinc-800 {
   --tw-gradient-to: #27272a var(--tw-gradient-to-position);
-}
-
-.to-zinc-900 {
-  --tw-gradient-to: #18181b var(--tw-gradient-to-position);
 }
 
 .p-3 {
