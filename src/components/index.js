@@ -1,5 +1,6 @@
 import Artist from './artist';
 import Controls from './controls';
+import CurrentTrackInfo from './current-track';
 import DetailArtist from './detail-artist';
 import DetailPlaylist from './detail-playlist';
 import DetailTrack from './detail-track';
@@ -27,10 +28,12 @@ import Track from './track';
 import TrackProvider from './track-context';
 import User from './user';
 import UserProvider from './user-context';
+import VolumeBar from './volume-bar';
 
 export {
   Artist,
   Controls,
+  CurrentTrackInfo,
   DetailArtist,
   DetailPlaylist,
   DetailTrack,
@@ -58,4 +61,5 @@ export {
   TrackProvider,
   User,
   UserProvider,
+  VolumeBar,
 };

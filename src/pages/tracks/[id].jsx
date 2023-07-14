@@ -1,6 +1,11 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import '../../styles/output.css';
-import { DetailTrack, MainNavbar, Player, UserProvider } from '@/components';
+import {
+  DetailTrack,
+  MainNavbar,
+  AudioPlayer,
+  UserProvider,
+} from '@/components';
 import { RecoilRoot } from 'recoil';
 
 export default function DetailTrackPage({ session }) {
@@ -13,7 +18,7 @@ export default function DetailTrackPage({ session }) {
             <div className='max-w-7xl 2xl:mx-auto w-full mt-16 mb-32'>
               <DetailTrack />
             </div>
-            <Player />
+            <AudioPlayer />
           </div>
         </UserProvider>
       </RecoilRoot>

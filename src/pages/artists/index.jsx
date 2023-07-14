@@ -4,7 +4,7 @@ import '../../styles/output.css';
 import {
   MainNavbar,
   Navbar,
-  Player,
+  AudioPlayer,
   TopArtists,
   TrackProvider,
   UserProvider,
@@ -24,7 +24,7 @@ export default function TopArtistsPage({ session }) {
                   <TopArtists />
                 </div>
               </div>
-              <Player />
+              <AudioPlayer />
             </div>
           </TrackProvider>
         </UserProvider>

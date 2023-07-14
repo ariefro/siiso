@@ -9,7 +9,7 @@ import { deviceState } from '@/atoms/device-atom';
 import Link from 'next/link';
 import { milisToMinutesAndSeconds } from '@/utils';
 import TrackFeature from './track-feature';
-import { currentTrackState } from '@/atoms/track-atom';
+import { currentTrackState, isPlayingState } from '@/atoms/track-atom';
 import { useRecoilState } from 'recoil';
 
 export default function DetailTrack() {
@@ -18,6 +18,7 @@ export default function DetailTrack() {
   const { id } = router.query;
   const device = useRecoilValue(deviceState);
   const [currentTrack, setCurrentTrack] = useRecoilState(currentTrackState);
+  const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
   const [track, setTrack] = useState(null);
   const [audioAnalysis, setAudioAnalysis] = useState(null);
   const [audioFeatures, setAudioFeatures] = useState(null);
@@ -45,6 +46,7 @@ export default function DetailTrack() {
     try {
       await play([track.uri]);
       setCurrentTrack(track);
+      setIsPlaying(true);
     } catch (error) {
       console.log(error);
       setError(true);

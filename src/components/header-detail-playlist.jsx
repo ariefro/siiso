@@ -50,6 +50,13 @@ export default function HeaderDetailPlaylist() {
         <button className='button'>get recommendations</button>
       </Link>
       <FeatureChart features={audioFeatures} axis={'y'} />
+      <Link
+        href={'https://open.spotify.com/playlist/' + playlistData?.id}
+        target='_blank'
+        className='pt-5 pb-4'
+      >
+        <button className='button'>open on spotify</button>
+      </Link>
     </div>
   );
 }

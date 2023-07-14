@@ -3,7 +3,7 @@ import { RecoilRoot } from 'recoil';
 import '../../styles/output.css';
 import {
   MainNavbar,
-  Player,
+  AudioPlayer,
   RecentlyPlayed,
   TrackProvider,
   UserProvider,
@@ -20,7 +20,7 @@ export default function RecentPage({ session }) {
               <div className='w-full flex flex-col max-w-7xl mx-auto h-screen'>
                 <RecentlyPlayed />
               </div>
-              <Player />
+              <AudioPlayer />
             </div>
           </TrackProvider>
         </UserProvider>

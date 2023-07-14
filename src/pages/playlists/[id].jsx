@@ -6,7 +6,7 @@ import {
   DetailPlaylist,
   UserProvider,
   TrackProvider,
-  Player,
+  AudioPlayer,
   PlaylistProvider,
 } from '@/components';
 
@@ -22,7 +22,7 @@ export default function PlaylistDetails({ session }) {
                 <div className='max-w-7xl flex flex-col w-full 2xl:mx-auto pb-28'>
                   <DetailPlaylist />
                 </div>
-                <Player />
+                <AudioPlayer />
               </div>
             </PlaylistProvider>
           </TrackProvider>

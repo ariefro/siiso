@@ -5,7 +5,7 @@ import {
   MainNavbar,
   TopTracks,
   Navbar,
-  Player,
+  AudioPlayer,
   UserProvider,
   TrackProvider,
 } from '@/components';
@@ -24,7 +24,7 @@ export default function TopTracksPage({ session }) {
                   <TopTracks />
                 </div>
               </div>
-              <Player />
+              <AudioPlayer />
             </div>
           </TrackProvider>
         </UserProvider>

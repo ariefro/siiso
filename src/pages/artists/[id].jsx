@@ -1,8 +1,11 @@
 import '../../styles/output.css';
-import { BottomMenu, MainNavbar } from '@/components';
-import DetailArtist from '@/components/detail-artist';
-import TrackProvider from '@/components/track-context';
-import UserProvider from '@/components/user-context';
+import {
+  AudioPlayer,
+  DetailArtist,
+  MainNavbar,
+  TrackProvider,
+  UserProvider,
+} from '@/components';
 import { SessionProvider, getSession } from 'next-auth/react';
 import { RecoilRoot } from 'recoil';
 
@@ -18,7 +21,7 @@ export default function DetailArtistPage({ session }) {
                 <DetailArtist />
               </div>
             </div>
-            <BottomMenu />
+            <AudioPlayer />
           </TrackProvider>
         </UserProvider>
       </RecoilRoot>

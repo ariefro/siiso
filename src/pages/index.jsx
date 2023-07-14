@@ -4,7 +4,7 @@ import '../styles/output.css';
 import {
   User,
   MainNavbar,
-  Player,
+  AudioPlayer,
   UserProvider,
   TrackProvider,
 } from '@/components';
@@ -20,7 +20,7 @@ export default function Home({ session }) {
               <div className='max-w-7xl flex flex-col w-full mx-auto'>
                 <User />
               </div>
-              <Player />
+              <AudioPlayer />
             </div>
           </TrackProvider>
         </UserProvider>
