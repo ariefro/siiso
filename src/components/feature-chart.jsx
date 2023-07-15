@@ -6,10 +6,10 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from 'chart.js';
-// import { CategoryScale } from 'chart.js';
 import { useEffect, useState } from 'react';
-import { Bar, Radar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
@@ -17,7 +17,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
 
 const properties = [
@@ -32,7 +33,7 @@ const properties = [
 
 export default function FeatureChart(props) {
   const [data, setData] = useState(null);
-  const { axis } = props;
+  const { axis, features } = props;
 
   const average = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
@@ -51,7 +52,6 @@ export default function FeatureChart(props) {
     };
 
     const parseData = () => {
-      const { features } = props;
       const dataset = createDataset(features);
 
       const labels = Object.keys(dataset);
@@ -94,7 +94,7 @@ export default function FeatureChart(props) {
     };
 
     parseData();
-  }, [props]);
+  }, [props, features]);
 
   return (
     <div className='w-11/12 h-96 sm:h-80 rounded-md flex items-center justify-center'>
