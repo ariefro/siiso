@@ -1,4 +1,5 @@
 import Artist from './artist';
+import AudioPlayer from './audio-player';
 import Controls from './controls';
 import CurrentTrackInfo from './current-track';
 import DetailArtist from './detail-artist';
@@ -15,13 +16,11 @@ import MainNavbar from './main-navbar';
 import Navbar from './navbar';
 import NavLink from './nav-link';
 import Pagination from './pagination';
-import AudioPlayer from './audio-player';
 import Playlist from './playlist';
 import PlaylistProvider from './playlist-context';
 import Playlists from './playlists';
 import RecentlyPlayed from './recently-played';
 import Recommendations from './recommendations';
-import Seekbar from './seekbar';
 import TopArtists from './top-artists';
 import TopTracks from './top-tracks';
 import Track from './track';
@@ -32,6 +31,7 @@ import VolumeBar from './volume-bar';
 
 export {
   Artist,
+  AudioPlayer,
   Controls,
   CurrentTrackInfo,
   DetailArtist,
@@ -48,13 +48,11 @@ export {
   Navbar,
   NavLink,
   Pagination,
-  AudioPlayer,
   Playlist,
   PlaylistProvider,
   Playlists,
   RecentlyPlayed,
   Recommendations,
-  Seekbar,
   TopArtists,
   TopTracks,
   Track,

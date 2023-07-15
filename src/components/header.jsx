@@ -4,18 +4,9 @@ import Image from 'next/image';
 function Header({ session, user, playlists }) {
   return (
     <header className='flex flex-col items-center justify-center h-[32rem] mb-10 space-y-7'>
-      {session?.user.image ? (
+      {user.images?.[1].url && (
         <Image
-          src={session?.user?.image}
-          priority
-          width={256}
-          height={256}
-          alt='avatar'
-          className='rounded-full w-40 h-40 md:w-48 md:h-48 mt-16'
-        ></Image>
-      ) : (
-        <Image
-          src={'https://i.ibb.co/wR66Bnd/1203476.jpg'}
+          src={user?.images?.[1].url}
           priority
           width={256}
           height={256}

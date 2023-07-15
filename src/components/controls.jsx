@@ -21,7 +21,7 @@ export default function Controls({
     <div className='flex items-center grow justify-center text-zinc-300 '>
       <button
         onClick={handleShuffleMode}
-        className={`hidden sm:inline ml-4 sm:ml-8 ${
+        className={`hidden sm:inline ${
           shufflePlayback ? 'text-green-400' : 'hover:text-white'
         }`}
       >
