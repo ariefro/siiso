@@ -73,12 +73,20 @@ export default function DetailTrack() {
           <h3 className='text-white text-3xl md:text-4xl text-center sm:text-start font-bold'>
             {track?.name}
           </h3>
-          <p className='text-gray-400 text-xl md:text-2xl font-semibold'>
+          <Link
+            href={'/artists/' + track?.artists?.[0].id}
+            className='hover:text-white text-gray-400 text-xl md:text-2xl font-semibold'
+          >
             {track?.artists?.[0].name}
-          </p>
+          </Link>
           <div className='flex text-sm text-center text-gray-400 pb-5'>
             <p>
-              {track?.album.name}
+              <Link
+                href={'/album/' + track?.album.id}
+                className='hover:text-white'
+              >
+                {track?.album.name}
+              </Link>
               <span>&nbsp;&#183;&nbsp;</span>
               {track?.album.release_date.split('-')[0]}
             </p>

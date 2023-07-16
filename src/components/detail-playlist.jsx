@@ -19,6 +19,15 @@ export default function DetailPlaylist() {
   const [tracks, setTracks] = useState([]);
   const [error, setError] = useRecoilState(errorState);
   const [loading, setLoading] = useState(true);
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
+  const handleSelectedTrack = (track) => {
+    if (selectedTrack === track) {
+      setSelectedTrack(!track);
+    } else {
+      setSelectedTrack(track);
+    }
+  };
 
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 50;
@@ -51,7 +60,12 @@ export default function DetailPlaylist() {
         <HeaderDetailPlaylist />
         <ul className='md:mt-16 grow'>
           {tracks?.body?.items.map((item) => (
-            <Track track={item.track} key={item.track.id} />
+            <Track
+              track={item.track}
+              isSelected={selectedTrack}
+              handleClick={handleSelectedTrack}
+              key={item.track.id}
+            />
           ))}
           <Pagination
             paginateBack={paginateBack}

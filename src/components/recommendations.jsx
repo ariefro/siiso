@@ -18,6 +18,15 @@ export default function Recommendations() {
   const [loading, setLoading] = useState(true);
   const [recommendations, setRecommendations] = useState(null);
   const playlistData = useRecoilValue(playlistState);
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
+  const handleSelectedTrack = (track) => {
+    if (selectedTrack === track) {
+      setSelectedTrack(!track);
+    } else {
+      setSelectedTrack(track);
+    }
+  };
 
   const getRecommendations = async (tracks) => {
     try {
@@ -78,7 +87,12 @@ export default function Recommendations() {
         </button>
       </div>
       {recommendations?.map((track) => (
-        <Track track={track} key={track.id} />
+        <Track
+          track={track}
+          isSelected={selectedTrack}
+          handleClick={handleSelectedTrack}
+          key={track.id}
+        />
       ))}
     </div>
   );

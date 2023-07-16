@@ -17,7 +17,7 @@ export const rangeTimeTrackState = atom({
 
 export const volumeState = atom({
   key: 'volumeState',
-  default: 80,
+  default: 90,
 });
 
 export const shuffleState = atom({

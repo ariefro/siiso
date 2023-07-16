@@ -55,6 +55,6 @@
   }
 
   .info-icon {
-    @apply absolute text-gray-400 invisible group-hover:visible;
+    @apply absolute text-gray-200 invisible group-hover:visible hover:text-white;
   }
 }

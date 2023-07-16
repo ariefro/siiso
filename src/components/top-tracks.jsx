@@ -11,6 +11,15 @@ function TopTracks() {
   const range = useRecoilValue(rangeTimeTrackState);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
+  const handleSelectedTrack = (track) => {
+    if (selectedTrack === track) {
+      setSelectedTrack(!track);
+    } else {
+      setSelectedTrack(track);
+    }
+  };
 
   const fetchData = async (range) => {
     try {
@@ -34,7 +43,14 @@ function TopTracks() {
       {error && <Error />}
       <ul>
         {topTracks.length !== 0 ? (
-          topTracks.map((track) => <Track track={track} key={track.id} />)
+          topTracks.map((track) => (
+            <Track
+              track={track}
+              isSelected={selectedTrack}
+              handleClick={handleSelectedTrack}
+              key={track.id}
+            />
+          ))
         ) : (
           <EmptyData />
         )}

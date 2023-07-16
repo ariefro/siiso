@@ -23,6 +23,15 @@ function User() {
   const [topTracks, setTopTracks] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
+  const handleClick = (track) => {
+    if (selectedTrack === track) {
+      setSelectedTrack(!track);
+    } else {
+      setSelectedTrack(track);
+    }
+  };
 
   const getUserData = async () => {
     try {
@@ -65,7 +74,14 @@ function User() {
           <ListHeading title={'top tracks'} href={'/tracks'} />
           <ul>
             {topTracks?.length !== 0 ? (
-              topTracks?.map((track) => <Track track={track} key={track.id} />)
+              topTracks?.map((track) => (
+                <Track
+                  track={track}
+                  isSelected={selectedTrack === track}
+                  handleClick={handleClick}
+                  key={track.id}
+                />
+              ))
             ) : (
               <EmptyData />
             )}

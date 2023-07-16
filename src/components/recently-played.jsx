@@ -8,6 +8,15 @@ export default function RecentlyPlayed() {
   const [tracks, setTracks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
+  const handleSelectedTrack = (track) => {
+    if (selectedTrack === track) {
+      setSelectedTrack(!track);
+    } else {
+      setSelectedTrack(track);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -32,7 +41,14 @@ export default function RecentlyPlayed() {
       </h1>
       <ul>
         {tracks.length !== 0 ? (
-          tracks.map((item) => <Track track={item.track} key={item.track.id} />)
+          tracks.map((item) => (
+            <Track
+              track={item.track}
+              isSelected={selectedTrack}
+              handleClick={handleSelectedTrack}
+              key={item.track.id}
+            />
+          ))
         ) : (
           <EmptyData />
         )}

@@ -1,4 +1,5 @@
 import { BackwardStepIcon } from './backward-step';
+import { CirclePlayIcon } from './circle-play';
 import { ForwardStepIcon } from './forward-step';
 import { HamburgerIcon } from './hamburger';
 import { InfoIcon } from './info';
@@ -17,6 +18,7 @@ import { XmarkIcon } from './xmark';
 
 export {
   BackwardStepIcon,
+  CirclePlayIcon,
   ForwardStepIcon,
   HamburgerIcon,
   InfoIcon,
