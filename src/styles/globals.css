@@ -47,11 +47,11 @@
   }
 
   .nav {
-    @apply text-sm text-gray-400 outline-none tracking-wider;
+    @apply text-sm text-gray-400 outline-none tracking-wider hover:text-gray-200;
   }
 
   .active-button {
-    @apply underline underline-offset-4 text-white decoration-2;
+    @apply underline underline-offset-2 text-white decoration-1;
   }
 
   .info-icon {
