@@ -757,6 +757,10 @@ html {
   margin-top: 4rem;
 }
 
+.mt-20 {
+  margin-top: 5rem;
+}
+
 .mt-24 {
   margin-top: 6rem;
 }
@@ -1519,8 +1523,8 @@ html {
     padding-right: 4rem;
   }
 
-  .sm\:pt-16 {
-    padding-top: 4rem;
+  .sm\:pt-20 {
+    padding-top: 5rem;
   }
 
   .sm\:pt-4 {

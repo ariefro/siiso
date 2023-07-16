@@ -53,6 +53,10 @@ export const fetchDataArtist = (id) => {
   return spotifyApi.getArtist(id);
 };
 
+export const fetchArtistTopTracks = (id) => {
+  return spotifyApi.getArtistTopTracks(id, 'ID');
+};
+
 export const fetchTopTracks = ({ limit, range }) => {
   return spotifyApi.getMyTopTracks({
     limit: limit,
