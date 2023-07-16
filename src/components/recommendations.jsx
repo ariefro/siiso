@@ -62,7 +62,7 @@ export default function Recommendations() {
   }, [playlistData, spotifyApi]);
 
   return (
-    <div className='py-28 sm:pt-16 px-10 w-full max-w-7xl mx-auto overflow-y-scroll no-scrollbar'>
+    <div className='py-28 sm:pt-20 px-10 w-full max-w-7xl mx-auto overflow-y-scroll no-scrollbar'>
       {error && <Error />}
       {loading && <Loading />}
       <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 justify-between items-center mb-11'>

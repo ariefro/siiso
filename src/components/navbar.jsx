@@ -9,7 +9,7 @@ export default function Navbar({ title }) {
   };
 
   return (
-    <nav className='block md:justify-between pt-28 sm:pt-16 sm:px-10 md:flex w-full'>
+    <nav className='block md:justify-between pt-28 sm:pt-20 sm:px-10 md:flex w-full'>
       <div className='flex justify-center mb-4 md:mb-0'>
         <h2 className='text-xl font-bold text-white'>{title}</h2>
       </div>

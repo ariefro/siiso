@@ -25,7 +25,7 @@ export default function Playlists() {
   }, [spotifyApi]);
 
   return (
-    <div className='pt-28 sm:pt-16 px-10 pb-32 overflow-y-scroll no-scrollbar'>
+    <div className='pt-28 sm:pt-20 px-10 pb-32 overflow-y-scroll no-scrollbar'>
       {!error && loading && <Loading />}
       {error && <Error />}
       <h1 className='text-xl font-bold text-white mb-16'>Your Playlists</h1>
