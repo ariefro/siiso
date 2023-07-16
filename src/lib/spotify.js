@@ -72,6 +72,10 @@ export const fetchPlaylistTracks = (id, limit, offset) => {
   return spotifyApi.getPlaylistTracks(id, { limit, offset });
 };
 
+export const fetchAlbumDetail = (id) => {
+  return spotifyApi.getAlbum(id);
+};
+
 export const fetchCurrentPlayingTrack = () => {
   return spotifyApi.getMyCurrentPlayingTrack();
 };

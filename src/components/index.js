@@ -2,14 +2,16 @@ import Artist from './artist';
 import AudioPlayer from './audio-player';
 import Controls from './controls';
 import CurrentTrackInfo from './current-track';
+import DetailAlbum from './detail-album';
 import DetailArtist from './detail-artist';
 import DetailPlaylist from './detail-playlist';
 import DetailTrack from './detail-track';
 import EmptyData from './empty-data';
 import Error from './error';
 import FeatureChart from './feature-chart';
-import HeaderDetailPlaylist from './header-detail-playlist';
 import Header from './header';
+import HeaderDetailAlbum from './header-detail-album';
+import HeaderDetailPlaylist from './header-detail-playlist';
 import ListHeading from './list-heading';
 import Loading from './loading';
 import MainNavbar from './main-navbar';
@@ -34,14 +36,16 @@ export {
   AudioPlayer,
   Controls,
   CurrentTrackInfo,
+  DetailAlbum,
   DetailArtist,
   DetailPlaylist,
   DetailTrack,
   EmptyData,
   Error,
   FeatureChart,
-  HeaderDetailPlaylist,
   Header,
+  HeaderDetailAlbum,
+  HeaderDetailPlaylist,
   ListHeading,
   Loading,
   MainNavbar,

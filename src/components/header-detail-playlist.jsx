@@ -53,7 +53,7 @@ export default function HeaderDetailPlaylist() {
       <Link
         href={'https://open.spotify.com/playlist/' + playlistData?.id}
         target='_blank'
-        className='pt-5 pb-4'
+        className='pt-10 pb-4'
       >
         <button className='button'>open on spotify</button>
       </Link>
