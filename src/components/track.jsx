@@ -59,8 +59,13 @@ export default function Track({ track, isSelected, handleClick }) {
         </div>
         <div className='grid grid-cols-12 w-full'>
           <div className='space-y-1 col-span-11'>
-            <p className='text-sm md:text-base hover:underline hover:underline-offset-2 decoration-1 text-white truncate'>
-              <Link href={'/tracks/' + track.id}>{track?.name}</Link>
+            <p className='text-sm md:text-base text-white truncate'>
+              <Link
+                href={'/tracks/' + track.id}
+                className='hover:underline hover:underline-offset-2 decoration-1'
+              >
+                {track?.name}
+              </Link>
             </p>
             <p className='text-xs text-gray-400 truncate'>
               <Link
