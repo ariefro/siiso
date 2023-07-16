@@ -89,7 +89,7 @@ export default function Recommendations() {
       {recommendations?.map((track) => (
         <Track
           track={track}
-          isSelected={selectedTrack}
+          isSelected={selectedTrack === track}
           handleClick={handleSelectedTrack}
           key={track.id}
         />

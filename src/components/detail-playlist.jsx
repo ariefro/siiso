@@ -62,7 +62,7 @@ export default function DetailPlaylist() {
           {tracks?.body?.items.map((item) => (
             <Track
               track={item.track}
-              isSelected={selectedTrack}
+              isSelected={selectedTrack === item.track}
               handleClick={handleSelectedTrack}
               key={item.track.id}
             />

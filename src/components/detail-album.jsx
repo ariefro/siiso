@@ -46,7 +46,7 @@ export default function DetailAlbum() {
           <Track
             track={track}
             handleClick={handleSelectedTrack}
-            isSelected={selectedTrack}
+            isSelected={selectedTrack === track}
             key={track.id}
           />
         ))}

@@ -46,7 +46,7 @@ function TopTracks() {
           topTracks.map((track) => (
             <Track
               track={track}
-              isSelected={selectedTrack}
+              isSelected={selectedTrack === track}
               handleClick={handleSelectedTrack}
               key={track.id}
             />

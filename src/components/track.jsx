@@ -28,8 +28,8 @@ export default function Track({ track, isSelected, handleClick }) {
       <div
         onClick={() => handleClick(track)}
         className={`${
-          isSelected && 'bg-zinc-600 hover:bg-zinc-600'
-        } flex group items-center space-x-5 p-3 rounded-sm hover:bg-zinc-800`}
+          isSelected ? 'bg-zinc-600 hover:bg-zinc-600' : 'hover:bg-zinc-800'
+        } flex group items-center space-x-5 p-3 rounded-sm`}
       >
         <div className='relative'>
           {track?.album?.images?.[0].url && (
