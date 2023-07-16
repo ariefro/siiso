@@ -29,18 +29,18 @@ export default function Track({ track, isSelected, handleClick }) {
         onClick={() => handleClick(track)}
         className={`${
           isSelected ? 'bg-zinc-600 hover:bg-zinc-600' : 'hover:bg-zinc-800'
-        } flex group items-center space-x-5 p-3 rounded-sm`}
+        } flex items-center space-x-5 p-3 rounded-sm`}
       >
         <div className='relative'>
           {track?.album?.images?.[0].url && (
-            <div className='flex justify-center items-center'>
+            <div className='flex justify-center items-center group'>
               <Link href={'/album/' + track?.album.id}>
                 <Image
                   src={track?.album?.images?.[0].url}
                   width={50}
                   height={50}
                   alt='photo album'
-                  className='group-hover:opacity-40 hover:ease-out duration-500'
+                  className='hover:ease-out group-hover:opacity-50 duration-500'
                 ></Image>
               </Link>
               <span className='info-icon'>
@@ -59,7 +59,7 @@ export default function Track({ track, isSelected, handleClick }) {
         </div>
         <div className='grid grid-cols-12 w-full'>
           <div className='space-y-1 col-span-11'>
-            <p className='text-sm md:text-base text-white truncate'>
+            <p className='text-sm md:text-base hover:underline hover:underline-offset-2 decoration-1 text-white truncate'>
               <Link href={'/tracks/' + track.id}>{track?.name}</Link>
             </p>
             <p className='text-xs text-gray-400 truncate'>
