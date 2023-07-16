@@ -2,7 +2,7 @@ import {
   BackwardStepIcon,
   ForwardStepIcon,
   PauseIcon,
-  PlayIcon,
+  CirclePlayIcon,
   RepeatIcon,
   ShuffleIcon,
 } from './icons';
@@ -45,7 +45,7 @@ export default function Controls({
           onClick={handlePlayPause}
           className='hover:text-white mr-4 ml-4 sm:mr-8 sm:ml-8'
         >
-          <PlayIcon />
+          <CirclePlayIcon />
         </button>
       )}
       <button

@@ -34,8 +34,6 @@ export default function AudioPlayer() {
   const [repeatMode, setRepeatMode] = useRecoilState(repeatState);
   const device = useRecoilValue(deviceState);
   const [changeTrack, setChangeTrack] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [seekTime, setSeekTime] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
