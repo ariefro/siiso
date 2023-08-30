@@ -8,7 +8,9 @@ import {
   AudioPlayer,
   UserProvider,
   TrackProvider,
+  HeadMeta,
 } from '@/components';
+import Head from 'next/head';
 
 export default function TopTracksPage({ session }) {
   return (
@@ -16,6 +18,7 @@ export default function TopTracksPage({ session }) {
       <RecoilRoot>
         <UserProvider>
           <TrackProvider>
+            <HeadMeta />
             <div className='flex bg-zinc-900 h-screen'>
               <MainNavbar />
               <div className='w-full flex flex-col max-w-7xl mx-auto'>

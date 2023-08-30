@@ -12,6 +12,7 @@ import FeatureChart from './feature-chart';
 import Header from './header';
 import HeaderDetailAlbum from './header-detail-album';
 import HeaderDetailPlaylist from './header-detail-playlist';
+import HeadMeta from './head';
 import ListHeading from './list-heading';
 import Loading from './loading';
 import MainNavbar from './main-navbar';
@@ -46,6 +47,7 @@ export {
   Header,
   HeaderDetailAlbum,
   HeaderDetailPlaylist,
+  HeadMeta,
   ListHeading,
   Loading,
   MainNavbar,

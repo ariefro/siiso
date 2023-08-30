@@ -1,6 +1,11 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import '../../styles/output.css';
-import { MainNavbar, PlaylistProvider, Recommendations } from '@/components';
+import {
+  HeadMeta,
+  MainNavbar,
+  PlaylistProvider,
+  Recommendations,
+} from '@/components';
 import { RecoilRoot } from 'recoil';
 
 export default function RecommendationsPage({ session }) {
@@ -8,6 +13,7 @@ export default function RecommendationsPage({ session }) {
     <SessionProvider session={session}>
       <RecoilRoot>
         <PlaylistProvider>
+          <HeadMeta />
           <div className='flex bg-zinc-900 h-screen w-full'>
             <MainNavbar />
             <Recommendations />

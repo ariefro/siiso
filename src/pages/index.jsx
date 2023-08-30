@@ -7,6 +7,7 @@ import {
   AudioPlayer,
   UserProvider,
   TrackProvider,
+  HeadMeta,
 } from '@/components';
 
 export default function Home({ session }) {
@@ -15,6 +16,7 @@ export default function Home({ session }) {
       <RecoilRoot>
         <UserProvider>
           <TrackProvider>
+            <HeadMeta />
             <div className='h-screen flex bg-zinc-900'>
               <MainNavbar />
               <div className='max-w-7xl flex flex-col w-full mx-auto'>

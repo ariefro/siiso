@@ -2,7 +2,7 @@ import '../../styles/output.css';
 import { getProviders, signIn } from 'next-auth/react';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Loading } from '@/components';
+import { HeadMeta, Loading } from '@/components';
 
 function Login({ providers }) {
   const [loading, setLoading] = useState(false);
@@ -15,6 +15,7 @@ function Login({ providers }) {
 
   return (
     <div className='bg-zinc-900 h-screen flex items-center justify-center'>
+      <HeadMeta />
       {loading ? (
         <Loading />
       ) : (

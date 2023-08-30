@@ -7,6 +7,7 @@ import {
   Playlists,
   TrackProvider,
   UserProvider,
+  HeadMeta,
 } from '@/components';
 
 export default function PlaylistsPage({ session }) {
@@ -15,6 +16,7 @@ export default function PlaylistsPage({ session }) {
       <RecoilRoot>
         <UserProvider>
           <TrackProvider>
+            <HeadMeta />
             <div className='flex bg-zinc-900 h-screen overflow-hidden'>
               <MainNavbar />
               <div className='w-full flex flex-col max-w-7xl mx-auto'>

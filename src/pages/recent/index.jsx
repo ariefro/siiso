@@ -7,6 +7,7 @@ import {
   RecentlyPlayed,
   TrackProvider,
   UserProvider,
+  HeadMeta,
 } from '@/components';
 
 export default function RecentPage({ session }) {
@@ -15,6 +16,7 @@ export default function RecentPage({ session }) {
       <RecoilRoot>
         <UserProvider>
           <TrackProvider>
+            <HeadMeta />
             <div className='flex bg-zinc-900'>
               <MainNavbar />
               <div className='w-full flex flex-col max-w-7xl mx-auto h-screen'>

@@ -8,6 +8,7 @@ import {
   TrackProvider,
   AudioPlayer,
   PlaylistProvider,
+  HeadMeta,
 } from '@/components';
 
 export default function PlaylistDetails({ session }) {
@@ -17,6 +18,7 @@ export default function PlaylistDetails({ session }) {
         <UserProvider>
           <TrackProvider>
             <PlaylistProvider>
+              <HeadMeta />
               <div className='flex min-h-screen bg-zinc-900'>
                 <MainNavbar />
                 <div className='max-w-7xl flex flex-col w-full 2xl:mx-auto pb-28'>

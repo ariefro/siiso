@@ -3,6 +3,7 @@ import { RecoilRoot } from 'recoil';
 import '../../styles/output.css';
 import {
   DetailAlbum,
+  HeadMeta,
   MainNavbar,
   TrackProvider,
   UserProvider,
@@ -14,6 +15,7 @@ export default function DetailAlbumPage({ session }) {
       <RecoilRoot>
         <UserProvider>
           <TrackProvider>
+            <HeadMeta />
             <div className='bg-zinc-900 w-full h-screen flex'>
               <MainNavbar />
               <DetailAlbum />
