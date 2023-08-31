@@ -32,11 +32,11 @@ function Login({ providers }) {
                   <br />
                   <div>
                     <div className='flex'>
-                      <p className='w-24'>Email</p>
+                      <p className='w-20'>Email</p>
                       <p>: siiso.app@gmail.com</p>
                     </div>
                     <div className='flex'>
-                      <p className='w-24'>Password</p>
+                      <p className='w-20'>Password</p>
                       <p>: dummy999</p>
                     </div>
                   </div>
