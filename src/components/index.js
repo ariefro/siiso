@@ -16,6 +16,7 @@ import HeadMeta from './head';
 import Input from './input';
 import ListHeading from './list-heading';
 import Loading from './loading';
+import Label from './label';
 import MainNavbar from './main-navbar';
 import Navbar from './navbar';
 import NavLink from './nav-link';
@@ -50,6 +51,7 @@ export {
   HeaderDetailPlaylist,
   HeadMeta,
   Input,
+  Label,
   ListHeading,
   Loading,
   MainNavbar,
