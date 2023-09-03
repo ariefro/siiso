@@ -13,6 +13,7 @@ import Header from './header';
 import HeaderDetailAlbum from './header-detail-album';
 import HeaderDetailPlaylist from './header-detail-playlist';
 import HeadMeta from './head';
+import Input from './input';
 import ListHeading from './list-heading';
 import Loading from './loading';
 import MainNavbar from './main-navbar';
@@ -48,6 +49,7 @@ export {
   HeaderDetailAlbum,
   HeaderDetailPlaylist,
   HeadMeta,
+  Input,
   ListHeading,
   Loading,
   MainNavbar,
