@@ -1,6 +1,5 @@
 import { SessionProvider, getSession } from 'next-auth/react';
 import { RecoilRoot } from 'recoil';
-import '../styles/output.css';
 import {
   User,
   MainNavbar,

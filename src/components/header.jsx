@@ -4,7 +4,7 @@ import Image from 'next/image';
 function Header({ session, user, playlists }) {
   return (
     <header className='flex flex-col items-center justify-center h-[32rem] mb-10 space-y-7'>
-      {user.images?.[1].url && (
+      {user?.images?.length !== 0 && user.images?.[1].url && (
         <Image
           src={user?.images?.[1].url}
           priority
