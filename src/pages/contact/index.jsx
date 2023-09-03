@@ -38,21 +38,17 @@ function Contact() {
     }
   };
   return (
-    <main className='bg-zinc-900'>
+    <main className='bg-zinc-900 px-10'>
       <HeadMeta />
       <div className='mx-auto min-h-screen py-24'>
         <section className='max-w-7xl mx-auto'>
-          {/* <motion.h3
-            className='text-tertiary font-semibold text-2xl py-24 md:text-3xl lg:text-4xl'
-            transition={{ duration: 2, ease: 'easeInOut' }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            Get In Touch
-          </motion.h3> */}
+          <p className='text-gray-200 text-center text-xl'>
+            Whether you have a question or just want to say hi, I&apos;ll try my
+            best to get back to you!
+          </p>
           <motion.form
             method='POST'
-            className='relative pb-20 md:w-1/2'
+            className='relative py-20 md:w-1/2'
             transition={{ duration: 1, delay: 1, ease: 'easeInOut' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -89,7 +85,7 @@ function Contact() {
                 htmlFor='message'
                 className='peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7 md:text-base'
               >
-                Message (Optional)
+                Message
               </label>
             </div>
             <div className='flex space-x-7 absolute bottom-12 right-0'>
