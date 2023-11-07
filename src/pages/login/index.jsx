@@ -48,7 +48,7 @@ function Login({ providers }) {
                     </div>
                     <div className='flex'>
                       <p className='w-20'>Password</p>
-                      <p>: secret123</p>
+                      <p>: seCret123</p>
                     </div>
                   </div>
                 </div>
